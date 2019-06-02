@@ -5,8 +5,9 @@ public class HachaTest{
   @Test
   public void testDurabilidad() {
     Hacha hacha = new Hacha();
-    hacha.setDurabilidad(5);
+    int durabilidad = 5;
+    hacha.setDurabilidad(durabilidad);
     int durabilidadPrueba = hacha.durabilidad();
-    assertEquals(5,durabilidadPrueba);
+    assertEquals(durabilidad,durabilidadPrueba);
   }
 }
