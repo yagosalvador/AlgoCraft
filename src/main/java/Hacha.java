@@ -1,4 +1,4 @@
-public class Hacha {
+public class Hacha extends Herramienta{
 	private int durabilidad;
 
 	public void setDurabilidad(int durabilidad){
