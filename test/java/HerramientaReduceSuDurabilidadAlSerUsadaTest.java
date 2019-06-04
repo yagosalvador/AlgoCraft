@@ -1,287 +1,285 @@
-// Que hacer con pico fino al romper la piedra en test
-
 import static org.junit.Assert.*;
 import org.junit.Test;
 
-public class SeReduceDurabilidadDeMaterialAlSerExtraidoTest{
+public class HerramientaReduceSuDurabilidadAlSerUsadaTest{
 
     @Test
     public void testUsarHachaDeMaderaSobreMaderaReduceSuDurabilidad() {
         HachaDeMadera hacha = new HachaDeMadera();
-        int durabilidad = 8;
+        int durabilidad = 98;
         Madera madera = new Madera();
         hacha.extraer(madera);
-        int durabilidadPrueba = madera.durabilidad();
+        int durabilidadPrueba = hacha.durabilidad();
         assertEquals(durabilidad,durabilidadPrueba);
     }
 
     @Test
     public void testUsarHachaDePiedraSobreMaderaReduceSuDurabilidad() {
         HachaDePiedra hacha = new HachaDePiedra();
-        int durabilidad = 5;
+        int durabilidad = 195;
         Madera madera = new Madera();
         hacha.extraer(madera);
-        int durabilidadPrueba = madera.durabilidad();
+        int durabilidadPrueba = hacha.durabilidad();
         assertEquals(durabilidad,durabilidadPrueba);
     }
 
     @Test
     public void testUsarHachaDeMetalSobreMaderaReduceSuDurabilidad() {
         HachaDeMetal hacha = new HachaDeMetal();
-        int durabilidad = 0;
+        int durabilidad = 390;
         Madera madera = new Madera();
         hacha.extraer(madera);
-        int durabilidadPrueba = madera.durabilidad();
+        int durabilidadPrueba = hacha.durabilidad();
         assertEquals(durabilidad,durabilidadPrueba);
     }
 
     @Test
-    public void testUsarPicoDeMaderaSobreMaderaNoReduceSuDurabilidad() {
+    public void testUsarPicoDeMaderaSobreMaderaReduceSuDurabilidad() {
         PicoDeMadera pico = new PicoDeMadera();
-        int durabilidad = 10;
+        int durabilidad = 98;
         Madera madera = new Madera();
         pico.extraer(madera);
-        int durabilidadPrueba = madera.durabilidad();
+        int durabilidadPrueba = pico.durabilidad();
         assertEquals(durabilidad,durabilidadPrueba);
     }
 
     @Test
-    public void testUsarPicoDePiedraSobreMaderaNoReduceSuDurabilidad() {
+    public void testUsarPicoDePiedraSobreMaderaReduceSuDurabilidad() {
         PicoDePiedra pico = new PicoDePiedra();
-        int durabilidad = 10;
+        int durabilidad = 196;
         Madera madera = new Madera();
         pico.extraer(madera);
-        int durabilidadPrueba = madera.durabilidad();
+        int durabilidadPrueba = pico.durabilidad();
         assertEquals(durabilidad,durabilidadPrueba);
     }
 
     @Test
-    public void testUsarPicoDeMetalSobreMaderaNoReduceSuDurabilidad() {
+    public void testUsarPicoDeMetalSobreMaderaReduceSuDurabilidad() {
         PicoDeMetal pico = new PicoDeMetal();
-        int durabilidad = 10;
+        int durabilidad = 388;
         Madera madera = new Madera();
         pico.extraer(madera);
-        int durabilidadPrueba = madera.durabilidad();
+        int durabilidadPrueba = pico.durabilidad();
         assertEquals(durabilidad,durabilidadPrueba);
     }
 
     @Test
     public void testUsarPicoFinoSobreMaderaNoReduceSuDurabilidad() {
         PicoFino pico = new PicoFino();
-        int durabilidad = 10;
+        int durabilidad = 1000;
         Madera madera = new Madera();
         pico.extraer(madera);
-        int durabilidadPrueba = madera.durabilidad();
+        int durabilidadPrueba = pico.durabilidad();
         assertEquals(durabilidad,durabilidadPrueba);
     }
 
     @Test
-    public void testUsarHachaDeMaderaSobrePiedraNoReduceSuDurabilidad() {
+    public void testUsarHachaDeMaderaSobrePiedraReduceSuDurabilidad() {
         HachaDeMadera hacha = new HachaDeMadera();
-        int durabilidad = 30;
+        int durabilidad = 98;
         Piedra piedra = new Piedra();
         hacha.extraer(piedra);
-        int durabilidadPrueba = piedra.durabilidad();
+        int durabilidadPrueba = hacha.durabilidad();
         assertEquals(durabilidad,durabilidadPrueba);
     }
 
     @Test
-    public void testUsarHachaDePiedraSobrePiedraNoReduceSuDurabilidad() {
+    public void testUsarHachaDePiedraSobrePiedraReduceSuDurabilidad() {
         HachaDePiedra hacha = new HachaDePiedra();
-        int durabilidad = 30;
+        int durabilidad = 195;
         Piedra piedra = new Piedra();
         hacha.extraer(piedra);
-        int durabilidadPrueba = piedra.durabilidad();
+        int durabilidadPrueba = hacha.durabilidad();
         assertEquals(durabilidad,durabilidadPrueba);
     }
 
     @Test
-    public void testUsarHachaDeMetalSobrePiedraNoReduceSuDurabilidad() {
+    public void testUsarHachaDeMetalSobrePiedraReduceSuDurabilidad() {
         HachaDeMetal hacha = new HachaDeMetal();
-        int durabilidad = 30;
+        int durabilidad = 390;
         Piedra piedra = new Piedra();
         hacha.extraer(piedra);
-        int durabilidadPrueba = piedra.durabilidad();
+        int durabilidadPrueba = hacha.durabilidad();
         assertEquals(durabilidad,durabilidadPrueba);
     }
 
     @Test
-    public void testUsarPicoDePiedraSobrePiedraReduceSuDurabilidad() {
+    public void testUsarPicoDeMaderaSobrePiedraReduceSuDurabilidad() {
         PicoDeMadera pico = new PicoDeMadera();
-        int durabilidad = 28;
+        int durabilidad = 98;
         Piedra piedra = new Piedra();
         pico.extraer(piedra);
-        int durabilidadPrueba = piedra.durabilidad();
+        int durabilidadPrueba = pico.durabilidad();
         assertEquals(durabilidad,durabilidadPrueba);
     }
 
     @Test
     public void testUsarPicoDePiedraSobrePiedraReduceSuDurabilidad() {
         PicoDePiedra pico = new PicoDePiedra();
-        int durabilidad = 26;
+        int durabilidad = 196;
         Piedra piedra = new Piedra();
         pico.extraer(piedra);
-        int durabilidadPrueba = piedra.durabilidad();
+        int durabilidadPrueba = pico.durabilidad();
         assertEquals(durabilidad,durabilidadPrueba);
     }
 
     @Test
     public void testUsarPicoDeMetalSobrePiedraReduceSuDurabilidad() {
         PicoDeMetal pico = new PicoDeMetal();
-        int durabilidad = 18;
+        int durabilidad = 388;
         Piedra piedra = new Piedra();
         pico.extraer(piedra);
-        int durabilidadPrueba = piedra.durabilidad();
+        int durabilidadPrueba = pico.durabilidad();
         assertEquals(durabilidad,durabilidadPrueba);
     }
 
     @Test
-    public void testUsarPicoFinoSobrePiedraReduceSuDurabilidad() {
+    public void testUsarPicoFinoSobrePiedraNoReduceSuDurabilidad() {
         PicoFino pico = new PicoFino();
-        int durabilidad = 0;
+        int durabilidad = 1000;
         Piedra piedra = new Piedra();
         pico.extraer(piedra);
-        int durabilidadPrueba = piedra.durabilidad();
+        int durabilidadPrueba = pico.durabilidad();
         assertEquals(durabilidad,durabilidadPrueba);
     }
 
     @Test
-    public void testUsarHachaDeMaderaSobreMetalNoReduceSuDurabilidad() {
+    public void testUsarHachaDeMaderaSobreMetalReduceSuDurabilidad() {
         HachaDeMadera hacha = new HachaDeMadera();
-        int durabilidad = 50;
+        int durabilidad = 98;
         Metal metal = new Metal();
         hacha.extraer(metal);
-        int durabilidadPrueba = metal.durabilidad();
+        int durabilidadPrueba = hacha.durabilidad();
         assertEquals(durabilidad,durabilidadPrueba);
     }
 
     @Test
-    public void testUsarHachaDePiedraSobreMetalNoReduceSuDurabilidad() {
+    public void testUsarHachaDePiedraSobreMetalReduceSuDurabilidad() {
         HachaDePiedra hacha = new HachaDePiedra();
-        int durabilidad = 50;
+        int durabilidad = 195;
         Metal metal = new Metal();
         hacha.extraer(metal);
-        int durabilidadPrueba = metal.durabilidad();
+        int durabilidadPrueba = hacha.durabilidad();
         assertEquals(durabilidad,durabilidadPrueba);
     }
 
     @Test
-    public void testUsarHachaDeMetalSobreMetalNoReduceSuDurabilidad() {
+    public void testUsarHachaDeMetalSobreMetalReduceSuDurabilidad() {
         HachaDeMetal hacha = new HachaDeMetal();
-        int durabilidad = 50;
+        int durabilidad = 390;
         Metal metal = new Metal();
         hacha.extraer(metal);
-        int durabilidadPrueba = metal.durabilidad();
+        int durabilidadPrueba = hacha.durabilidad();
         assertEquals(durabilidad,durabilidadPrueba);
     }
 
     @Test
-    public void testUsarPicoDeMaderaSobreMetalNoReduceSuDurabilidad() {
+    public void testUsarPicoDeMaderaSobreMetalReduceSuDurabilidad() {
         PicoDeMadera pico = new PicoDeMadera();
-        int durabilidad = 50;
+        int durabilidad = 98;
         Metal metal = new Metal();
         pico.extraer(metal);
-        int durabilidadPrueba = metal.durabilidad();
+        int durabilidadPrueba = pico.durabilidad();
         assertEquals(durabilidad,durabilidadPrueba);
     }
 
     @Test
     public void testUsarPicoDePiedraSobreMetalReduceSuDurabilidad() {
         PicoDePiedra pico = new PicoDePiedra();
-        int durabilidad = 46;
+        int durabilidad = 196;
         Metal metal = new Metal();
         pico.extraer(metal);
-        int durabilidadPrueba = metal.durabilidad();
+        int durabilidadPrueba = pico.durabilidad();
         assertEquals(durabilidad,durabilidadPrueba);
     }
 
     @Test
     public void testUsarPicoDeMetalSobreMetalReduceSuDurabilidad() {
         PicoDeMetal pico = new PicoDeMetal();
-        int durabilidad = 38;
+        int durabilidad = 388;
         Metal metal = new Metal();
         pico.extraer(metal);
-        int durabilidadPrueba = metal.durabilidad();
+        int durabilidadPrueba = pico.durabilidad();
         assertEquals(durabilidad,durabilidadPrueba);
     }
 
     @Test
-    public void testUsarPicoFinoSobreMetalReduceSuDurabilidad() {
+    public void testUsarPicoFinoSobreMetalNoReduceSuDurabilidad() {
         PicoFino pico = new PicoFino();
-        int durabilidad = 0;
+        int durabilidad = 1000;
         Metal metal = new Metal();
         pico.extraer(metal);
-        int durabilidadPrueba = metal.durabilidad();
+        int durabilidadPrueba = pico.durabilidad();
         assertEquals(durabilidad,durabilidadPrueba);
     }
 
     @Test
-    public void testUsarHachaDeMaderaSobreDiamanteNoReduceSuDurabilidad() {
+    public void testUsarHachaDeMaderaSobreDiamanteReduceSuDurabilidad() {
         HachaDeMadera hacha = new HachaDeMadera();
-        int durabilidad = 100;
+        int durabilidad = 98;
         Diamante diamante = new Diamante();
         hacha.extraer(diamante);
-        int durabilidadPrueba = diamante.durabilidad();
+        int durabilidadPrueba = hacha.durabilidad();
         assertEquals(durabilidad,durabilidadPrueba);
     }
 
     @Test
-    public void testUsarHachaDePiedraSobreDiamanteNoReduceSuDurabilidad() {
+    public void testUsarHachaDePiedraSobreDiamanteReduceSuDurabilidad() {
         HachaDePiedra hacha = new HachaDePiedra();
-        int durabilidad = 100;
+        int durabilidad = 195;
         Diamante diamante = new Diamante();
         hacha.extraer(diamante);
-        int durabilidadPrueba = diamante.durabilidad();
+        int durabilidadPrueba = hacha.durabilidad();
         assertEquals(durabilidad,durabilidadPrueba);
     }
 
     @Test
-    public void testUsarHachaDeMetalSobreDiamanteNoReduceSuDurabilidad() {
+    public void testUsarHachaDeMetalSobreDiamanteReduceSuDurabilidad() {
         HachaDeMetal hacha = new HachaDeMetal();
-        int durabilidad = 100;
+        int durabilidad = 390;
         Diamante diamante = new Diamante();
         hacha.extraer(diamante);
-        int durabilidadPrueba = diamante.durabilidad();
+        int durabilidadPrueba = hacha.durabilidad();
         assertEquals(durabilidad,durabilidadPrueba);
     }
 
     @Test
-    public void testUsarPicoDeMaderaSobreDiamanteNoReduceSuDurabilidad() {
+    public void testUsarPicoDeMaderaSobreDiamanteReduceSuDurabilidad() {
         PicoDeMadera pico = new PicoDeMadera();
-        int durabilidad = 100;
+        int durabilidad = 98;
         Diamante diamante = new Diamante();
         pico.extraer(diamante);
-        int durabilidadPrueba = diamante.durabilidad();
+        int durabilidadPrueba = pico.durabilidad();
         assertEquals(durabilidad,durabilidadPrueba);
     }
 
     @Test
-    public void testUsarPicoDePiedraSobreDiamanteNoReduceSuDurabilidad() {
+    public void testUsarPicoDePiedraSobreDiamanteReduceSuDurabilidad() {
         PicoDePiedra pico = new PicoDePiedra();
-        int durabilidad = 100;
+        int durabilidad = 196;
         Diamante diamante = new Diamante();
         pico.extraer(diamante);
-        int durabilidadPrueba = diamante.durabilidad();
+        int durabilidadPrueba = pico.durabilidad();
         assertEquals(durabilidad,durabilidadPrueba);
     }
 
     @Test
-    public void testUsarPicoDeMetalSobreDiamanteNoReduceSuDurabilidad() {
+    public void testUsarPicoDeMetalSobreDiamanteReduceSuDurabilidad() {
         PicoDeMetal pico = new PicoDeMetal();
-        int durabilidad = 100;
+        int durabilidad = 388;
         Diamante diamante = new Diamante();
         pico.extraer(diamante);
-        int durabilidadPrueba = diamante.durabilidad();
+        int durabilidadPrueba = pico.durabilidad();
         assertEquals(durabilidad,durabilidadPrueba);
     }
 
     @Test
     public void testUsarPicoFinoSobreDiamanteReduceSuDurabilidad() {
         PicoFino pico = new PicoFino();
-        int durabilidad = 10;
+        int durabilidad = 100;
         Diamante diamante = new Diamante();
         pico.extraer(diamante);
-        int durabilidadPrueba = diamante.durabilidad();
+        int durabilidadPrueba = pico.durabilidad();
         assertEquals(durabilidad,durabilidadPrueba);
     }
 
