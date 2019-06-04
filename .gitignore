@@ -1,3 +1,5 @@
+build/
+
 # Ignorar los .class
 *.class
 
