@@ -1,1 +1,8 @@
-build/
+# Ignorar los .class
+*.class
+
+# Ignorar los log files
+*.log
+
+# Ignorar los .idea (Al usar IntelliJ
+.idea
