@@ -278,7 +278,7 @@ public class MaterialReduceSuDurabilidadAlSerExtraidoTest{
     @Test
     public void testDiamanteReduceSuDurabilidadAlExtraerConPicoFino() {
         PicoFino pico = new PicoFino();
-        int durabilidad = 10;
+        int durabilidad = 80;
         Diamante diamante = new Diamante();
         pico.extraer(diamante);
         int durabilidadPrueba = diamante.durabilidad();

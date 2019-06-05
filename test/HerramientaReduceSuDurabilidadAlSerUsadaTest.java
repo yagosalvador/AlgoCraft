@@ -26,7 +26,7 @@ public class HerramientaReduceSuDurabilidadAlSerUsadaTest{
     @Test
     public void testUsarHachaDeMetalSobreMaderaReduceSuDurabilidad() {
         HachaDeMetal hacha = new HachaDeMetal();
-        int durabilidad = 390;
+        int durabilidad = 395;
         Madera madera = new Madera();
         hacha.extraer(madera);
         int durabilidadPrueba = hacha.durabilidad();
@@ -42,21 +42,21 @@ public class HerramientaReduceSuDurabilidadAlSerUsadaTest{
         int durabilidadPrueba = pico.durabilidad();
         assertEquals(durabilidad,durabilidadPrueba);
     }
-
+//La durabilidad se reduce: durabilidad -= Fuerza /1.5
     @Test
     public void testUsarPicoDePiedraSobreMaderaReduceSuDurabilidad() {
         PicoDePiedra pico = new PicoDePiedra();
-        int durabilidad = 196;
+        int durabilidad = 200 - (4 / 1.5);
         Madera madera = new Madera();
         pico.extraer(madera);
         int durabilidadPrueba = pico.durabilidad();
         assertEquals(durabilidad,durabilidadPrueba);
     }
-
+//Hay que buscar como testear los 10 usos, buscar equivalente de should de smalltalk para usar 10 veces
     @Test
     public void testUsarPicoDeMetalSobreMaderaReduceSuDurabilidad() {
         PicoDeMetal pico = new PicoDeMetal();
-        int durabilidad = 388;
+        int durabilidad = 400;
         Madera madera = new Madera();
         pico.extraer(madera);
         int durabilidadPrueba = pico.durabilidad();
@@ -96,7 +96,7 @@ public class HerramientaReduceSuDurabilidadAlSerUsadaTest{
     @Test
     public void testUsarHachaDeMetalSobrePiedraReduceSuDurabilidad() {
         HachaDeMetal hacha = new HachaDeMetal();
-        int durabilidad = 390;
+        int durabilidad = 395;
         Piedra piedra = new Piedra();
         hacha.extraer(piedra);
         int durabilidadPrueba = hacha.durabilidad();
@@ -116,7 +116,7 @@ public class HerramientaReduceSuDurabilidadAlSerUsadaTest{
     @Test
     public void testUsarPicoDePiedraSobrePiedraReduceSuDurabilidad() {
         PicoDePiedra pico = new PicoDePiedra();
-        int durabilidad = 196;
+        int durabilidad = 200 - (4 / 1.5);
         Piedra piedra = new Piedra();
         pico.extraer(piedra);
         int durabilidadPrueba = pico.durabilidad();
@@ -126,7 +126,7 @@ public class HerramientaReduceSuDurabilidadAlSerUsadaTest{
     @Test
     public void testUsarPicoDeMetalSobrePiedraReduceSuDurabilidad() {
         PicoDeMetal pico = new PicoDeMetal();
-        int durabilidad = 388;
+        int durabilidad = 400;
         Piedra piedra = new Piedra();
         pico.extraer(piedra);
         int durabilidadPrueba = pico.durabilidad();
@@ -166,7 +166,7 @@ public class HerramientaReduceSuDurabilidadAlSerUsadaTest{
     @Test
     public void testUsarHachaDeMetalSobreMetalReduceSuDurabilidad() {
         HachaDeMetal hacha = new HachaDeMetal();
-        int durabilidad = 390;
+        int durabilidad = 395;
         Metal metal = new Metal();
         hacha.extraer(metal);
         int durabilidadPrueba = hacha.durabilidad();
@@ -186,7 +186,7 @@ public class HerramientaReduceSuDurabilidadAlSerUsadaTest{
     @Test
     public void testUsarPicoDePiedraSobreMetalReduceSuDurabilidad() {
         PicoDePiedra pico = new PicoDePiedra();
-        int durabilidad = 196;
+        int durabilidad = 200 - (4 / 1.5);
         Metal metal = new Metal();
         pico.extraer(metal);
         int durabilidadPrueba = pico.durabilidad();
@@ -196,7 +196,7 @@ public class HerramientaReduceSuDurabilidadAlSerUsadaTest{
     @Test
     public void testUsarPicoDeMetalSobreMetalReduceSuDurabilidad() {
         PicoDeMetal pico = new PicoDeMetal();
-        int durabilidad = 388;
+        int durabilidad = 400;
         Metal metal = new Metal();
         pico.extraer(metal);
         int durabilidadPrueba = pico.durabilidad();
@@ -236,7 +236,7 @@ public class HerramientaReduceSuDurabilidadAlSerUsadaTest{
     @Test
     public void testUsarHachaDeMetalSobreDiamanteReduceSuDurabilidad() {
         HachaDeMetal hacha = new HachaDeMetal();
-        int durabilidad = 390;
+        int durabilidad = 395;
         Diamante diamante = new Diamante();
         hacha.extraer(diamante);
         int durabilidadPrueba = hacha.durabilidad();
@@ -256,7 +256,7 @@ public class HerramientaReduceSuDurabilidadAlSerUsadaTest{
     @Test
     public void testUsarPicoDePiedraSobreDiamanteReduceSuDurabilidad() {
         PicoDePiedra pico = new PicoDePiedra();
-        int durabilidad = 196;
+        int durabilidad = 200 - (4 / 1.5);
         Diamante diamante = new Diamante();
         pico.extraer(diamante);
         int durabilidadPrueba = pico.durabilidad();
@@ -266,7 +266,7 @@ public class HerramientaReduceSuDurabilidadAlSerUsadaTest{
     @Test
     public void testUsarPicoDeMetalSobreDiamanteReduceSuDurabilidad() {
         PicoDeMetal pico = new PicoDeMetal();
-        int durabilidad = 388;
+        int durabilidad = 400;
         Diamante diamante = new Diamante();
         pico.extraer(diamante);
         int durabilidadPrueba = pico.durabilidad();
