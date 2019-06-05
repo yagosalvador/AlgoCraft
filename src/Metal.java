@@ -1,4 +1,4 @@
-public class Madera extends Material{
+public class Metal extends Material{
     @Override
     public Enfrentable vs(Enfrentable enfrentable){
         return enfrentable.vs(this);
@@ -7,7 +7,20 @@ public class Madera extends Material{
     @Override
     public Enfrentable vs(Hacha unHacha){
 		
-        int fuerza = unHacha.getFuerza();
+		return;
+
+    }
+
+    @Override
+    public Enfrentable vs(PicoDeMadera unPico){
+		
+        return;
+    }
+    
+	@Override
+    public Enfrentable vs(PicoDePiedra unPico){
+		
+        int fuerza = unPico.getFuerza();
 
         this.durabilidad -= fuerza;
 		
@@ -15,12 +28,6 @@ public class Madera extends Material{
 
     }
 
-    @Override
-    public Enfrentable vs(Pico unPico){
-		
-        return;
-    }
-    
 	@Override
     public Enfrentable vs(PicoFino unPicoFino){
 		
