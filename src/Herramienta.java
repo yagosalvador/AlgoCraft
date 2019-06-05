@@ -1,16 +1,38 @@
-public class Herramienta{
-    private int durabilidad;
-    private int fuerza;
+public abstract class Herramienta{
+    private double multiploDeDesgaste = 0;
+    private double fuerza = 0;
+    private double durabilidad = 0;
+    ReglaDeDesgaste desgaste;
 
-    public void setDurabilidad(int durabilidad){
+    public void setDurabilidad(double durabilidad){
         this.durabilidad = durabilidad;
     }
 
-    public int durabilidad(){
+    public double durabilidad(){
         return this.durabilidad;
     }
 
-    public Material extraer(Material material){
+    public double fuerza(){
+        return this.fuerza;
+    }
+
+    public void setFuerza(double fuerza){
+        this.fuerza = fuerza;
+    }
+
+    public Material extraer(Material material){ //algun nombre mejor?
         return material.enfrentar(this);
+    }
+
+    public void desgastar(){
+        durabilidad = desgaste.desgastar(durabilidad,fuerza);
+    }
+
+    public Enfrentable vs(Enfrentable rival){
+        return rival.vs(this);
+    }
+
+    public Enfrentable vs(Material material){
+        this.desgastar();
     }
 }
