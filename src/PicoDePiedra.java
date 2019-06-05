@@ -1,9 +1,8 @@
-
 public class PicoDePiedra extends Pico{
-
-    private double multiploDeDesgaste = 2/3;
-    ReglaDeDesgaste desgaste = DesgastePorMultiplo(multiploDeDesgaste);
-
-    private int durabilidad = 200;
-    private int fuerza = 5;
+	public PicoDePiedra(){
+    	this.multiploDeDesgaste = 2/3;
+    	this.desgaste = DesgastePorMultiplo(multiploDeDesgaste);
+    	this.durabilidad = 200;
+    	this.fuerza = 5;
+	}
 }

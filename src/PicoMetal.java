@@ -1,7 +1,7 @@
 public class PicoDeMetal extends Pico{
-
-    ReglaDeDesgaste desgaste = DesgastePorCantidadDeUsos;
-
-    private int durabilidad = 400;
-    private int fuerza = 10;
+	public PicoDeMetal(){
+    	this.desgaste = DesgastePorCantidadDeUsos(10);
+    	this.durabilidad = 400;
+    	this.fuerza = 10;
+	}
 }
