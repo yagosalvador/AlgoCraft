@@ -4,7 +4,7 @@ public class PicoFino extends Pico{
 		this.durabilidad = 100;
 		this.fuerza = 2;
     	this.multiploDeDesgaste = 0.1;
-    	desgaste = DesgasteParaPicoFino(multiploDeDesgaste);
+    	this.desgaste = DesgasteParaPicoFino(multiploDeDesgaste);
 	}
 
 	public desgastar(){
