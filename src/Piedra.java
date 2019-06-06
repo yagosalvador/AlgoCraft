@@ -8,13 +8,13 @@ public class Piedra extends Material{
         enfrentable.vs(this);
         return;
     }
-
+    @Override
     public void vs(Hacha unHacha){
 		
 		return;
 
     }
-
+    @Override
     public void vs(Pico unPico){
 		
 		double fuerza = unPico.fuerza();

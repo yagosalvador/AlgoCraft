@@ -21,7 +21,7 @@ public abstract class Herramienta implements Enfrentable{
     }
 
     public void desgastar(){
-        durabilidad = desgaste.desgastar(durabilidad,fuerza);
+        this.durabilidad = desgaste.desgastar(durabilidad,fuerza);
     }
     @Override
     public void vs(Enfrentable rival){
@@ -30,8 +30,6 @@ public abstract class Herramienta implements Enfrentable{
     }
     @Override
     public void vs(Material rival){
-        this.desgastar();
-        System.out.println("Voy al material");
         rival.vs(this);
         return;
     }

@@ -1,4 +1,4 @@
-public class Material implements Enfrentable{
+public abstract class Material implements Enfrentable{
     int durabilidad;
 
     public int durabilidad(){
@@ -11,11 +11,15 @@ public class Material implements Enfrentable{
     }
     @Override
     public void vs(Herramienta rival){
-        System.out.println("Voy a la herramienta");
+        rival.vs(this);
     	return;
     }
     @Override
     public void vs(Material rival){
     	return;
+    }
+    @Override
+    public void vs(Madera rival){
+        return;
     }
 }

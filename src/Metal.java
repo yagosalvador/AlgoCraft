@@ -9,7 +9,7 @@ public class Metal extends Material{
         enfrentable.vs(this);
         return;
     }
-
+    @Override
     public void vs(Hacha unHacha){
 		
 		return;

@@ -14,7 +14,15 @@ public class Diamante extends Material{
 		return;
 
     }
-
+    @Override
+    public void vs(Hacha unHacha){  
+        return;
+    }
+    @Override
+    public void vs(Pico unPico){
+        unPico.vs(this);
+        return;
+    }
     public void vs(PicoFino unPicoFino){
 		
         double fuerza = unPicoFino.fuerza();

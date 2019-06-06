@@ -12,12 +12,12 @@ public class HerramientaReduceSuDurabilidadAlSerUsadaTest{
         int durabilidadPrueba = hacha.durabilidad();
         assertEquals(durabilidad,durabilidadPrueba);
     }
-/*
+
     @Test
     public void testUsarHachaDePiedraSobreMaderaReduceSuDurabilidad() {
-        HachaDePiedra hacha = new HachaDePiedra();
+        Herramienta hacha = new HachaDePiedra();
         int durabilidad = 195;
-        Madera madera = new Madera();
+        Material madera = new Madera();
         hacha.vs(madera);
         int durabilidadPrueba = hacha.durabilidad();
         assertEquals(durabilidad,durabilidadPrueba);
@@ -25,9 +25,9 @@ public class HerramientaReduceSuDurabilidadAlSerUsadaTest{
 
     @Test
     public void testUsarHachaDeMetalSobreMaderaReduceSuDurabilidad() {
-        HachaDeMetal hacha = new HachaDeMetal();
+        Herramienta hacha = new HachaDeMetal();
         int durabilidad = 395;
-        Madera madera = new Madera();
+        Material madera = new Madera();
         hacha.vs(madera);
         int durabilidadPrueba = hacha.durabilidad();
         assertEquals(durabilidad,durabilidadPrueba);
@@ -35,9 +35,9 @@ public class HerramientaReduceSuDurabilidadAlSerUsadaTest{
 
     @Test
     public void testUsarPicoDeMaderaSobreMaderaReduceSuDurabilidad() {
-        PicoDeMadera pico = new PicoDeMadera();
+        Herramienta pico = new PicoDeMadera();
         int durabilidad = 98;
-        Madera madera = new Madera();
+        Material madera = new Madera();
         pico.vs(madera);
         int durabilidadPrueba = pico.durabilidad();
         assertEquals(durabilidad,durabilidadPrueba);
@@ -45,9 +45,9 @@ public class HerramientaReduceSuDurabilidadAlSerUsadaTest{
 
     @Test
     public void testUsarPicoDePiedraSobreMaderaReduceSuDurabilidad() {
-        PicoDePiedra pico = new PicoDePiedra();
+        Herramienta pico = new PicoDePiedra();
         int durabilidad = (int)(200 - (4 / 1.5));
-        Madera madera = new Madera();
+        Material madera = new Madera();
         pico.vs(madera);
         int durabilidadPrueba = pico.durabilidad();
         assertEquals(durabilidad,durabilidadPrueba);
@@ -55,9 +55,9 @@ public class HerramientaReduceSuDurabilidadAlSerUsadaTest{
 
     @Test
     public void testUsarPicoDeMetalSobreMaderaReduceSuDurabilidad() {
-        PicoDeMetal pico = new PicoDeMetal();
+        Herramienta pico = new PicoDeMetal();
         int durabilidad = 400;
-        Madera madera = new Madera();
+        Material madera = new Madera();
         pico.vs(madera);
         int durabilidadPrueba = pico.durabilidad();
         assertEquals(durabilidad,durabilidadPrueba);
@@ -65,14 +65,14 @@ public class HerramientaReduceSuDurabilidadAlSerUsadaTest{
 
     @Test
     public void testUsarPicoFinoSobreMaderaNoReduceSuDurabilidad() {
-        PicoFino pico = new PicoFino();
+        Herramienta pico = new PicoFino();
         int durabilidad = 1000;
-        Madera madera = new Madera();
+        Material madera = new Madera();
         pico.vs(madera);
         int durabilidadPrueba = pico.durabilidad();
         assertEquals(durabilidad,durabilidadPrueba);
     }
-
+/*
     @Test
     public void testUsarHachaDeMaderaSobrePiedraReduceSuDurabilidad() {
         HachaDeMadera hacha = new HachaDeMadera();

@@ -17,4 +17,17 @@ public class HachaDeMadera extends Hacha{
 		if( multiploDeDesgaste != unHacha.multiploDeDesgaste() ) equals = false;
 		return equals;
 	}
+    @Override
+	public void vs(Madera rival){
+        this.desgastar();
+        return;
+    }
+    @Override
+    public void vs(Hacha unHacha){	
+		return;
+    }
+    @Override
+    public void vs(Pico unPico){
+        return;
+    }
 }

@@ -6,8 +6,19 @@ public class PicoFino extends Pico{
     	this.multiploDeDesgaste = 0.1;
     	this.desgaste = new DesgastePorMultiplo(this.multiploDeDesgaste);
 	}
-
 	public void desgastar(){
 		desgaste.desgastar(durabilidad,durabilidad);
 	}
+	@Override
+	public void vs(Madera rival){
+        return;
+    }
+    @Override
+    public void vs(Hacha unHacha){	
+		return;
+    }
+    @Override
+    public void vs(Pico unPico){
+        return;
+    }
 }

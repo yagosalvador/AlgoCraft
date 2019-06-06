@@ -8,4 +8,17 @@ public class PicoDeMetal extends Pico{
 	public void desgastar(){
 		desgaste.desgastar(durabilidad,fuerza);
 	}
+	@Override
+	public void vs(Madera rival){
+        this.desgastar();
+        return;
+    }
+        @Override
+    public void vs(Hacha unHacha){	
+		return;
+    }
+        @Override
+    public void vs(Pico unPico){
+        return;
+    }
 }
