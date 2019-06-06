@@ -30,7 +30,6 @@ public abstract class Herramienta implements Enfrentable{
     }
     @Override
     public void vs(Material rival){
-
         rival.vs(this);
         return;
     }
@@ -54,7 +53,6 @@ public abstract class Herramienta implements Enfrentable{
         this.desgastar();
         return;
     }
-
     @Override
     public void vs(Herramienta rival){
         return;

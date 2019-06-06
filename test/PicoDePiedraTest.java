@@ -6,7 +6,7 @@ public class PicoDePiedraTest{
 	public void picoDePiedraCreadoConDurabilidadYFuerzaCorrespondiente(){
 		PicoDePiedra pico = new PicoDePiedra();
 		assertEquals(pico.durabilidad(),200);
-		assertEquals(pico.fuerza(),5);
+		assertEquals(pico.fuerza(),4);
 	}
 	@Test
 	public void picoDePiedraDisminuyeDurabilidadAlUsarse(){

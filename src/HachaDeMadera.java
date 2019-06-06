@@ -30,4 +30,20 @@ public class HachaDeMadera extends Hacha{
     public void vs(Pico unPico){
         return;
     }*/
+    @Override
+    public void vs(PicoFino pico){
+        return;
+    }
+        @Override
+    public void vs(PicoDeMadera unPico){
+        return;
+    }
+    @Override
+    public void vs(PicoDeMetal unPico){
+        return;
+    }
+    @Override
+    public void vs(PicoDePiedra unPico){
+        return;
+    }
 }

@@ -25,12 +25,24 @@ public class Diamante extends Material{
         return;
     }
     @Override
+    public void vs(PicoDeMadera unPico){
+        unPico.vs(this);
+        return;
+    }
+    @Override
+    public void vs(PicoDeMetal unPico){
+        unPico.vs(this);
+        return;
+    }
+    @Override
+    public void vs(PicoDePiedra unPico){
+        unPico.vs(this);
+        return;
+    }    
+    @Override
     public void vs(PicoFino unPicoFino){
-		
         double fuerza = unPicoFino.fuerza();
         this.durabilidad -= fuerza;
-        unPicoFino.vs(this);
-
         return;
     }
 }

@@ -14,37 +14,31 @@ public class Metal extends Material{
         unHacha.vs(this);
         return;
     }
-
-    public void vs(PicoDeMadera unPico){
+    @Override
+    public void vs(Pico unPico){
         unPico.vs(this);
         return;
     }
-
+    @Override
+    public void vs(PicoDeMadera unPico){
+        return;
+    }
+    @Override
     public void vs(PicoDePiedra unPico){
         double fuerza = unPico.fuerza();
         this.durabilidad -= fuerza;
-        unPico.vs(this);
         return;
     }
-
+    @Override
     public void vs(PicoDeMetal unPico){
         double fuerza = unPico.fuerza();
         this.durabilidad -= fuerza;
-        unPico.vs(this);
         return;
     }
-
+    @Override
     public void vs(PicoFino unPico){
         double fuerza = unPico.fuerza();
         this.durabilidad -= fuerza;
-        unPico.vs(this);
-        return;
-    }
-
-    public void vs(Pico unPico){
-        double fuerza = unPico.fuerza();
-        this.durabilidad -= fuerza;
-        unPico.vs(this);
         return;
     }
 }

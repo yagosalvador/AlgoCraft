@@ -12,18 +12,22 @@ public class Piedra extends Material{
         unHacha.vs(this);
         return;
     }
-
     @Override
-    public void vs(PicoDeMadera unPico){
-
+    public void vs(Pico unPico){
         double fuerza = unPico.fuerza();
         this.durabilidad -= fuerza;
         unPico.vs(this);
         return;
     }
     @Override
-    public void vs(PicoDePiedra unPico){
-
+    public void vs(PicoFino pico){
+        double fuerza = pico.fuerza();
+        this.durabilidad -= fuerza;
+        pico.vs(this);
+        return;
+    }
+    @Override
+    public void vs(PicoDeMadera unPico){
         double fuerza = unPico.fuerza();
         this.durabilidad -= fuerza;
         unPico.vs(this);
@@ -31,23 +35,13 @@ public class Piedra extends Material{
     }
     @Override
     public void vs(PicoDeMetal unPico){
-
         double fuerza = unPico.fuerza();
         this.durabilidad -= fuerza;
         unPico.vs(this);
         return;
     }
     @Override
-    public void vs(PicoFino unPico){
-
-        double fuerza = unPico.fuerza();
-        this.durabilidad -= fuerza;
-        unPico.vs(this);
-        return;
-    }
-    @Override
-    public void vs(Pico unPico){
-
+    public void vs(PicoDePiedra unPico){
         double fuerza = unPico.fuerza();
         this.durabilidad -= fuerza;
         unPico.vs(this);

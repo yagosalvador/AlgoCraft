@@ -6,6 +6,6 @@ public class DesgastePorMultiplo implements ReglaDeDesgaste{
 
     @Override
     public int desgastar(int durabilidad, int desgastador){
-        return ( durabilidad - (int)(desgastador*multiplo) );
+        return ( (int)(durabilidad - (desgastador*multiplo)) );
     }
 }

@@ -16,4 +16,26 @@ public class Madera extends Material{
         unPico.vs(this);
         return;
     }
+    @Override
+    public void vs(PicoFino pico){
+        double fuerza = pico.fuerza();
+        this.durabilidad -= fuerza;
+        pico.vs(this);
+        return;
+    }
+    @Override
+    public void vs(PicoDeMadera unPico){
+        unPico.vs(this);
+        return;
+    }
+    @Override
+    public void vs(PicoDePiedra unPico){
+        unPico.vs(this);
+        return;
+    }
+    @Override
+    public void vs(PicoDeMetal unPico){
+        unPico.vs(this);
+        return;
+    }
 }

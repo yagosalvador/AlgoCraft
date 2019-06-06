@@ -6,6 +6,6 @@ public class PicoDeMetalTest{
 	public void picoDeMetalCreadoConDurabilidadYFuerzaCorrespondiente(){
 		PicoDeMetal pico = new PicoDeMetal();
 		assertEquals(pico.durabilidad(),400);
-		assertEquals(pico.fuerza(),10);
+		assertEquals(pico.fuerza(),12);
 	}
 }

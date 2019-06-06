@@ -137,7 +137,7 @@ public class MaterialReduceSuDurabilidadAlSerExtraidoTest{
     @Test
     public void testPiedraReduceSuDurabilidadAlExtraerConPicoFino() {
         Herramienta pico = new PicoFino();
-        int durabilidad = 0;
+        int durabilidad = 10;
         Material piedra = new Piedra();
         pico.vs(piedra);
         int durabilidadPrueba = piedra.durabilidad();
@@ -207,7 +207,7 @@ public class MaterialReduceSuDurabilidadAlSerExtraidoTest{
     @Test
     public void testMetalReduceSuDurabilidadAlExtraerConPicoFino() {
         Herramienta pico = new PicoFino();
-        int durabilidad = 0;
+        int durabilidad = 30;
         Material metal = new Metal();
         pico.vs(metal);
         int durabilidadPrueba = metal.durabilidad();

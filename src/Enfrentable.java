@@ -8,4 +8,8 @@ public interface Enfrentable{
 	public void vs(Herramienta herramienta);
 	public void vs(Hacha hacha);
 	public void vs(Pico pico);
+	public void vs(PicoFino pico);
+	public void vs(PicoDeMetal unPico);
+    public void vs(PicoDePiedra unPico);
+    public void vs(PicoDeMadera unPico);
 }
