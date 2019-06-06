@@ -9,16 +9,16 @@ public class PicoFino extends Pico{
 	public void desgastar(){
 		desgaste.desgastar(durabilidad,durabilidad);
 	}
+
 	@Override
-	public void vs(Madera rival){
-        return;
-    }
-    @Override
-    public void vs(Hacha unHacha){	
+	public void vs(Madera rival){ return; }
+	@Override
+	public void vs(Piedra rival){ return; }
+	@Override
+	public void vs(Metal rival){ return; }
+	@Override
+	public void vs(Diamante rival){
+		this.desgastar();
 		return;
-    }
-    @Override
-    public void vs(Pico unPico){
-        return;
-    }
+	}
 }

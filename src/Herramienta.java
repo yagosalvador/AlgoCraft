@@ -30,11 +30,41 @@ public abstract class Herramienta implements Enfrentable{
     }
     @Override
     public void vs(Material rival){
+
         rival.vs(this);
         return;
     }
     @Override
+    public void vs(Madera rival){
+        this.desgastar();
+        return;
+    }
+    @Override
+    public void vs(Piedra rival){
+        this.desgastar();
+        return;
+    }
+    @Override
+    public void vs(Metal rival){
+        this.desgastar();
+        return;
+    }
+    @Override
+    public void vs(Diamante rival){
+        this.desgastar();
+        return;
+    }
+
+    @Override
     public void vs(Herramienta rival){
+        return;
+    }
+    @Override
+    public void vs(Hacha unHacha){
+        return;
+    }
+    @Override
+    public void vs(Pico unPico){
         return;
     }
 }

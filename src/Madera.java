@@ -16,10 +16,4 @@ public class Madera extends Material{
         unPico.vs(this);
         return;
     }
-    
-    /*public void vs(PicoFino unPicoFino){
-        double fuerza = unPicoFino.fuerza();
-        this.durabilidad -= fuerza;
-		return;
-    }*/
 }

@@ -15,11 +15,13 @@ public abstract class Material implements Enfrentable{
     	return;
     }
     @Override
-    public void vs(Material rival){
-    	return;
-    }
+    public void vs(Material rival){	return; }
     @Override
-    public void vs(Madera rival){
-        return;
-    }
+    public void vs(Madera rival){ return; }
+    @Override
+    public void vs(Piedra rival){ return; }
+    @Override
+    public void vs(Metal rival){ return; }
+    @Override
+    public void vs(Diamante rival){ return; }
 }

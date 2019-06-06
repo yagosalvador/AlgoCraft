@@ -3,7 +3,7 @@ public class PicoDePiedra extends Pico{
     	this.multiploDeDesgaste = 0.6667;
     	this.desgaste = new DesgastePorMultiplo(this.multiploDeDesgaste);
     	this.durabilidad = 200;
-    	this.fuerza = 5;
+    	this.fuerza = 4;
 	}
 
 	@Override
@@ -11,9 +11,9 @@ public class PicoDePiedra extends Pico{
         this.desgastar();
         return;
     }
-        
+
     @Override
-    public void vs(Hacha unHacha){	
+    public void vs(Hacha unHacha){
 		return;
     }
         @Override

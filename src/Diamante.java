@@ -15,7 +15,8 @@ public class Diamante extends Material{
 
     }
     @Override
-    public void vs(Hacha unHacha){  
+    public void vs(Hacha unHacha){
+        unHacha.vs(this);
         return;
     }
     @Override
@@ -23,13 +24,13 @@ public class Diamante extends Material{
         unPico.vs(this);
         return;
     }
+    @Override
     public void vs(PicoFino unPicoFino){
 		
         double fuerza = unPicoFino.fuerza();
-
         this.durabilidad -= fuerza;
-		
-		return;
+        unPicoFino.vs(this);
 
+        return;
     }
 }
