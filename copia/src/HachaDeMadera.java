@@ -1,3 +1,4 @@
+
 public class HachaDeMadera extends Hacha{
 	public HachaDeMadera(){
 		this.durabilidad = 100;

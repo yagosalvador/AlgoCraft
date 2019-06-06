@@ -10,9 +10,9 @@ public class MaterialReduceSuDurabilidadAlSerExtraidoTest{
         Herramienta hacha = new HachaDeMadera();
         int durabilidad = 8;
         Material madera = new Madera();
-        //hacha.vs(madera);
-        //int durabilidadPrueba = madera.durabilidad();
-        //assertEquals(durabilidad,durabilidadPrueba);
+        hacha.vs(madera);
+        int durabilidadPrueba = madera.durabilidad();
+        assertEquals(durabilidad,durabilidadPrueba);
     }
 /*
     @Test

@@ -4,7 +4,7 @@ import org.junit.Test;
 public class HachaTest{
   @Test
   public void testDurabilidad() {
-    Hacha hacha = new Hacha();
+    Hacha hacha = new HachaDeMadera();
     int durabilidad = 5;
     hacha.setDurabilidad(durabilidad);
     int durabilidadPrueba = hacha.durabilidad();
@@ -12,7 +12,7 @@ public class HachaTest{
   }
   @Test
   public void testFuerza(){
-  	Hacha hacha = new Hacha();
+  	Hacha hacha = new HachaDeMadera();
   	int fuerza = 3;
   	int fuerzaHacha = hacha.fuerza();
   	assertEquals(fuerza,fuerzaHacha);

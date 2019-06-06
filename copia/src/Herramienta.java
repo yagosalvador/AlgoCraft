@@ -39,12 +39,4 @@ public abstract class Herramienta implements Enfrentable{
     public void vs(Herramienta rival){
         return;
     }
-    @Override
-    public void vs(Pico rival){
-        return;
-    }
-    @Override
-    public void vs(Hacha rival){
-        return;
-    }
 }
