@@ -31,20 +31,12 @@ public abstract class Herramienta implements Enfrentable{
     @Override
     public void vs(Material rival){
         this.desgastar();
-        System.out.println("Aca");
+        System.out.println("Voy al material");
         rival.vs(this);
         return;
     }
     @Override
     public void vs(Herramienta rival){
-        return;
-    }
-    @Override
-    public void vs(Pico rival){
-        return;
-    }
-    @Override
-    public void vs(Hacha rival){
         return;
     }
 }

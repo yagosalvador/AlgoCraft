@@ -1,2 +1,0 @@
-# AlgoCraft
-Minecraft Algoritmos3
