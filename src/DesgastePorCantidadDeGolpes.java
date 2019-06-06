@@ -13,7 +13,7 @@ public class DesgastePorCantidadDeGolpes implements ReglaDeDesgaste{
         return durabilidad;
     }
 
-    public int usos(){
+    public int usosRestantes(){
         return usos;
     }
 }
