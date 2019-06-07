@@ -34,35 +34,17 @@ public abstract class Herramienta implements Enfrentable{
         return;
     }
     @Override
-    public void vs(Madera rival){
-        this.desgastar();
-        return;
-    }
+    public void vs(Herramienta rival){ return; }
     @Override
-    public void vs(Piedra rival){
-        this.desgastar();
-        return;
-    }
+    public void vs(Hacha unHacha){ return; }
     @Override
-    public void vs(Metal rival){
-        this.desgastar();
-        return;
-    }
+    public void vs(Pico unPico){ return; }
     @Override
-    public void vs(Diamante rival){
-        this.desgastar();
-        return;
-    }
+    public void vs(PicoFino pico){ return; }
     @Override
-    public void vs(Herramienta rival){
-        return;
-    }
+    public void vs(PicoDeMadera unPico){ return; }
     @Override
-    public void vs(Hacha unHacha){
-        return;
-    }
+    public void vs(PicoDeMetal unPico){ return; }
     @Override
-    public void vs(Pico unPico){
-        return;
-    }
+    public void vs(PicoDePiedra unPico){ return; }
 }

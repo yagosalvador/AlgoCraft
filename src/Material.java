@@ -4,6 +4,7 @@ public abstract class Material implements Enfrentable{
     public int durabilidad(){
         return durabilidad;
     }
+
     @Override
     public void vs(Enfrentable rival){
         rival.vs(this);
@@ -24,4 +25,36 @@ public abstract class Material implements Enfrentable{
     public void vs(Metal rival){ return; }
     @Override
     public void vs(Diamante rival){ return; }
+    @Override
+    public void vs(Hacha unHacha){
+        unHacha.vs(this);
+        return;
+    }
+    @Override
+    public void vs(Pico unPico){
+        unPico.vs(this);
+        return;
+    }
+    @Override
+    public void vs(PicoDeMadera unPico){
+        unPico.vs(this);
+        return;
+    }
+    @Override
+    public void vs(PicoDeMetal unPico){
+        unPico.vs(this);
+        return;
+    }
+    @Override
+    public void vs(PicoDePiedra unPico){
+        unPico.vs(this);
+        return;
+    }
+    @Override
+    public void vs(PicoFino pico){
+        double fuerza = pico.fuerza();
+        this.durabilidad -= fuerza;
+        pico.vs(this);
+        return;
+    }   
 }

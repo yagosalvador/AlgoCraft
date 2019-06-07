@@ -16,34 +16,5 @@ public class HachaDeMadera extends Hacha{
 		if( fuerza != unHacha.fuerza() ) equals = false;
 		if( multiploDeDesgaste != unHacha.multiploDeDesgaste() ) equals = false;
 		return equals;
-	}/*
-    @Override
-	public void vs(Madera rival){
-        this.desgastar();
-        return;
-    }/*
-    @Override
-    public void vs(Hacha unHacha){	
-		return;
-    }
-    @Override
-    public void vs(Pico unPico){
-        return;
-    }*/
-    @Override
-    public void vs(PicoFino pico){
-        return;
-    }
-        @Override
-    public void vs(PicoDeMadera unPico){
-        return;
-    }
-    @Override
-    public void vs(PicoDeMetal unPico){
-        return;
-    }
-    @Override
-    public void vs(PicoDePiedra unPico){
-        return;
-    }
+	}
 }

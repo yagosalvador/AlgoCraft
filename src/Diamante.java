@@ -4,45 +4,19 @@ public class Diamante extends Material{
         this.durabilidad = 100;
     }
     @Override
-    public void vs(Enfrentable enfrentable){
-        enfrentable.vs(this);
-        return;
-    }
-
-    @Override
-    public void vs(Herramienta unaHerramienta){
-		return;
-
-    }
-    @Override
-    public void vs(Hacha unHacha){
-        unHacha.vs(this);
+    public void vs(Hacha hacha){
+        hacha.vs(this);
         return;
     }
     @Override
-    public void vs(Pico unPico){
-        unPico.vs(this);
+    public void vs(Pico pico){
+        pico.vs(this);
         return;
     }
     @Override
-    public void vs(PicoDeMadera unPico){
-        unPico.vs(this);
-        return;
-    }
-    @Override
-    public void vs(PicoDeMetal unPico){
-        unPico.vs(this);
-        return;
-    }
-    @Override
-    public void vs(PicoDePiedra unPico){
-        unPico.vs(this);
-        return;
-    }    
-    @Override
-    public void vs(PicoFino unPicoFino){
-        double fuerza = unPicoFino.fuerza();
+    public void vs(PicoFino pico){
+        double fuerza = pico.fuerza();
         this.durabilidad -= fuerza;
         return;
-    }
+    }   
 }

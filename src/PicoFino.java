@@ -16,29 +16,13 @@ public class PicoFino extends Pico{
 	public void vs(Piedra rival){ return; }
 	@Override
 	public void vs(Metal rival){ 
-        rival.vs(this);
+		rival.vs(this);
 		return; 
 	}
 	@Override
 	public void vs(Diamante rival){
 		this.desgastar();
-        rival.vs(this);
+		rival.vs(this);
 		return;
 	}
-	@Override
-    public void vs(PicoFino pico){
-        return;
-    }
-    @Override
-    public void vs(PicoDeMadera unPico){
-        return;
-    }
-    @Override
-    public void vs(PicoDeMetal unPico){
-        return;
-    }
-    @Override
-    public void vs(PicoDePiedra unPico){
-        return;
-    }
 }

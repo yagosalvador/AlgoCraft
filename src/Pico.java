@@ -6,4 +6,24 @@ public abstract class Pico extends Herramienta{
         rival.vs(this);
         return;
     }
+   	@Override
+	public void vs(Madera rival){
+        this.desgastar();
+        return;
+    }
+    @Override
+	public void vs(Piedra rival){
+        this.desgastar();
+        return;
+    }
+    @Override
+	public void vs(Metal rival){
+        this.desgastar();
+        return;
+    }
+    @Override
+	public void vs(Diamante rival){
+        this.desgastar();
+        return;
+    }
 }
