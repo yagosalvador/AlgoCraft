@@ -11,6 +11,14 @@ public class Jugador{
 	}
 	
 	public int capacidadOcupadaInventario(){
-		return inventario.capacidadOcupada();
+		return (inventario.capacidadOcupadaHerramientas()+inventario.capacidadOcupadaMateriales());
+	}
+	
+	public int capacidadOcupadaInventarioHerramientas(){
+		return inventario.capacidadOcupadaHerramientas();
+	}
+	
+	public int capacidadOcupadaInventarioMateriales(){
+		return inventario.capacidadOcupadaMateriales();
 	}
 }

@@ -6,7 +6,7 @@ public class JugadorTest{
 	public void inicializaciónDelJugadorTest(){
 		Jugador jugador = new Jugador();
 
-		int cantidadDeHerramientasEnInventario = jugador.capacidadOcupadaInventario();
+		int cantidadDeHerramientasEnInventario = jugador.capacidadOcupadaInventarioHerramientas();
 		assertEquals(cantidadDeHerramientasEnInventario,1);
 		HachaDeMadera hacha = new HachaDeMadera();
 		HachaDeMadera unHacha = new HachaDeMadera();
