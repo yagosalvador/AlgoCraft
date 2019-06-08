@@ -75,9 +75,9 @@ public class HerramientaReduceSuDurabilidadAlSerUsadaTest{
 
     @Test
     public void testUsarHachaDeMaderaSobrePiedraReduceSuDurabilidad() {
-        HachaDeMadera hacha = new HachaDeMadera();
+        Herramienta hacha = new HachaDeMadera();
         int durabilidad = 98;
-        Piedra piedra = new Piedra();
+        Material piedra = new Piedra();
         hacha.vs(piedra);
         int durabilidadPrueba = hacha.durabilidad();
         assertEquals(durabilidad,durabilidadPrueba);

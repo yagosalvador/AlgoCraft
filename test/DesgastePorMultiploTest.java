@@ -3,7 +3,7 @@ import org.junit.Test;
 
 public class DesgastePorMultiploTest{
 	@Test
-	public void desgastePorMultiploDe2Test(){
+	public void DesgastePorMultiploDe2Test(){
 		DesgastePorMultiplo desgaste = new DesgastePorMultiplo(2);
 		int durabilidad = 10;
 		int fuerza = 2;
