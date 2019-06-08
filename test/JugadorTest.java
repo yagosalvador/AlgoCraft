@@ -13,6 +13,5 @@ public class JugadorTest{
 		unHacha = (HachaDeMadera) jugador.sacarPrimerHerramienta();
 		boolean equal = hacha.equals( unHacha );
 		assertEquals( true , equal );
-
 	}
 }

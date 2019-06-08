@@ -18,7 +18,7 @@ public class Inventario{
 	}
 	
 	public Material agarrarMaterial(){
-		return this.material.get(0);
+		return this.materiales.get(0);
 	}
 
 	public int capacidadOcupadaHerramientas(){
