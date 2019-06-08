@@ -3,20 +3,20 @@ import org.junit.Test;
 
 public class EstadoCeldaTest{
 	@Test
-	public estadoCeldaVaciaCambiaAOcupadoTest(){
+	public void estadoCeldaVaciaCambiaAOcupadoTest(){
 		EstadoCelda estado = new EstadoCeldaVacia();
 		EstadoCelda estadosiguiente = new EstadoCeldaOcupada();
 
-		estado.siguienteEstado();
+		estado = estado.siguienteEstado();
 
 		assertEquals(estadosiguiente.getClass(),estado.getClass());
 	}
 	@Test
-	public estadoCeldaOcupadaCambiaAVaciaTest(){
+	public void estadoCeldaOcupadaCambiaAVaciaTest(){
 		EstadoCelda estado = new EstadoCeldaOcupada();
 		EstadoCelda estadosiguiente = new EstadoCeldaVacia();
 
-		estado.siguienteEstado();
+		estado = estado.siguienteEstado();
 
 		assertEquals(estadosiguiente.getClass(),estado.getClass());		
 	}
