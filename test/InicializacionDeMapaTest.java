@@ -1,6 +1,7 @@
 import static org.junit.Assert.*;
 import org.junit.Test;
 
+
 public class InicializacionDeMapaTest{
 	@Test
 	public void creacionDeMapaTest(){
@@ -20,11 +21,16 @@ public class InicializacionDeMapaTest{
 	assertEquals(mapa.celda(9,8).ocupada(),true);
 	assertEquals(mapa.celda(1,7).ocupada(),true);
 	assertEquals(mapa.celda(2,5).ocupada(),true);
-	}
+}
 
-	@Test
-	public void mapa(){
-		Mapa mapa = new Mapa();
-	}
+@Test
+public void InicializacionDelJugadorEnMapa(){
+	Mapa mapa = new Mapa();
+	// El jugador se crea en el (0,0)
+	Jugador jugTest = new Jugador();
+	assertEquals(jugTest.getClass(),mapa.jugador1().getClass());
+	assertEquals(mapa.celda(0,0).contenido(),mapa.jugador1());
 
+	
+	}
 }
