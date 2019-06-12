@@ -27,7 +27,7 @@ public class CreacionDeHerramientasTest{
         mesa.ubicarMaterial(5, madera);
         mesa.ubicarMaterial(8, madera);
         Herramienta hachaConstruida = mesa.construirHerramienta();
-        Herramienta unHacha = new HachaDeMadera();
+        Herramienta unHacha = new HachaDePiedra();
 
         assertEquals(unHacha.getClass(), hachaConstruida.getClass());
     }
@@ -42,7 +42,7 @@ public class CreacionDeHerramientasTest{
         mesa.ubicarMaterial(5, madera);
         mesa.ubicarMaterial(8, madera);
         Herramienta hachaConstruida = mesa.construirHerramienta();
-        Herramienta unHacha = new HachaDeMadera();
+        Herramienta unHacha = new HachaDeMetal();
 
         assertEquals(unHacha.getClass(), hachaConstruida.getClass());
     }
@@ -55,10 +55,10 @@ public class CreacionDeHerramientasTest{
         mesa.ubicarMaterial(3, madera);
         mesa.ubicarMaterial(5, madera);
         mesa.ubicarMaterial(8, madera);
-        Herramienta hachaConstruido = mesa.construirHerramienta();
+        Herramienta picoConstruido = mesa.construirHerramienta();
         Herramienta unPico = new PicoDeMadera();
 
-        assertEquals(unHacha.getClass(), hachaConstruida.getClass());
+        assertEquals(unPico.getClass(), picoConstruido.getClass());
     }
     @Test
     public void CreacionDePicoDePiedraTest(){
@@ -71,10 +71,9 @@ public class CreacionDeHerramientasTest{
         mesa.ubicarMaterial(5, madera);
         mesa.ubicarMaterial(8, madera);
         Herramienta picoConstruido = mesa.construirHerramienta();
-        Herramienta unPico = new PicoDeMadera();
+        Herramienta unPico = new PicoDePiedra();
 
-        bool seConstruyoHacha = unPico.equals(hachaConstruida);
-        assertEquals(true , seConstruyoPico);
+        assertEquals(unPico.getClass(), picoConstruido.getClass());
     }
     @Test
     public void CreacionDePicoDeMetalTest(){
@@ -87,9 +86,9 @@ public class CreacionDeHerramientasTest{
         mesa.ubicarMaterial(5, madera);
         mesa.ubicarMaterial(8, madera);
         Herramienta picoConstruido = mesa.construirHerramienta();
-        Herramienta unPico = new PicoDeMadera();
+        Herramienta unPico = new PicoDeMetal();
 
-        assertEquals(unHacha.getClass(), hachaConstruida.getClass());;
+        assertEquals(unPico.getClass(), picoConstruido.getClass());
     }
     @Test
     public void CreacionDePicoFinoTest(){
@@ -103,8 +102,8 @@ public class CreacionDeHerramientasTest{
         mesa.ubicarMaterial(5, madera);
         mesa.ubicarMaterial(8, madera);
         Herramienta picoConstruido = mesa.construirHerramienta();
-        Herramienta unPico = new PicoDeMadera();
+        Herramienta unPico = new PicoFino();
 
-        assertEquals(unHacha.getClass(), hachaConstruida.getClass());
+        assertEquals(unPico.getClass(), picoConstruido.getClass());
     }
 }
