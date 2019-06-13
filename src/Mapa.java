@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-
 public class Mapa{
     private Celda celdas[][] = new Celda[11][11];
 
