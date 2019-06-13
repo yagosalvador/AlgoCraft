@@ -28,4 +28,28 @@ public class CeldaTest{
 		ocupada = true;
 		assertEquals(ocupada, celda.ocupada());
 	}
+	@Test
+	public void seOcupaCeldaVaciaConJugadorTest(){
+		Jugador jugador = new Jugador();
+		Celda celda = new Celda();
+		boolean ocupada = false;
+
+		assertEquals(ocupada, celda.ocupada());
+		celda.ocupar(jugador);
+		ocupada = true;
+		assertEquals(ocupada, celda.ocupada());
+	}
+	@Test
+	public void seOcupaUnCasilleroOcupadoTest(){
+		Material madera = new Madera();
+		Material metal = new Metal();
+		Celda celda = new Celda(metal);
+
+		assertEquals(true, celda.ocupada());
+		assertEquals(metal,celda.contenido());
+
+		celda.ocupar(madera);
+
+		assertEquals(metal,celda.contenido());
+	}
 }

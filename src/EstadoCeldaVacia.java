@@ -4,11 +4,15 @@ public class EstadoCeldaVacia implements EstadoCelda{
 		return false;
 	}
 	@Override
-	public EstadoCelda ocupar(){
-		return new EstadoCeldaOcupada();
+	public EstadoCelda ocupar(Object objeto){
+		return new EstadoCeldaOcupada(objeto);
 	}
 	@Override
 	public EstadoCelda vaciar(){
 		return this;
+	}
+	@Override
+	public Object contenido(){
+		return null;
 	}
 }
