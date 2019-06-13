@@ -7,7 +7,7 @@ public class EstadoCeldaTest{
 		EstadoCelda estado = new EstadoCeldaVacia();
 		EstadoCelda estadosiguiente = new EstadoCeldaOcupada();
 
-		estado = estado.siguienteEstado();
+		estado = estado.ocupar();
 
 		assertEquals(estadosiguiente.getClass(),estado.getClass());
 	}
@@ -16,7 +16,7 @@ public class EstadoCeldaTest{
 		EstadoCelda estado = new EstadoCeldaOcupada();
 		EstadoCelda estadosiguiente = new EstadoCeldaVacia();
 
-		estado = estado.siguienteEstado();
+		estado = estado.vaciar();
 
 		assertEquals(estadosiguiente.getClass(),estado.getClass());		
 	}

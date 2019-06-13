@@ -3,8 +3,6 @@ import java.util.ArrayList;
 public class Mapa{
     private Celda celdas[][] = new Celda[11][11];
 
-	private Jugador jugador1;
-
 	public Mapa(){
 		// Creamos un mapa de 11 x 11 con las siguientes consideraciones:
 		// Pos(10,10) = Diamante
@@ -29,8 +27,5 @@ public class Mapa{
 	public Celda celda(int x, int y){
 		return this.celdas[x][y];
 	}
-
-	public Jugador jugador1() {
-		return jugador1;
-	}
+	
 }

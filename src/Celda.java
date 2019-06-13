@@ -16,12 +16,12 @@ public class Celda{
 
 	public void ocupar(Object objeto){
 		contenido = objeto;
-		estado = new EstadoCeldaOcupada();
+		estado = estado.ocupar();
 	}
 
 	public void vaciar(){
 		contenido = null;
-		estado = new EstadoCeldaVacia();
+		estado = estado.vaciar();
 	}
 
 	public Object contenido() {

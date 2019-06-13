@@ -9,8 +9,8 @@ public class InicializacionDelJuegoTest{
 		
 		// corroborar que se crea el jugador en el mapa en la pos 0,0
 		Jugador jugTest = new Jugador();
-		assertEquals(jugTest.getClass(),juego.mapa().jugador1().getClass());
-		assertEquals(juego.mapa().celda(0,0).contenido(),juego.mapa().jugador1());
+		assertEquals(jugTest.getClass(),juego.jugador().getClass());
+		assertEquals(juego.mapa().celda(0,0).contenido(),juego.jugador());
 		
 		// corroborar que se crean los materiales en el mapa
 		
