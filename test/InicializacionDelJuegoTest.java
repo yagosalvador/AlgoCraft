@@ -10,7 +10,7 @@ public class InicializacionDelJuegoTest{
 		// corroborar que se crea el jugador en el mapa en la pos 0,0
 		Jugador jugTest = new Jugador();
 		assertEquals(jugTest.getClass(),juego.mapa().jugador1().getClass());
-		/*
+		assertEquals(juego.mapa().celda(0,0).contenido(),juego.mapa().jugador1());
 		
 		// corroborar que se crean los materiales en el mapa
 		
@@ -20,11 +20,11 @@ public class InicializacionDelJuegoTest{
 		Metal metaltest = new Metal();
 		assertEquals(juego.mapa().celda(1,1).contenido(),null);
 		assertEquals(juego.mapa().celda(2,2).contenido(),null);
-		assertEquals(juego.mapa().celda(10,10).ocupada(),true);
+        assertEquals(juego.mapa().celda(10,10).ocupada(),true);
 		assertEquals(juego.mapa().celda(9,8).ocupada(),true);
 		assertEquals(juego.mapa().celda(1,7).ocupada(),true);
 		assertEquals(juego.mapa().celda(2,5).ocupada(),true);
-		*/
+
 	}
 
 }

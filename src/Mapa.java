@@ -1,7 +1,9 @@
 import java.util.ArrayList;
 
 public class Mapa{
-	private Celda celdas[][] = new Celda[11][11];
+    private Celda celdas[][] = new Celda[11][11];
+
+	private Jugador jugador1;
 
 	public Mapa(){
 		// Creamos un mapa de 11 x 11 con las siguientes consideraciones:
@@ -18,13 +20,17 @@ public class Mapa{
 		Piedra piedra = new Piedra();
 		Madera madera = new Madera();
 		Metal metal = new Metal();
-		System.out.println(celdas[10][10].contenido());
 		this.celdas[10][10].ocupar(diamante);
 		this.celdas[9][8].ocupar(piedra);
 		this.celdas[1][7].ocupar(madera);
 		this.celdas[2][5].ocupar(metal);
 	}
+	//esto esta dando problemas cuando se quiere llamar a los metodos de la celda desde afuera y no puedo identificar el problema
 	public Celda celda(int x, int y){
 		return this.celdas[x][y];
+	}
+
+	public Jugador jugador1() {
+		return jugador1;
 	}
 }

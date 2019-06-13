@@ -28,7 +28,6 @@ public void InicializacionDelJugadorEnMapa(){
 	Mapa mapa = new Mapa();
 	// El jugador se crea en el (0,0)
 	Jugador jugTest = new Jugador();
-	assertEquals(jugTest.getClass(),mapa.jugador1().getClass());
 	assertEquals(mapa.celda(0,0).contenido(),mapa.jugador1());
 
 	

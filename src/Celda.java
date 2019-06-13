@@ -18,4 +18,8 @@ public class Celda{
 		contenido = objeto;
 		estado = estado.siguienteEstado();
 	}
+
+	public Object contenido() {
+		return contenido;
+	}
 }
