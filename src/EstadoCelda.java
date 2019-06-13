@@ -1,4 +1,5 @@
 public interface EstadoCelda{
-	public EstadoCelda siguienteEstado();
 	public boolean ocupada();
+	public void vaciar();
+	public void ocupar(Object objeto);
 }

@@ -3,8 +3,9 @@ public class EstadoCeldaVacia implements EstadoCelda{
 	public boolean ocupada(){
 		return false;
 	}
-	@Override 
-	public EstadoCelda siguienteEstado(){
-		return new EstadoCeldaOcupada();
+	@Override
+	public void vaciar(){
+		//Excepcion o no vaciamos lo que ya esta vacio
+		return;
 	}
 }
