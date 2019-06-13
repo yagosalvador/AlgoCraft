@@ -4,28 +4,29 @@ import org.junit.Test;
 public class CreacionDeHerramientasTest{
     @Test
     public void CreacionDeHachaDeMaderaTest(){
-        //MesaDeTrabajo mesa = new MesaDeTrabajo();
+        MesaDeTrabajo mesa = new MesaDeTrabajo();
         Material madera = new Madera();
-        /*mesa.ubicarMaterial(1, madera);
-        mesa.ubicarMaterial(2, madera);
+        mesa.ubicarMaterial(0, madera);
+        mesa.ubicarMaterial(1, madera);
+        mesa.ubicarMaterial(3, madera);
         mesa.ubicarMaterial(4, madera);
-        mesa.ubicarMaterial(5, madera);
-        mesa.ubicarMaterial(8, madera);
-        Herramienta hachaConstruida = mesa.construirHerramienta();
+        mesa.ubicarMaterial(7, madera);
+        Herramienta hachaConstruida;
+        hachaConstruida = mesa.construirHerramienta();
         Herramienta unHacha = new HachaDeMadera();
 
-        assertEquals(unHacha.getClass(), hachaConstruida.getClass());*/
+        assertEquals(unHacha.getClass(), hachaConstruida.getClass());
     }
-    /*@Test
+    @Test
     public void CreacionDeHachaDePiedraTest(){
         MesaDeTrabajo mesa = new MesaDeTrabajo();
         Material madera = new Madera();
         Material piedra = new Piedra();
+        mesa.ubicarMaterial(0, piedra);
         mesa.ubicarMaterial(1, piedra);
-        mesa.ubicarMaterial(2, piedra);
-        mesa.ubicarMaterial(4, piedra);
-        mesa.ubicarMaterial(5, madera);
-        mesa.ubicarMaterial(8, madera);
+        mesa.ubicarMaterial(3, piedra);
+        mesa.ubicarMaterial(4, madera);
+        mesa.ubicarMaterial(7, madera);
         Herramienta hachaConstruida = mesa.construirHerramienta();
         Herramienta unHacha = new HachaDePiedra();
 
@@ -36,11 +37,11 @@ public class CreacionDeHerramientasTest{
         MesaDeTrabajo mesa = new MesaDeTrabajo();
         Material madera = new Madera();
         Material metal = new Metal();
+        mesa.ubicarMaterial(0, metal);
         mesa.ubicarMaterial(1, metal);
-        mesa.ubicarMaterial(2, metal);
-        mesa.ubicarMaterial(4, metal);
-        mesa.ubicarMaterial(5, madera);
-        mesa.ubicarMaterial(8, madera);
+        mesa.ubicarMaterial(3, metal);
+        mesa.ubicarMaterial(4, madera);
+        mesa.ubicarMaterial(7, madera);
         Herramienta hachaConstruida = mesa.construirHerramienta();
         Herramienta unHacha = new HachaDeMetal();
 
@@ -50,11 +51,11 @@ public class CreacionDeHerramientasTest{
     public void CreacionDePicoDeMaderaTest(){
         MesaDeTrabajo mesa = new MesaDeTrabajo();
         Material madera = new Madera();
+        mesa.ubicarMaterial(0, madera);
         mesa.ubicarMaterial(1, madera);
         mesa.ubicarMaterial(2, madera);
-        mesa.ubicarMaterial(3, madera);
-        mesa.ubicarMaterial(5, madera);
-        mesa.ubicarMaterial(8, madera);
+        mesa.ubicarMaterial(4, madera);
+        mesa.ubicarMaterial(7, madera);
         Herramienta picoConstruido = mesa.construirHerramienta();
         Herramienta unPico = new PicoDeMadera();
 
@@ -65,11 +66,11 @@ public class CreacionDeHerramientasTest{
         MesaDeTrabajo mesa = new MesaDeTrabajo();
         Material madera = new Madera();
         Material piedra = new Piedra();
+        mesa.ubicarMaterial(0, piedra);
         mesa.ubicarMaterial(1, piedra);
         mesa.ubicarMaterial(2, piedra);
-        mesa.ubicarMaterial(3, piedra);
-        mesa.ubicarMaterial(5, madera);
-        mesa.ubicarMaterial(8, madera);
+        mesa.ubicarMaterial(4, madera);
+        mesa.ubicarMaterial(7, madera);
         Herramienta picoConstruido = mesa.construirHerramienta();
         Herramienta unPico = new PicoDePiedra();
 
@@ -80,11 +81,11 @@ public class CreacionDeHerramientasTest{
         MesaDeTrabajo mesa = new MesaDeTrabajo();
         Material madera = new Madera();
         Material metal = new Metal();
+        mesa.ubicarMaterial(0, metal);
         mesa.ubicarMaterial(1, metal);
         mesa.ubicarMaterial(2, metal);
-        mesa.ubicarMaterial(3, metal);
-        mesa.ubicarMaterial(5, madera);
-        mesa.ubicarMaterial(8, madera);
+        mesa.ubicarMaterial(4, madera);
+        mesa.ubicarMaterial(7, madera);
         Herramienta picoConstruido = mesa.construirHerramienta();
         Herramienta unPico = new PicoDeMetal();
 
@@ -94,16 +95,17 @@ public class CreacionDeHerramientasTest{
     public void CreacionDePicoFinoTest(){
         MesaDeTrabajo mesa = new MesaDeTrabajo();
         Material madera = new Madera();
+        Material piedra = new Piedra();
         Material metal = new Metal();
+        mesa.ubicarMaterial(0, metal);
         mesa.ubicarMaterial(1, metal);
         mesa.ubicarMaterial(2, metal);
-        mesa.ubicarMaterial(3, metal);
-        mesa.ubicarMaterial(4, piedra);
-        mesa.ubicarMaterial(5, madera);
-        mesa.ubicarMaterial(8, madera);
+        mesa.ubicarMaterial(3, piedra);
+        mesa.ubicarMaterial(4, madera);
+        mesa.ubicarMaterial(7, madera);
         Herramienta picoConstruido = mesa.construirHerramienta();
         Herramienta unPico = new PicoFino();
 
         assertEquals(unPico.getClass(), picoConstruido.getClass());
-    }*/
+    }
 }

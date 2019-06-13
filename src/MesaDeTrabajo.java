@@ -1,29 +1,22 @@
 public class MesaDeTrabajo{
-    private Material [] espacioDeTrabajo = new Material [9];
+    private HerramientaFactory factory = null;
+    private Receta espacioDeTrabajo = null;
 
     public MesaDeTrabajo(){
-        for(int i=0;i<9;i++) {
-            this.espacioDeTrabajo[i] = null;
-        }
+        this.factory = new HerramientaFactory();
+        NoObject noObject = new NoObject();
+        espacioDeTrabajo = new Receta (noObject, noObject, noObject, noObject, noObject, noObject, noObject, noObject, noObject);
     }
 
     public void ubicarMaterial(int posicion, Material material){
-        this.espacioDeTrabajo[posicion] = material;
+        this.espacioDeTrabajo.ubicarMaterial(posicion, material);
     }
 
-    public Herramienta compararConRecetario() {
-        //supuestamente habria que preguntarle a cada tipo de herramienta como se construye y compararla con lo que hay en espacio de trabajo, devolver lo que coincida o bien null
-        //pero esto implicaria 7 llamadas a herramientas distintas aca, lo cual no me resulta ni comodo ni escalable
-        //y ademas termina siendo un puto switch o cadena de ifs, horrible
-        return null;
+    public Herramienta construirHerramienta() {
+        return this.factory.construirHerramienta(this.espacioDeTrabajo);
     }
 
-    /*
-    public Herramienta construirHerramienta(){
-        Herramienta herramientaAFabricar = this.compararConRecetario();
-        if(getClass!=null)
-            return herramientaAFabricar;
-        else
-            //excepcion
-    }*/
+    public Receta espacioDeTrabajo(){
+        return this.espacioDeTrabajo;
+    }
 }

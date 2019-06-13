@@ -21,10 +21,14 @@ public class Receta{
     public boolean equals(Receta unaReceta){
         boolean equals = true;
 
-        for(int i = 0; i < 9 || equals == true ; i += 1) {
+        for(int i = 0; i < 9 ; i ++) {
             if (this.receta[i].getClass() != unaReceta.receta[i].getClass())
                 equals = false;
         }
         return equals;
+    }
+
+    public void ubicarMaterial(int posicion, Material material){
+        this.receta[posicion] = material;
     }
 }
