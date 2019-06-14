@@ -24,27 +24,21 @@ public abstract class Herramienta implements Enfrentable{
         this.durabilidad = desgaste.desgastar(durabilidad,fuerza);
     }
     @Override
-    public void vs(Enfrentable rival){
-        rival.vs(this);
-        return;
-    }
+    public void vs(Enfrentable rival){ rival.vs(this); }
     @Override
-    public void vs(Material rival){
-        rival.vs(this);
-        return;
-    }
+    public void vs(Material rival){ rival.vs(this); }
     @Override
-    public void vs(Herramienta rival){ return; }
+    public void vs(Herramienta rival){ }
     @Override
-    public void vs(Hacha unHacha){ return; }
+    public void vs(Hacha unHacha){ }
     @Override
-    public void vs(Pico unPico){ return; }
+    public void vs(Pico unPico){ }
     @Override
-    public void vs(PicoFino pico){ return; }
+    public void vs(PicoFino pico){ }
     @Override
-    public void vs(PicoDeMadera unPico){ return; }
+    public void vs(PicoDeMadera unPico){ }
     @Override
-    public void vs(PicoDeMetal unPico){ return; }
+    public void vs(PicoDeMetal unPico){ }
     @Override
-    public void vs(PicoDePiedra unPico){ return; }
+    public void vs(PicoDePiedra unPico){ }
 }

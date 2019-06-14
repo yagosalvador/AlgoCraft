@@ -6,9 +6,7 @@ public class HachaDeMadera extends Hacha{
 		this.desgaste = new DesgastePorMultiplo(this.multiploDeDesgaste);
 	}
 
-	public double multiploDeDesgaste(){
-		return this.multiploDeDesgaste;
-	}
+	public double multiploDeDesgaste(){ return this.multiploDeDesgaste; }
 
 	public boolean equals(HachaDeMadera unHacha){
 		boolean equals = true;

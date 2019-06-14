@@ -5,12 +5,7 @@ public class PicoDeMetal extends Pico{
     	this.fuerza = 12;
 	}
 	@Override
-	public void desgastar(){
-		desgaste.desgastar(durabilidad,fuerza);
-	}
+	public void desgastar(){ desgaste.desgastar(durabilidad,fuerza); }
 	@Override
-	public void vs(Metal rival){ 
-		rival.vs(this);
-		return; 
-	}
+	public void vs(Metal rival){ rival.vs(this); }
 }

@@ -7,11 +7,7 @@ public class Piedra extends Material{
         double fuerza = pico.fuerza();
         this.durabilidad -= fuerza;
         pico.vs(this);
-        return;
     }
     @Override
-    public void vs(Hacha hacha){
-        hacha.vs(this);
-        return;
-    }
+    public void vs(Hacha hacha){ hacha.vs(this); }
 }

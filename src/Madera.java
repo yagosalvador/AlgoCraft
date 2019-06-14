@@ -8,18 +8,13 @@ public class Madera extends Material{
         double fuerza = unHacha.fuerza();
         this.durabilidad -= fuerza;
 		unHacha.vs(this);
-		return;
-    }
+	}
     @Override
-    public void vs(Pico pico){
-        pico.vs(this);
-        return;
-    }
+    public void vs(Pico pico){ pico.vs(this); }
     @Override
     public void vs(PicoFino pico){
         double fuerza = pico.fuerza();
         this.durabilidad -= fuerza;
         pico.vs(this);
-        return;
     }
 }
