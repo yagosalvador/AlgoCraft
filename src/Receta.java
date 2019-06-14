@@ -22,7 +22,7 @@ public class Receta{
         boolean equals = true;
 
         for(int i = 0; i < 9 ; i ++) {
-            if (this.receta[i].getClass() != unaReceta.receta[i].getClass())
+            if (this.receta[i].esMismoMaterialQue(unaReceta.receta[i]) != true)
                 equals = false;
         }
         return equals;

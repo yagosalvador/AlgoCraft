@@ -5,6 +5,13 @@ public abstract class Material implements Enfrentable{
         return durabilidad;
     }
 
+    public boolean esMismoMaterialQue(Material material){
+        boolean mismoTipo = true;
+        if(this.getClass()!=material.getClass())
+            mismoTipo = false;
+        return mismoTipo;
+    }
+
     @Override
     public void vs(Enfrentable rival){
         rival.vs(this);
