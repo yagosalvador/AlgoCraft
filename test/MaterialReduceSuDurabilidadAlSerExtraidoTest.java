@@ -1,5 +1,3 @@
-// Que hacer con pico fino al romper la piedra en test
-
 import static org.junit.Assert.*;
 import org.junit.Test;
 

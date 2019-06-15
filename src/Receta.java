@@ -22,16 +22,19 @@ public class Receta{
 
     public boolean equals(Receta unaReceta){
         boolean equals = true;
-
-        for(int i = 0; i < 9 ; i ++) {
-            Material material = unaReceta.receta.getValue(i);
-            if (this.receta.get(i).esMismoMaterialQue(material) = true)
+        for(int i = 0; i < 9 ; i++) {
+            Material material = unaReceta.materialEnPosicion(i);
+            if (material.esMismoMaterialQue(this.materialEnPosicion(i)) != true)
                 equals = false;
         }
         return equals;
     }
 
     public void ubicarMaterial(int posicion, Material material){
-        receta.replace(posicion, material);
+        receta.put(posicion, material);
+    }
+
+    public Material materialEnPosicion(int posicion){
+        return this.receta.get(posicion);
     }
 }

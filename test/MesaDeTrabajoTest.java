@@ -6,7 +6,7 @@ public class MesaDeTrabajoTest {
     public void InicializaConRecetaVaciaTest() {
         MesaDeTrabajo mesa = new MesaDeTrabajo();
         NoObject noObject = new NoObject();
-        Receta unaReceta = new Receta( noObject, noObject, noObject, noObject, noObject, noObject, noObject, noObject, noObject);
+        Receta unaReceta = new Receta( );
         boolean equals = unaReceta.equals(mesa.espacioDeTrabajo());
         assertEquals(true, equals);
     }
@@ -18,7 +18,9 @@ public class MesaDeTrabajoTest {
         Madera madera = new Madera();
         mesa.ubicarMaterial(0, madera);
         mesa.ubicarMaterial(4, madera);
-        Receta unaReceta = new Receta( madera, noObject, noObject, noObject, madera, noObject, noObject, noObject, noObject);
+        Receta unaReceta = new Receta();
+        unaReceta.ubicarMaterial(0, madera);
+        unaReceta.ubicarMaterial(4, madera);
         boolean equals = unaReceta.equals(mesa.espacioDeTrabajo());
         assertEquals(true, equals);
     }

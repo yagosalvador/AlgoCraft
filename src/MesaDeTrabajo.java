@@ -5,7 +5,7 @@ public class MesaDeTrabajo{
     public MesaDeTrabajo(){
         this.factory = new HerramientaFactory();
         NoObject noObject = new NoObject();
-        espacioDeTrabajo = new Receta (noObject, noObject, noObject, noObject, noObject, noObject, noObject, noObject, noObject);
+        espacioDeTrabajo = new Receta ();
     }
 
     public void ubicarMaterial(int posicion, Material material){

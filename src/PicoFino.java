@@ -1,4 +1,5 @@
 public class PicoFino extends Pico{
+	private Receta receta = null;
 
 	public PicoFino(){
 		this.durabilidad = 1000;
@@ -20,5 +21,21 @@ public class PicoFino extends Pico{
 	public void vs(Diamante rival){
 		this.desgastar();
 		rival.vs(this);
+	}
+	private void cargarReceta(){
+		Material madera = new Madera();
+		Material piedra = new Piedra();
+		Material metal = new Metal();
+		receta = new Receta();
+		receta.ubicarMaterial(0, metal);
+		receta.ubicarMaterial(1, metal);
+		receta.ubicarMaterial(2, metal);
+		receta.ubicarMaterial(3, piedra);
+		receta.ubicarMaterial(4, madera);
+		receta.ubicarMaterial(7, madera);
+	}
+
+	public Receta getReceta(){
+		return receta;
 	}
 }
