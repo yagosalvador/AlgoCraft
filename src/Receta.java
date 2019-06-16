@@ -1,10 +1,7 @@
-//Posible implementacion de receta
-//import static java.lang.System.*;
 import java.util.HashMap;
 import java.util.Map;
 
 public class Receta{
-
     private Map<Integer, Material> receta = new HashMap<>(9);
 
     public Receta(){
@@ -20,12 +17,28 @@ public class Receta{
         receta.put(8, noObject);
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Receta unaReceta = (Receta) o;
+        boolean equals = true;
+        for(int i = 0; i < 9 ; i++) {
+            Material material = unaReceta.materialEnPosicion(i);
+            if (material.esMismoMaterialQue(this.materialEnPosicion(i)) != true) {
+                equals = false;
+            }
+        }
+        return equals;
+    }
+
     public boolean equals(Receta unaReceta){
         boolean equals = true;
         for(int i = 0; i < 9 ; i++) {
             Material material = unaReceta.materialEnPosicion(i);
-            if (material.esMismoMaterialQue(this.materialEnPosicion(i)) != true)
+            if (material.esMismoMaterialQue(this.materialEnPosicion(i)) != true) {
                 equals = false;
+            }
         }
         return equals;
     }
@@ -36,5 +49,10 @@ public class Receta{
 
     public Material materialEnPosicion(int posicion){
         return this.receta.get(posicion);
+    }
+
+    @Override
+    public int hashCode(){
+        return 1;
     }
 }
