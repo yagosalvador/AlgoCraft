@@ -6,13 +6,21 @@ public class Mapa{
 	private ArrayList<ArrayList<Celda>> celdas = new ArrayList<ArrayList<Celda>>(n);
 
 	public Mapa(){
-		for(int i=0; i<n; i++){
-			celdas.set(i,new ArrayList<Celda>()); 
+		for(int i=0; i<n;i++){
+			ArrayList<Celda> filas = new ArrayList<Celda>();
+			celdas.add(filas);
+			for(int j=0; j<n;j++){
+				filas.add(new Celda());
+			}
 		}
+
+		//System.out.println(celdas.size());
 		// celdas.get(i).get(j) es la celda (i,j)
 	}
+
 	public void cargarMateriales() {
 		// cargar la capa de materiales
+		//se podria hacer a partir de un archivo
 		return;
 	}
 	public Celda celda(int x, int y) {

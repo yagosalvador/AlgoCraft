@@ -15,6 +15,10 @@ public class InicializacionDeMapaTest{
 	Piedra piedratest = new Piedra();
 	Madera maderatest = new Madera();
 	Metal metaltest = new Metal();
+	mapa.agregarMaterial(10, 10, diamantetest);
+	mapa.agregarMaterial(9, 8, piedratest);
+	mapa.agregarMaterial(1, 7, maderatest);
+	mapa.agregarMaterial(2, 5, metaltest);
 	assertEquals(mapa.celda(1,1).contenido(),null);
 	assertEquals(mapa.celda(2,2).contenido(),null);
 	assertEquals(mapa.celda(10,10).ocupada(),true);

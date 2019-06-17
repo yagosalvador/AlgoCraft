@@ -34,28 +34,28 @@ public class MovilidadDelJugadorTest{
 	public void jugadorAvanzaAlNorteTest() {
 		Algocraft juego = new Algocraft();
 		juego.actualizarPosicionJugador(0,0);
-		juego.jugador().avanzarAlNorte();
+		juego.avanzarJugadorAlNorte();
 		assertEquals(juego.mapa().celda(1,0).contenido(),juego.jugador());
 	}
 	@Test
 	public void jugadorAvanzaAlSurTest() {
 		Algocraft juego = new Algocraft();
 		juego.actualizarPosicionJugador(1,0);
-		juego.jugador().avanzarAlSur();
+		juego.avanzarJugadorAlSur();
 		assertEquals(juego.mapa().celda(0,0).contenido(),juego.jugador());
 	}
 	@Test
 	public void jugadorAvanzaAlEsteTest() {
 		Algocraft juego = new Algocraft();
 		juego.actualizarPosicionJugador(0,1);
-		juego.jugador().avanzarAlEste();
+		juego.avanzarJugadorAlEste();
 		assertEquals(juego.mapa().celda(0,0).contenido(),juego.jugador());
 	}
 	@Test
 	public void jugadorAvanzaAlOesteTest() {
 		Algocraft juego = new Algocraft();
 		juego.actualizarPosicionJugador(0,0);
-		juego.jugador().avanzarAlOeste();
+		juego.avanzarJugadorAlOeste();
 		assertEquals(juego.mapa().celda(0,1).contenido(),juego.jugador());
 	}
 }
