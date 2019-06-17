@@ -1,7 +1,7 @@
 public class Jugador{
 	private Inventario inventario;
-	//private int ubicacion_x;
-	//private int ubicacion_y;
+	private int ubicacion_x = 0;
+	private int ubicacion_y = 0;
 
 
 	public Jugador(){
@@ -24,28 +24,20 @@ public class Jugador{
 	public int capacidadOcupadaInventarioMateriales(){
 		return inventario.capacidadOcupadaMateriales();
 	}
-	/*
-	// Getters coordenadas
-	public int ubicacion_x() {
-		return ubicacion_x;
+	public void avanzarAlNorte() {
+		this.ubicacion_x+=1;
 	}
-	public int ubicacion_y() {
-		return ubicacion_y;
+	public void avanzarAlSur() {
+		this.ubicacion_x-=1;
 	}
-	
-	// Setters coordenadas
-	private void avanzar_ubicacion_x(int s) {
-		this.ubicacion_x+=s;
+	public void avanzarAlEste() {
+		this.ubicacion_y-=1;
 	}
-	private void avanzar_ubicacion_y(int s) {
-		this.ubicacion_y+=s;
+	public void avanzarAlOeste() {
+		this.ubicacion_y+=1;
 	}
-
-	// Setea a la fuerza una posicion arbitraria
 	public void actualizarPosicion(int x, int y) {
-		avanzar_ubicacion_x(x-this.ubicacion_x());
-		avanzar_ubicacion_y(y-this.ubicacion_y());
+		this.ubicacion_x=x;
+		this.ubicacion_y=y;
 	}
-	*/
-
 }

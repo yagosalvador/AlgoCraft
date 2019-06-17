@@ -8,16 +8,20 @@ public class Algocraft{
 
 		mapa.celda(0,0).ocupar(jugador);
 	}
-
+	
 	public Jugador jugador(){
 		return jugador;
 	}
-
+	
 	public Mapa mapa(){
 		return mapa;
 	}
-	public static void main(String[] args) {
-		System.out.println("Iniciando Algocraft - Bienvenido");
+	public void actualizarPosicionJugador(int x, int y) {
+		if(mapa.celda(x, y).ocupada()){
+			return;
+		}
+		mapa.celda(x,y).ocupar(jugador);
+		jugador.actualizarPosicion(x,y);
 	}
 
 }

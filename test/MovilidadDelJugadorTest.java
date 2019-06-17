@@ -10,7 +10,7 @@ public class MovilidadDelJugadorTest{
 		juego.actualizarPosicionJugador(5,5);
 		assertEquals(juego.mapa().celda(5,5).contenido(),juego.jugador());
 	}
-	
+
 	@Test
 	public void jugadorSeMueveAUnaPosicionVaciaTest() {
 		Algocraft juego = new Algocraft();

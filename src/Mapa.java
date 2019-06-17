@@ -18,4 +18,7 @@ public class Mapa{
 	public Celda celda(int x, int y) {
 		return celdas.get(x).get(y);
 	}
+	public void agregarMaterial(int x, int y,Material material) {
+		celdas.get(x).get(y).ocupar(material);
+	}
 }
