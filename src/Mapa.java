@@ -2,19 +2,20 @@ import java.util.ArrayList;
 
 public class Mapa{
 	int n = 20; // dimension del mapa
-	private ArrayList<ArrayList<Celdas>> capaMateriales = new ArrayList<ArrayList<Celdas>>(n);
-	private ArrayList<ArrayList<Celdas>> celdas = new ArrayList<ArrayList<Celdas>>(n);
+	private ArrayList<ArrayList<Celda>> capaMateriales = new ArrayList<ArrayList<Celda>>(n);
+	private ArrayList<ArrayList<Celda>> celdas = new ArrayList<ArrayList<Celda>>(n);
 
 	public Mapa(){
-		for(int i; i<20; i++){
-			celdas.add(new ArrayList<ArrayList<Celdas>>(n));
+		for(int i=0; i<n; i++){
+			celdas.set(i,new ArrayList<Celda>()); 
 		}
-
-
+		// celdas.get(i).get(j) es la celda (i,j)
 	}
-	//esto esta dando problemas cuando se quiere llamar a los metodos de la celda desde afuera y no puedo identificar el problema
-	public Celda celda(int x, int y){
-		return this.celdas[x][y];
+	public void cargarMateriales() {
+		// cargar la capa de materiales
+		return;
 	}
-	
+	public Celda celda(int x, int y) {
+		return celdas.get(x).get(y);
+	}
 }
