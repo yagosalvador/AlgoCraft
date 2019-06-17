@@ -3,24 +3,21 @@ import org.junit.Test;
 
 public class MovilidadDelJugadorTest{
 	@Test
-	public void jugadorSeMueveAUnaPosicionVacia() {
-		Mapa mapa = new Mapa();
-		Jugador jugador = new Jugador();
-		// mapa.celda(0,0).ocupar(jugador);
-		// // El jugador se desplaza a la derecha y puede moverse
-		
+	public void jugadorSeMueveAUnaPosicionVaciaTest() {
+		Algocraft juego = new Algocraft();
+		Diamante diamante = new Diamante();
+		juego.actualizarPosicionJugador(9,10);
+		juego.jugador().avanzarAlNorte();
+		assertEquals(juego.mapa().celda(10,10).contenido(),juego.jugador());
 	}
-	// public void jugadorNoSePuedeMoverAPosicionOcupada() {
-	// 	Mapa mapa = new Mapa();
-	// 	Jugador jugador = new Jugador();
-	// 	Madera maderaTest = new Madera();
-	// 	mapa.celda(0,0).ocupar(jugador);
-	// 	mapa.celda(0,1).ocupar(maderaTest);
-	// 	// El jugador se desplaza a la derecha y no puede moverse
-	// }
-	// public void jugadorAvanza(){
-	// 	Algocraft juego = new Algocraft();
-	// 	// algocraft se inicia con el jugador en (0,0)
-				
-	// }
+	
+	@Test
+	public void jugadorSeMueveAUnaPosicionOcupadaTest() {
+		Algocraft juego = new Algocraft();
+		Diamante diamante = new Diamante();
+		juego.actualizarPosicionJugador(9,10);
+		juego.mapa().agregarMaterial(10,10,diamante);
+		juego.jugador().avanzarAlNorte();
+		assertEquals(juego.mapa().celda(9,10).contenido(),juego.jugador());
+	}
 }
