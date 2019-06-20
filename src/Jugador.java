@@ -12,7 +12,7 @@ public class Jugador{
 	public Herramienta sacarPrimerHerramienta(){
 		return inventario.agarrarHerramienta();
 	}
-	
+
 	public int capacidadOcupadaInventario(){
 		return (inventario.capacidadOcupadaHerramientas()+inventario.capacidadOcupadaMateriales());
 	}
@@ -24,20 +24,16 @@ public class Jugador{
 	public int capacidadOcupadaInventarioMateriales(){
 		return inventario.capacidadOcupadaMateriales();
 	}
-	public void avanzarAlNorte() {
-		this.ubicacion_x+=1;
-	}
-	public void avanzarAlSur() {
-		this.ubicacion_x-=1;
-	}
-	public void avanzarAlEste() {
-		this.ubicacion_y-=1;
-	}
-	public void avanzarAlOeste() {
-		this.ubicacion_y+=1;
-	}
+
 	public void actualizarPosicion(int x, int y) {
 		this.ubicacion_x=x;
 		this.ubicacion_y=y;
+	}
+
+	public int getUbicacion_x(){
+		return this.ubicacion_x;
+	}
+	public int getUbicacion_y(){
+		return this.ubicacion_y;
 	}
 }

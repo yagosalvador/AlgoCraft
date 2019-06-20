@@ -29,10 +29,10 @@ public class Mapa{
 		Metal metal = new Metal();
 		Diamante diamante = new Diamante();
 		//por ahora va arbitrario para los tests
-		this.agregarMaterial(5,4,madera);
-		this.agregarMaterial(6,4,piedra);
-		this.agregarMaterial(7,4,metal);
-		this.agregarMaterial(8,4,diamante);
+		this.agregarObjeto(5,4,madera);
+		this.agregarObjeto(6,4,piedra);
+		this.agregarObjeto(7,4,metal);
+		this.agregarObjeto(8,4,diamante);
 		return;
 	}
 	public Celda celda(int x, int y) {
@@ -45,4 +45,21 @@ public class Mapa{
 	public void agregarJugador(int x, int y, Jugador jugador){
 		celdas.get(x).get(y).ocupar(jugador);
 	}
+	//propuesta:
+    public void agregarObjeto(int x, int y, Object aColocar){
+        celdas.get(x).get(y).ocupar(aColocar);
+    }
+
+	//Intento de buscador para obtener la posicion del jugador (o de materiales, pero la pensaba usar para la movilidad del jugador)
+	/*public Celda buscar(Object aBuscar) {
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                if (celdas.get(i).get(j).contenido() = aBuscar)
+                    return celdas.get(i).get(j);
+            }
+        }
+        //y aca llegaría si no existe el jugador en el tablero, tendria que tirar una excepcion
+        return null;
+	}*/
+	public int getTamaño(){return n;}
 }
