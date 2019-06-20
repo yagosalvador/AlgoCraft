@@ -22,12 +22,12 @@ public class Mapa{
 	}
 
 	public void cargarMateriales() {
-		// cargar la capa de materiales
-		//se podria hacer a partir de un archivo
 		Madera madera = new Madera();
 		Piedra piedra = new Piedra();
 		Metal metal = new Metal();
 		Diamante diamante = new Diamante();
+		// cargar la capa de materiales
+		//se podria hacer a partir de un archivo
 		//por ahora va arbitrario para los tests
 		this.agregarObjeto(5,4,madera);
 		this.agregarObjeto(6,4,piedra);
