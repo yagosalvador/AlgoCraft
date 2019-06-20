@@ -11,8 +11,6 @@ build/
 
 .vscode
 
-.travis.yml
-
 out/
 
 .classpath
