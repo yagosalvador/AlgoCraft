@@ -29,8 +29,6 @@ public class Algocraft{
 		jugador.actualizarPosicion(x,y);
 	}
 	public void avanzarJugador(Direccion direccion){
-		int x = jugador.getUbicacion_x();
-		int y = jugador.getUbicacion_y();
-		actualizarPosicionJugador(x + direccion.getX(), y + direccion.getY());
+		actualizarPosicionJugador(jugador.getUbicacion_x() + direccion.getX(), jugador.getUbicacion_y() + direccion.getY());
 	}
 }
