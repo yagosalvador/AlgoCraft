@@ -23,29 +23,14 @@ public class Algocraft{
 		if(mapa.celda(x, y).ocupada()||x>this.mapa().getTamaño()||x<0||y>this.mapa().getTamaño()||y<0){
 			return;
 		}
+		//se desocupa la celda original (el jugador abandona su posicion para ocupar otra
 		mapa.celda(jugador.getUbicacion_x(),jugador.getUbicacion_y()).vaciar();
         mapa.agregarObjeto(x,y,jugador);
 		jugador.actualizarPosicion(x,y);
-        //CHE ESTO NO DESOCUPA LA CELDA DONDE ESTABA EL JUGADOR ORIGINALMENTE
 	}
-	public void avanzarJugadorAlNorte() {
+	public void avanzarJugador(Direccion direccion){
 		int x = jugador.getUbicacion_x();
 		int y = jugador.getUbicacion_y();
-		actualizarPosicionJugador(x, y-1);
-	}
-	public void avanzarJugadorAlSur() {
-		int x = jugador.getUbicacion_x();
-		int y = jugador.getUbicacion_y();
-		actualizarPosicionJugador(x, y+1);
-	}
-	public void avanzarJugadorAlEste() {
-		int x = jugador.getUbicacion_x();
-		int y = jugador.getUbicacion_y();
-		actualizarPosicionJugador(x+1, y);
-	}
-	public void avanzarJugadorAlOeste() {
-		int x = jugador.getUbicacion_x();
-		int y = jugador.getUbicacion_y();
-		actualizarPosicionJugador(x-1, y);
+		actualizarPosicionJugador(x + direccion.getX(), y + direccion.getY());
 	}
 }

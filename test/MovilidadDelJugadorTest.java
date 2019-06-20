@@ -36,37 +36,43 @@ public class MovilidadDelJugadorTest{
 		assertEquals(juego.mapa().celda(9,10).contenido(),juego.jugador());
 		assertEquals(juego.mapa().celda(10,10).contenido(),diamante);
 	}
-
 	@Test
-	public void jugadorAvanzaAlNorteTest() {
+	public void jugadorAvanzaArribaTest() {
 		Algocraft juego = new Algocraft();
 		juego.actualizarPosicionJugador(5,7);
-		juego.avanzarJugadorAlNorte();
+		Direccion nuevaposicion = new DireccionArriba();
+		juego.avanzarJugador(nuevaposicion);
 		assertEquals(juego.mapa().celda(5,6).contenido(),juego.jugador());
 		assertEquals(juego.mapa().celda(5,7).contenido(),null);
 	}
+
 	@Test
-	public void jugadorAvanzaAlSurTest() {
+	public void jugadorAvanzaAbajoTest() {
 		Algocraft juego = new Algocraft();
 		juego.actualizarPosicionJugador(5,7);
-		juego.avanzarJugadorAlSur();
+		Direccion nuevaposicion = new DireccionAbajo();
+		juego.avanzarJugador(nuevaposicion);
 		assertEquals(juego.mapa().celda(5,8).contenido(),juego.jugador());
 		assertEquals(juego.mapa().celda(5,7).contenido(),null);
 	}
+
 	@Test
-	public void jugadorAvanzaAlEsteTest() {
+	public void jugadorAvanzaIzquierdaTest() {
 		Algocraft juego = new Algocraft();
 		juego.actualizarPosicionJugador(5,7);
-		juego.avanzarJugadorAlEste();
-		assertEquals(juego.mapa().celda(6,7).contenido(),juego.jugador());
+		Direccion nuevaposicion = new DireccionIzquierda();
+		juego.avanzarJugador(nuevaposicion);
+		assertEquals(juego.mapa().celda(4,7).contenido(),juego.jugador());
 		assertEquals(juego.mapa().celda(5,7).contenido(),null);
 	}
+
 	@Test
-	public void jugadorAvanzaAlOesteTest() {
+	public void jugadorAvanzaDerechaTest() {
 		Algocraft juego = new Algocraft();
 		juego.actualizarPosicionJugador(5,7);
-		juego.avanzarJugadorAlOeste();
-		assertEquals(juego.mapa().celda(4,7).contenido(),juego.jugador());
+		Direccion nuevaposicion = new DireccionDerecha();
+		juego.avanzarJugador(nuevaposicion);
+		assertEquals(juego.mapa().celda(6,7).contenido(),juego.jugador());
 		assertEquals(juego.mapa().celda(5,7).contenido(),null);
 	}
 }
