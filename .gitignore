@@ -8,3 +8,13 @@ build/
 
 # Ignorar los .idea (Al usar IntelliJ
 .idea
+
+.vscode
+
+.travis.yml
+
+out/
+
+.classpath
+
+AlgoCraft.iml
