@@ -1,3 +1,5 @@
+//Probar cambiando el root a Group, 
+
 import javafx.application.Application;
 import javafx.event.Event;
 import javafx.event.EventHandler;
@@ -28,6 +30,13 @@ import static javafx.scene.input.KeyEvent.ANY;
 import static javafx.scene.input.KeyEvent.KEY_PRESSED;
 
 public class Visual extends Application{
+	//private Group root;
+	private Algocraft juego;
+	private PlayerView PlayerView;
+	private double height = 1088;
+	private double width = 768;
+
+
 	public static void main(String[] args){
 		Algocraft juego = new Algocraft();
 		launch(args);
@@ -35,19 +44,29 @@ public class Visual extends Application{
 
 	@Override
 	public void start(Stage primaryStage){
+/*
 		Superficie suelo = new Superficie(1088,768);
 		Superficie materiales = new Superficie(1088,768);
 		Superficie tiles = new Superficie(1088,768);
+*/		
+
 		Pane root = new Pane(suelo.getCanvas(),materiales.getCanvas(),tiles.getCanvas());
 		primaryStage.setTitle("AlgoCraft");
 		Scene s = new Scene(root,1088,768);
 		primaryStage.setScene(s);
-		primaryStage.show();
 
 		suelo.dibujarSuperficie("Pasto.png");
 		suelo.dibujarEnPos("Casa.png",10,10);
 		tiles.dibujarSuperficie("recuadro.png");
 		materiales.dibujarEnPos("Madera.png",2,2);
+
+		//root = new Group();
+
+
+
+
+
+
 
 		//dibujarImagenAlPresionarBoton(s,layer2,"P","piedra.png"); //lo puede tener cada material
 		//dibujarImagenAlPresionarBoton(s,layer2,"A","piedra.png");
@@ -57,8 +76,56 @@ public class Visual extends Application{
 		//for(Instant i; (i. < 5) && ;) {
 		//	System.out.println("Hola");
 		//}
+
+		drawStage(root);
+
+		root.setOnKeyPressed(new EventHandler<KeyEvent>() {
+		    public void handle(KeyEvent event) {
+		        if(event.getCode() == KeyCode.UP) {
+		        	Direccion direccion = new DireccionArriba();
+		        	juego.avanzarJugador(direccion);
+		        }
+		        if( event.getCode() == KeyCode.DOWN) {
+		        	Direccion direccion = new DireccionAbajo();
+		        	juego.avanzarJugador(direccion);
+		        }
+		        if (event.getCode() == KeyCode.RIGHT) {
+		        	Direccion direccion = new DireccionDerecha();
+		        	juego.avanzarJugador(direccion);
+		        }
+		        if (event.getCode() == KeyCode.LEFT) {
+		        	Direccion direccion = new DireccionIzquierda();
+		        	juego.avanzarJugador(direccion);
+		        } 
+		        event.consume();
+		    }
+			
+		});
+		
+
+		primaryStage.show();
+
+
 	}
 
+
+	private void drawStage(Group root){
+		setBackground();
+
+		PlayerView = new PlayerView();
+
+	//	root.getChildren().add(new InventaryButtonContainer());
+	
+	}
+	
+
+	private void setBackground(){
+		ImageView background = new ImageView();
+		background.setImage(new Image("Pasto.png"));
+		background.setFitHeight(height);
+		background.setFitWidth(width)
+		root.getChildren().add(background);
+	}
 	/*public void moverImagenEnDireccion(Scene s, Canvas lienzo,String str){
 		s.setOnKeyPressed(e->{
 			if (e.getCode() == KeyCode.RIGHT) {
