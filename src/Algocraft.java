@@ -1,6 +1,7 @@
 public class Algocraft{
 	private Mapa mapa;
 	private Jugador jugador;
+	private Posicion posicionJugador;
 
 	public Algocraft(){
 		mapa = new Mapa();
@@ -8,6 +9,7 @@ public class Algocraft{
 		//mapa.celda(0,0).ocupar(jugador);
 		//propuesta: mapa.agregarObjeto(0,0,jugador); (ver Mapa.java)
 		mapa.agregarJugador(0,0,jugador);
+		posicionJugador = new Posicion(0,0);
 
 	}
 	
@@ -24,11 +26,13 @@ public class Algocraft{
 			return;
 		}
 		//se desocupa la celda original (el jugador abandona su posicion para ocupar otra
-		mapa.celda(jugador.getUbicacion_x(),jugador.getUbicacion_y()).vaciar();
+		mapa.celda(posicionJugador.getX(),posicionJugador.getY()).vaciar();
         mapa.agregarObjeto(x,y,jugador);
-		jugador.actualizarPosicion(x,y);
+		posicionJugador = new Posicion(x,y);
 	}
 	public void avanzarJugador(Direccion direccion){
-		actualizarPosicionJugador(jugador.getUbicacion_x() + direccion.getX(), jugador.getUbicacion_y() + direccion.getY());
+		actualizarPosicionJugador(posicionJugador.getX() + direccion.getX(), posicionJugador.getY() + direccion.getY());
 	}
+	public int getPosicionJugadorX(){return posicionJugador.getX();}
+	public int getPosicionJugadorY(){return posicionJugador.getY();}
 }

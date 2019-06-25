@@ -9,12 +9,12 @@ public class MovilidadDelJugadorTest{
 		// actualizo la posicion del jugador
 		juego.actualizarPosicionJugador(5,6);
 		assertEquals(juego.mapa().celda(5,6).contenido(),juego.jugador());
-		assertEquals(juego.jugador().getUbicacion_x(),5);
-		assertEquals(juego.jugador().getUbicacion_y(),6);
+		assertEquals(juego.getPosicionJugadorX(),5);
+		assertEquals(juego.getPosicionJugadorY(),6);
 		juego.actualizarPosicionJugador(3,9);
 		assertEquals(juego.mapa().celda(3,9).contenido(),juego.jugador());
-		assertEquals(juego.jugador().getUbicacion_x(),3);
-		assertEquals(juego.jugador().getUbicacion_y(),9);
+		assertEquals(juego.getPosicionJugadorX(),3);
+		assertEquals(juego.getPosicionJugadorY(),9);
 		assertEquals(juego.mapa().celda(5,6).contenido(),null);
 
 	}
