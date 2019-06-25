@@ -1,4 +1,5 @@
 import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
 public class Superficie extends Canvas {
@@ -28,7 +29,12 @@ public class Superficie extends Canvas {
 
     }
 
-    public void dibujarEnPosAlApretarBoton(){}
+    public void borrarPos(int pos_x, int pos_y){
+        GraphicsContext gc = lienzo.getGraphicsContext2D();
+        gc.clearRect(pos_x*32,pos_y*32,32,32);
+    }
+
+    //public void dibujarEnPosAlApretarBoton(){}
 
     public Canvas getCanvas(){
         return lienzo;

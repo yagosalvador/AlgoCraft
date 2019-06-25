@@ -22,7 +22,7 @@ public class Algocraft{
 	}
 
 	public void actualizarPosicionJugador(int x, int y) {
-		if(mapa.celda(x, y).ocupada()||x>this.mapa().getTamaño()||x<0||y>this.mapa().getTamaño()||y<0){
+		if(mapa.celda(x, y).ocupada()){
 			return;
 		}
 		//se desocupa la celda original (el jugador abandona su posicion para ocupar otra
@@ -31,7 +31,11 @@ public class Algocraft{
 		posicionJugador = new Posicion(x,y);
 	}
 	public void avanzarJugador(Direccion direccion){
-		actualizarPosicionJugador(posicionJugador.getX() + direccion.getX(), posicionJugador.getY() + direccion.getY());
+		int x = posicionJugador.getX() + direccion.getX();
+		int y = posicionJugador.getY() + direccion.getY();
+		if (x >= this.mapa().getTamaño() || x < 0 || y >= this.mapa().getTamaño() || y < 0)
+			return;
+		actualizarPosicionJugador(x, y);
 	}
 	public int getPosicionJugadorX(){return posicionJugador.getX();}
 	public int getPosicionJugadorY(){return posicionJugador.getY();}

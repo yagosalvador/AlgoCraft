@@ -3,7 +3,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 
-public class PlayerView implements Drawable{
+public class PlayerView{
 	private int positionX;
 	private int positionY;
 	private double playerScale = 4;
@@ -11,7 +11,9 @@ public class PlayerView implements Drawable{
 	ImageView playerImage;
 
 	public PlayerView(Group root){
-		this.root = root;
+
+	}
+	/*	this.root = root;
 		//Levantar posiciones del mapa.
 		positionX = juego.getPosicionJugadorX();
 		positionY = juego.getPosicionJugadorY();
@@ -33,10 +35,10 @@ public class PlayerView implements Drawable{
 		root.getChildren().remove(playerImage);
 		root.getChildren().add(playerImage);
 	}
-	public void changePlayerSkin(String filename){
+	/*public void changePlayerSkin(String filename){
 		playerImage.setImage(new Image(filename + ".png"));
 	}
 	public void updateSkin(){
 		changePlayerSkin(//Obtener direccion +".png")
-	}
+	}*/
 }

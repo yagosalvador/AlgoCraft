@@ -1,13 +1,12 @@
 public class Jugador{
 	private Inventario inventario;
-	private int ubicacion_x = 0;
-	private int ubicacion_y = 0;
-
+	private Herramienta herramienta; //herramienta en mano
 
 	public Jugador(){
 		this.inventario = new Inventario();
 		HachaDeMadera hachaInicial = new HachaDeMadera();
 		this.inventario.agregarHerramienta(hachaInicial);
+		herramienta = hachaInicial;
 	}
 	public Herramienta sacarPrimerHerramienta(){
 		return inventario.agarrarHerramienta();
@@ -25,15 +24,8 @@ public class Jugador{
 		return inventario.capacidadOcupadaMateriales();
 	}
 
-	public void actualizarPosicion(int x, int y) {
-		this.ubicacion_x=x;
-		this.ubicacion_y=y;
+	public void vs(Material material){
+		herramienta.vs(material);
 	}
 
-	public int getUbicacion_x(){
-		return this.ubicacion_x;
-	}
-	public int getUbicacion_y(){
-		return this.ubicacion_y;
-	}
 }
