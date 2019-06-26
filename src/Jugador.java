@@ -38,6 +38,11 @@ public class Jugador{
 
 	public void vs(Material material){
 		herramientaEquipada.vs(material);
+		if(herramientaEquipada.durabilidad() == 0)
+			herramientaEquipada = null;
 	}
 
+	public Herramienta getHerramientaEquipada() {
+		return herramientaEquipada;
+	}
 }

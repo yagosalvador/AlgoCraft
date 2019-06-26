@@ -19,7 +19,7 @@ public class Inventario{
 		/*
 		for(int i=0 ; i<11; i++){
 			inventario.add(new QueueAlmacenable());
-		}*/
+		}*//*
 		inventario.put("class Madera", new QueueAlmacenable());
 		inventario.put("class Piedra", new QueueAlmacenable());
 		inventario.put("class Metal", new QueueAlmacenable());
@@ -31,7 +31,7 @@ public class Inventario{
 		inventario.put("class PicoDePiedra", new QueueAlmacenable());
 		inventario.put("class PicoDeMetal", new QueueAlmacenable());
 		inventario.put("class PicoFino", new QueueAlmacenable());
-
+		*/
 		mesaDeTrabajo = new MesaDeTrabajo();
 	}
 
@@ -40,7 +40,13 @@ public class Inventario{
 	}
 
 	public void agregarElemento(Almacenable almacenable){
-		inventario.get(almacenable.getClass().toString()).agregarElemento(almacenable);
+		try{
+			inventario.get(almacenable.getClass().toString()).agregarElemento(almacenable);
+		}
+		catch (Exception errorNullPointer){
+			inventario.put(almacenable.getClass().toString(), new QueueAlmacenable());
+			inventario.get(almacenable.getClass().toString()).agregarElemento(almacenable);
+		}
 	}
 
 	public int cantidadDeElemento(String clase){

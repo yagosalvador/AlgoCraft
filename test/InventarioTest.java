@@ -3,9 +3,9 @@ import org.junit.Test;
 
 public class InventarioTest{
 	@Test
-	public void inventarioInicializaConOnceElementosCargados(){
+	public void inventarioInicializaConCeroElementosCargados(){
 		Inventario inventario = new Inventario();
-		assertEquals(11, inventario.size());
+		assertEquals(0, inventario.size());
 	}
 	@Test
 	public void cantidadGuardadaDeMaderaAumentaAlGuardarTest(){

@@ -42,4 +42,10 @@ public abstract class Material implements Enfrentable, Almacenable{
         this.durabilidad -= fuerza;
         pico.vs(this);
     }
+
+    public boolean roto(){
+        if (durabilidad == 0)
+            return true;
+        return false;
+    }
 }
