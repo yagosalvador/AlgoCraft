@@ -6,11 +6,11 @@ public class JugadorTest{
 	public void inicializaciónDelJugadorTest(){
 		Jugador jugador = new Jugador();
 
-		int cantidadDeHerramientasEnInventario = jugador.capacidadOcupadaInventarioHerramientas();
-		assertEquals(cantidadDeHerramientasEnInventario,1);
+		int cantidadDeHachasDeMaderaEnInventario = jugador.verCantidadDeHachaDeMadera();
+		assertEquals(cantidadDeHachasDeMaderaEnInventario,1);
 		HachaDeMadera hacha = new HachaDeMadera();
 		HachaDeMadera unHacha = new HachaDeMadera();
-		unHacha = (HachaDeMadera) jugador.sacarPrimerHerramienta();
+		unHacha = (HachaDeMadera) jugador.sacarHachaDeMadera();
 		boolean equal = hacha.equals( unHacha );
 		assertEquals( true , equal );
 	}

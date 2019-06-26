@@ -1,4 +1,4 @@
-public abstract class Herramienta implements Enfrentable{
+public abstract class Herramienta implements Enfrentable, Almacenable{
     protected double multiploDeDesgaste = 0;
     protected int fuerza = 0;
     protected int durabilidad = 0;

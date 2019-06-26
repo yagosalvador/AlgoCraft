@@ -1,4 +1,4 @@
-public abstract class Material implements Enfrentable{
+public abstract class Material implements Enfrentable, Almacenable{
     int durabilidad;
 
     public int durabilidad(){
