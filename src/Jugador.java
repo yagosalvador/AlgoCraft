@@ -5,7 +5,7 @@ public class Jugador{
 	public Jugador(){
 		this.inventario = new Inventario();
 		Herramienta hachaInicial = new HachaDeMadera();
-		this.inventario.agregarHachaDeMadera(hachaInicial);
+		this.inventario.agregarElemento(hachaInicial);
 		herramientaEquipada = hachaInicial;
 	}
 /*
@@ -28,12 +28,12 @@ public class Jugador{
 		herramientaEquipada = herramienta;
 	}
 
-	public int verCantidadDeHachaDeMadera(){
-		return inventario.cantidadDeHachaDeMadera();
+	public int cantidadDeElemento(String clase){
+		return inventario.cantidadDeElemento(clase);
 	}
 
-	public Almacenable sacarHachaDeMadera(){
-		return inventario.sacarHachaDeMadera();
+	public Almacenable sacarElemento(String clase){
+		return inventario.sacarElemento(clase);
 	}
 
 	public void vs(Material material){

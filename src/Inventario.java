@@ -1,8 +1,12 @@
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Queue;
 import java.util.ArrayList; 
 public class Inventario{
 	
-	private ArrayList<QueueAlmacenable> inventario = new ArrayList<QueueAlmacenable>(11);
+	//private ArrayList<QueueAlmacenable> inventario = new ArrayList<QueueAlmacenable>(11);
+	
+	private Map<String, QueueAlmacenable> inventario = new HashMap<String, QueueAlmacenable>(11);
 	
 	private MesaDeTrabajo mesaDeTrabajo;
 	//private QueueAlmacenable inventario[];
@@ -12,15 +16,55 @@ public class Inventario{
 	private ArrayList<Material> materiales = new ArrayList<Material>(maxInventario);
 */
 	public Inventario(){
+		/*
 		for(int i=0 ; i<11; i++){
 			inventario.add(new QueueAlmacenable());
-		}
+		}*/
+		inventario.put("class Madera", new QueueAlmacenable());
+		inventario.put("class Piedra", new QueueAlmacenable());
+		inventario.put("class Metal", new QueueAlmacenable());
+		inventario.put("class Diamante", new QueueAlmacenable());
+		inventario.put("class HachaDeMadera", new QueueAlmacenable());
+		inventario.put("class HachaDePiedra", new QueueAlmacenable());
+		inventario.put("class HachaDeMetal", new QueueAlmacenable());
+		inventario.put("class PicoDeMadera", new QueueAlmacenable());
+		inventario.put("class PicoDePiedra", new QueueAlmacenable());
+		inventario.put("class PicoDeMetal", new QueueAlmacenable());
+		inventario.put("class PicoFino", new QueueAlmacenable());
 
 		mesaDeTrabajo = new MesaDeTrabajo();
 	}
 
 	public int size(){
 		return inventario.size();
+	}
+
+	public void agregarElemento(Almacenable almacenable){
+		inventario.get(almacenable.getClass().toString()).agregarElemento(almacenable);
+	}
+
+	public int cantidadDeElemento(String clase){
+		return inventario.get(clase).size();
+	}
+
+	public Almacenable sacarElemento(String clase){
+		return inventario.get(clase).sacarElemento();
+	}
+
+	public Almacenable usarElemento(String clase){
+		return inventario.get(clase).usarElemento();
+	}
+	public int durabilidadDeElemento(String clase){
+		return inventario.get(clase).devolverDurabilidad();
+	}
+/*
+	public void agregarElemento(Almacenable almacenable){
+		posicion = almacenable.getPosicionDeAlmacenaje;
+		inventario.get(posicion).agregarElemento(almacenable);
+	}
+
+	public void agregarElemento(Madera madera){
+		inventario.get(0).agregarElemento(madera);
 	}
 
 //	public void agregarAlmacenable(Madera madera){
@@ -67,9 +111,9 @@ public class Inventario{
 	public void agregarPicoFino(Almacenable pico){
 		inventario.get(10).agregarElemento(pico);
 	}
+*/
 
-
-	public Almacenable sacarMadera(){
+/*	public Almacenable sacarMadera(){
 		return inventario.get(0).sacarElemento();
 	}
 	public Almacenable sacarPiedra(){
@@ -102,8 +146,8 @@ public class Inventario{
 	public Almacenable sacarPicoFino(){
 		return inventario.get(10).sacarElemento();
 	}
-
-
+*/
+	/*
 	public Almacenable usarMadera(){
 		return inventario.get(0).usarElemento();
 	}
@@ -139,41 +183,44 @@ public class Inventario{
 	}
 
 
+*/
 
+	/*
 	public int cantidadDeMadera(){
-		return inventario.get(0).size();
+		return inventario.get("class Madera").size();
 	}
 	public int cantidadDePiedra(){
-		return inventario.get(1).size();
+		return inventario.get("class Madera").size();
 	}
 	public int cantidadDeMetal(){
-		return inventario.get(2).size();
+		return inventario.get("class Madera").size();
 	}
 	public int cantidadDeDiamante(){
-		return inventario.get(3).size();
+		return inventario.get("class Madera").size();
 	}
 	public int cantidadDeHachaDeMadera(){
-		return inventario.get(4).size();
+		return inventario.get("class Madera").size();
 	}
 	public int cantidadDeHachaDeMetal(){
-		return inventario.get(5).size();
+		return inventario.get("class Madera").size();
 	}
 	public int cantidadDeHachaDePiedra(){
-		return inventario.get(6).size();
+		return inventario.get("class HacheDeMetal").size();
 	}
 	public int cantidadDePicoDeMadera(){
-		return inventario.get(7).size();
+		return inventario.get("class PicoDeMadera").size();
 	}
 	public int cantidadDePicoDePiedra(){
-		return inventario.get(8).size();
+		return inventario.get("class PicoDePiedra").size();
 	}
 	public int cantidadDePicoDeMetal(){
-		return inventario.get(9).size();
+		return inventario.get("class PicoDeMetal").size();
 	}
 	public int cantidadDePicoFino(){
-		return inventario.get(10).size();
-	}
+		return inventario.get("class PicoFino").size();
+	}*/
 
+	/*
 	public int durabilidadHachaDeMadera(){
 		return inventario.get(4).devolverDurabilidad();
 	}
@@ -195,30 +242,6 @@ public class Inventario{
 	public int durabilidadPicoFino(){
 		return inventario.get(10).devolverDurabilidad();
 	}
-	/*
-	public void agregarHerramienta(Herramienta herramienta){
-		this.herramientas.add(herramienta);
-	}
-	
-	public void agregarMaterial(Material material){
-		this.materiales.add(material);
-	}
 
-
-	public Herramienta agarrarHerramienta(){
-		return this.herramientas.get(0);
-	}
-	
-	public Material agarrarMaterial(){
-		return this.materiales.get(0);
-	}
-
-	public int capacidadOcupadaHerramientas(){
-		return this.herramientas.size();
-	}
-	
-	public int capacidadOcupadaMateriales(){
-		return this.materiales.size();
-	}
 */
 }
