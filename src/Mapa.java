@@ -1,16 +1,38 @@
 import java.util.ArrayList;
 
+
 public class Mapa{
-	int n = 20; // dimension del mapa
-	private ArrayList<ArrayList<Celda>> capaMateriales = new ArrayList<ArrayList<Celda>>(n);
-	private ArrayList<ArrayList<Celda>> celdas = new ArrayList<ArrayList<Celda>>(n);
+	int width;
+	int height;
+	private ArrayList<ArrayList<Celda>> celdas = new ArrayList<ArrayList<Celda>>();
 
 	public Mapa(){
+		width = 20;
+		height = 20;
 		//inicializa las celdas
-		for(int i=0; i<n;i++){
+		for(int i=0; i < width;i++){
 			ArrayList<Celda> filas = new ArrayList<Celda>();
 			celdas.add(filas);
-			for(int j=0; j<n;j++){
+			for(int j=0; j < height;j++){
+				filas.add(new Celda());
+			}
+		}
+
+		//y luego las llena con lo que haga falta
+		cargarMateriales();
+
+		//System.out.println(celdas.size());
+		// celdas.get(i).get(j) es la celda (i,j)
+	}
+
+	public Mapa(int w, int h){
+		width = w;
+		height = h;
+		//inicializa las celdas
+		for(int i=0; i < width;i++){
+			ArrayList<Celda> filas = new ArrayList<Celda>();
+			celdas.add(filas);
+			for(int j=0; j < height;j++){
 				filas.add(new Celda());
 			}
 		}
@@ -50,16 +72,11 @@ public class Mapa{
         celdas.get(x).get(y).ocupar(aColocar);
     }
 
-	//Intento de buscador para obtener la posicion del jugador (o de materiales, pero la pensaba usar para la movilidad del jugador)
-	/*public Celda buscar(Object aBuscar) {
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
-                if (celdas.get(i).get(j).contenido() = aBuscar)
-                    return celdas.get(i).get(j);
-            }
-        }
-        //y aca llegaría si no existe el jugador en el tablero, tendria que tirar una excepcion
-        return null;
-	}*/
-	public int getTamaño(){return n;}
+	public int getWidth(){
+		return width;
+	}
+
+	public int getHeight(){
+		return height;
+	}
 }

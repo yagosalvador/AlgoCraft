@@ -10,13 +10,21 @@ public class Algocraft{
 		//propuesta: mapa.agregarObjeto(0,0,jugador); (ver Mapa.java)
 		mapa.agregarJugador(0,0,jugador);
 		posicionJugador = new Posicion(0,0);
-
 	}
-	
+
+	public Algocraft(int width, int height){
+		mapa = new Mapa(width,height);
+		jugador = new Jugador();
+		//mapa.celda(0,0).ocupar(jugador);
+		//propuesta: mapa.agregarObjeto(0,0,jugador); (ver Mapa.java)
+		mapa.agregarJugador(0,0,jugador);
+		posicionJugador = new Posicion(0,0);
+	}
+
 	public Jugador jugador(){
 		return this.jugador;
 	}
-	
+
 	public Mapa mapa(){
 		return this.mapa;
 	}
@@ -33,7 +41,7 @@ public class Algocraft{
 	public void avanzarJugador(Direccion direccion){
 		int x = posicionJugador.getX() + direccion.getX();
 		int y = posicionJugador.getY() + direccion.getY();
-		if (x >= this.mapa().getTamaño() || x < 0 || y >= this.mapa().getTamaño() || y < 0)
+		if (x >= this.mapa().getWidth() || x < 0 || y >= this.mapa().getHeight() || y < 0)
 			return;
 		actualizarPosicionJugador(x, y);
 	}

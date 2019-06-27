@@ -6,15 +6,20 @@ public class Jugador{
 	private Herramienta herramientaEquipada; //herramienta en mano
 	private MesaDeTrabajo mesa;
 	private Map<Integer, Material> materialesUbicados = new HashMap<>(9);
+	boolean cargaHerramienta;
+
 	public Jugador(){
 		this.mesa = new MesaDeTrabajo();
 		this.inventario = new Inventario();
 		Herramienta hachaInicial = new HachaDeMadera();
 		this.inventario.agregarElemento(hachaInicial);
 		herramientaEquipada = hachaInicial;
+		cargaHerramienta = true;
 	}
-	public void equiparHerramienta(String clase){
-		herramientaEquipada = (Herramienta) inventario.usarElemento(clase);
+
+	public void equiparHerramienta(Herramienta herramienta){
+		herramientaEquipada = herramienta;
+		cargaHerramienta = true;
 	}
 
 	public int cantidadDeElemento(String clase){
@@ -25,14 +30,20 @@ public class Jugador{
 		return inventario.sacarElemento(clase);
 	}
 
-	public void almacenarElemento(Almacenable almacenable){
-		inventario.agregarElemento(almacenable);
-	}
+    public void almacenarElemento(Almacenable almacenable){
+        inventario.agregarElemento(almacenable);
+    }
 
-	public void vs(Material material){
+	public void vs(Material material) {
+		if (!cargaHerramienta){
+			System.out.println("No lleva material");
+			return;
+		}
 		herramientaEquipada.vs(material);
-		if(herramientaEquipada.durabilidad() == 0)
+		if (herramientaEquipada.durabilidad() == 0){
 			herramientaEquipada = null;
+			cargaHerramienta = false;
+		}
 	}
 
 	public Herramienta getHerramientaEquipada() {
@@ -53,11 +64,11 @@ public class Jugador{
 		mesa.ubicarMaterial(posicion, material);
 
 		Material materialDevuelto = materialesUbicados.put(posicion,material);
-		if(materialDevuelto == null){ 
-			return; 
+		if(materialDevuelto == null){
+			return;
 		}
-		else{ 
-			almacenarElemento(materialDevuelto); 
+		else{
+			almacenarElemento(materialDevuelto);
 		}
 	}
 
@@ -73,13 +84,21 @@ public class Jugador{
 			}
 		}
 		almacenarElemento(herramientaCreada);
-		
-	}	
+
+	}
 	public void devolverMaterialesAlInventario(){
 		for(Map.Entry<Integer, Material> entry: materialesUbicados.entrySet()){
 			Integer posicion = entry.getKey();
 			inventario.agregarElemento(materialesUbicados.remove(posicion));
 
-		}	
+		}
 	}
+
+    public boolean cargaHerramienta() {
+	    return cargaHerramienta;
+    }
+
+    public Inventario getInventario() {
+	    return inventario;
+    }
 }
