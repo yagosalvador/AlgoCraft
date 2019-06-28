@@ -1,4 +1,4 @@
-// esta es la clase que controla los eventos
+// esta es la clase que controla los sonidos
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import java.io.File;

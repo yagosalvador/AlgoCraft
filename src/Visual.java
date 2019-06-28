@@ -39,6 +39,7 @@ public class Visual extends Application {
 
 	@Override
 	public void start(Stage primaryStage){
+		// Instanciar ventana del juego
 		Rectangle2D primaryScreenBounds = Screen.getPrimary().getVisualBounds();
 		int width = ((int)(primaryScreenBounds.getWidth()/32))*32;
 		int height = ((int) (primaryScreenBounds.getHeight()/32)-1)*32;
@@ -46,8 +47,10 @@ public class Visual extends Application {
 		primaryStage.setHeight(height);
 		primaryStage.setWidth(width);
 
+		// arrancar juego
 		Algocraft juego = new Algocraft(width/32,(height/32)-3);
 
+		// crear objetos dibujables
 		Superficie suelo = new Superficie(width, height);
 		Superficie materiales = new Superficie(width, height);
 		Superficie jugador = new Superficie(width, height);
@@ -59,16 +62,11 @@ public class Visual extends Application {
 
 
 		//SONIDOS
-		//cargarSonidos();
-		// Media sound = new Media(new File("res/metal10.wav").toURI().toString());
-		// MediaPlayer mediaPlayer = new MediaPlayer(sound);
-		// Media sound2 = new Media(new File("res/swish_2.wav").toURI().toString());
-		// MediaPlayer mediaPlayer2 = new MediaPlayer(sound2);
-		// Media sound3 = new Media(new File("res/roto.mp3").toURI().toString());
-		// MediaPlayer mediaPlayer3 = new MediaPlayer(sound3);
-		SoundHandler controlador = new SoundHandler();
+		SoundHandler controladorSonidos = new SoundHandler();
 
 		//Map<int, String> inventarioPos = new Map<int,String>(11);
+		//dibujar inventario
+		
 		Vector inventarioPos = new Vector();
 		inventarioPos.add("class Piedra");
 		inventarioPos.add("class Madera");
@@ -127,7 +125,7 @@ public class Visual extends Application {
 		jugador.dibujarEnPos("res/jugadorAbajo.png", x, y);
 		primaryStage.show();
 
-
+		// cargar materiales
 		Madera madera = new Madera();
 		Metal metal = new Metal();
 		Piedra piedra = new Piedra();
@@ -152,10 +150,13 @@ public class Visual extends Application {
 				}
 			}
 		}
+
+
 		Scene s = new Scene(root, width, height);
 		primaryStage.setScene(s);
 
 
+		//Eventos posibles
 		s.setOnKeyPressed(new EventHandler<KeyEvent>() {
 			public void handle(KeyEvent event) {
 				if (event.getCode() == KeyCode.UP) {
@@ -195,22 +196,16 @@ public class Visual extends Application {
 							juego.jugador().vs(material);
 							//animacion golpe
 							if (!material.roto()) {
-								// mediaPlayer.seek(new Duration(0));
-								// mediaPlayer.play();
-								controlador.sonidoGolpe();
+								controladorSonidos.sonidoGolpe();
 							} else {
-								// mediaPlayer3.seek(new Duration(0));
-								// mediaPlayer3.play();
-								controlador.sonidoRoto();
+								controladorSonidos.sonidoRoto();
 								materiales.borrarPos(x,y);
 								juego.mapa().celda(x,y).vaciar();
 							}
 						}
 					}
 					else {
-						// mediaPlayer2.seek(new Duration(0));
-						// mediaPlayer2.play();
-						controlador.sonidoSwish();
+						controladorSonidos.sonidoSwish();
 					}
 				}
 				if (event.getCode() == KeyCode.G) {
