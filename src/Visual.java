@@ -59,12 +59,14 @@ public class Visual extends Application {
 
 
 		//SONIDOS
-		Media sound = new Media(new File("res/metal10.wav").toURI().toString());
-		MediaPlayer mediaPlayer = new MediaPlayer(sound);
-		Media sound2 = new Media(new File("res/swish_2.wav").toURI().toString());
-		MediaPlayer mediaPlayer2 = new MediaPlayer(sound2);
-		Media sound3 = new Media(new File("res/roto.mp3").toURI().toString());
-		MediaPlayer mediaPlayer3 = new MediaPlayer(sound3);
+		//cargarSonidos();
+		// Media sound = new Media(new File("res/metal10.wav").toURI().toString());
+		// MediaPlayer mediaPlayer = new MediaPlayer(sound);
+		// Media sound2 = new Media(new File("res/swish_2.wav").toURI().toString());
+		// MediaPlayer mediaPlayer2 = new MediaPlayer(sound2);
+		// Media sound3 = new Media(new File("res/roto.mp3").toURI().toString());
+		// MediaPlayer mediaPlayer3 = new MediaPlayer(sound3);
+		SoundHandler controlador = new SoundHandler();
 
 		//Map<int, String> inventarioPos = new Map<int,String>(11);
 		Vector inventarioPos = new Vector();
@@ -193,19 +195,22 @@ public class Visual extends Application {
 							juego.jugador().vs(material);
 							//animacion golpe
 							if (!material.roto()) {
-								mediaPlayer.seek(new Duration(0));
-								mediaPlayer.play();
+								// mediaPlayer.seek(new Duration(0));
+								// mediaPlayer.play();
+								controlador.sonidoGolpe();
 							} else {
-								mediaPlayer3.seek(new Duration(0));
-								mediaPlayer3.play();
+								// mediaPlayer3.seek(new Duration(0));
+								// mediaPlayer3.play();
+								controlador.sonidoRoto();
 								materiales.borrarPos(x,y);
 								juego.mapa().celda(x,y).vaciar();
 							}
 						}
 					}
 					else {
-						mediaPlayer2.seek(new Duration(0));
-						mediaPlayer2.play();
+						// mediaPlayer2.seek(new Duration(0));
+						// mediaPlayer2.play();
+						controlador.sonidoSwish();
 					}
 				}
 				if (event.getCode() == KeyCode.G) {
