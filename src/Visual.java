@@ -59,67 +59,15 @@ public class Visual extends Application {
 		Group root = new Group(suelo.getCanvas(), materiales.getCanvas(), jugador.getCanvas(), inventario.getCanvas());
 
 		suelo.dibujarSuperficie("res/Pasto.png");
-
-
+		
 		//SONIDOS
 		SoundHandler controladorSonidos = new SoundHandler();
-
-		//Map<int, String> inventarioPos = new Map<int,String>(11);
-		//dibujar inventario
 		
+		//dibujar inventario
 		Vector inventarioPos = new Vector();
-		inventarioPos.add("class Piedra");
-		inventarioPos.add("class Madera");
-		inventarioPos.add("class Metal");
-		inventarioPos.add("class Diamante");
-		inventarioPos.add("class HachaDePiedra");
-		inventarioPos.add("class HachaDeMadera");
-		inventarioPos.add("class HachaDeMetal");
-		inventarioPos.add("class PicoDeMadera");
-		inventarioPos.add("class PicoDeMetal");
-		inventarioPos.add("class PicoDePiedra");
-		inventarioPos.add("class PicoFino");
+		dibujarInventario(suelo,inventario,inventarioPos,width,height);
 
-		for (int i = 0, n = 0; i < (width/32)-1 && n < inventarioPos.size(); i++, n++) { //inventario
-			inventario.dibujarEnPos("res/recuadro.png", i, (height/32)-1);
-		}
-		for (int i = (width/32)-1, n1 = 0; n1 < 3; i--, n1++) { //mesa de trabajo
-			for (int j = (height/32)-1, n2 = 0; n2 < 3; j--, n2++) {
-				inventario.dibujarEnPos("res/recuadro.png", i, j);
-			}
-		}
-
-		for (int i = (width/32)-1; i >= 0; i--) {
-			for (int j = (height/32)-1, n = 0; j >= 0 && n < 3; j--, n++) {
-				if (n != 2)
-					suelo.dibujarEnPos("res/agua.png", i, j);
-				else {
-					suelo.dibujarEnPos("res/limite.png", i, j);
-				}
-			}
-		}
-		//inventario.dibujarEnPos("res/recuadro.png", 0, 0);
-
-		inventario.dibujarEnPos("res/recuadro.png", (width/32)-4, (height/32)-1);//boton crear
-		inventario.getCanvas().getGraphicsContext2D().setTextBaseline(VPos.CENTER);
-		inventario.getCanvas().getGraphicsContext2D().setTextAlign(TextAlignment.CENTER);
-		inventario.getCanvas().getGraphicsContext2D().fillText("Crear", ((width/32)-4)*32 + 16, height - 16, 28);
-
-
-		//if (juego.jugador().sacarPrimerHerramienta() != null) {
-		inventario.dibujarEnPos("res/piedra.png", 0, height/32 - 1);
-		inventario.dibujarEnPos("res/64/hachapiedra.png", 1, height/32 - 1);
-		inventario.dibujarEnPos("res/64/hachametal.png", 2, height/32 - 1);
-		inventario.dibujarEnPos("res/picomadera.png", 3, height/32 - 1);
-		inventario.dibujarEnPos("res/picopiedra.png", 4, height/32 - 1);
-		inventario.dibujarEnPos("res/picometal.png", 5, height/32 - 1);
-		inventario.dibujarEnPos("res/picofino.png", 6, height/32 - 1);
-		inventario.dibujarEnPos("res/madera.png", 7, height/32 - 1);
-		inventario.dibujarEnPos("res/metal.png", 8, height/32 - 1);
-		inventario.dibujarEnPos("res/piedra.png", 9, height/32 - 1);
-		inventario.dibujarEnPos("res/diamante.png", 10, height/32 - 1);
-
-
+		// dibujar Jugador
 		int x = juego.getPosicionJugadorX();
 		int y = juego.getPosicionJugadorX();
 		jugador.dibujarEnPos("res/jugadorAbajo.png", x, y);
@@ -275,5 +223,59 @@ public class Visual extends Application {
 				return true;
 			}
 		});
+	}
+
+	private void dibujarInventario(Superficie suelo, Superficie inventario, Vector inventarioPos, int width, int height) {
+		inventarioPos.add("class Piedra");
+		inventarioPos.add("class Madera");
+		inventarioPos.add("class Metal");
+		inventarioPos.add("class Diamante");
+		inventarioPos.add("class HachaDePiedra");
+		inventarioPos.add("class HachaDeMadera");
+		inventarioPos.add("class HachaDeMetal");
+		inventarioPos.add("class PicoDeMadera");
+		inventarioPos.add("class PicoDeMetal");
+		inventarioPos.add("class PicoDePiedra");
+		inventarioPos.add("class PicoFino");
+
+		for (int i = 0, n = 0; i < (width/32)-1 && n < inventarioPos.size(); i++, n++) { //inventario
+			inventario.dibujarEnPos("res/recuadro.png", i, (height/32)-1);
+		}
+		for (int i = (width/32)-1, n1 = 0; n1 < 3; i--, n1++) { //mesa de trabajo
+			for (int j = (height/32)-1, n2 = 0; n2 < 3; j--, n2++) {
+				inventario.dibujarEnPos("res/recuadro.png", i, j);
+			}
+		}
+
+		for (int i = (width/32)-1; i >= 0; i--) {
+			for (int j = (height/32)-1, n = 0; j >= 0 && n < 3; j--, n++) {
+				if (n != 2)
+					suelo.dibujarEnPos("res/agua.png", i, j);
+				else {
+					suelo.dibujarEnPos("res/limite.png", i, j);
+				}
+			}
+		}
+		//inventario.dibujarEnPos("res/recuadro.png", 0, 0);
+
+		inventario.dibujarEnPos("res/recuadro.png", (width/32)-4, (height/32)-1);//boton crear
+		inventario.getCanvas().getGraphicsContext2D().setTextBaseline(VPos.CENTER);
+		inventario.getCanvas().getGraphicsContext2D().setTextAlign(TextAlignment.CENTER);
+		inventario.getCanvas().getGraphicsContext2D().fillText("Crear", ((width/32)-4)*32 + 16, height - 16, 28);
+
+
+		//if (juego.jugador().sacarPrimerHerramienta() != null) {
+		inventario.dibujarEnPos("res/piedra.png", 0, height/32 - 1);
+		inventario.dibujarEnPos("res/64/hachapiedra.png", 1, height/32 - 1);
+		inventario.dibujarEnPos("res/64/hachametal.png", 2, height/32 - 1);
+		inventario.dibujarEnPos("res/picomadera.png", 3, height/32 - 1);
+		inventario.dibujarEnPos("res/picopiedra.png", 4, height/32 - 1);
+		inventario.dibujarEnPos("res/picometal.png", 5, height/32 - 1);
+		inventario.dibujarEnPos("res/picofino.png", 6, height/32 - 1);
+		inventario.dibujarEnPos("res/madera.png", 7, height/32 - 1);
+		inventario.dibujarEnPos("res/metal.png", 8, height/32 - 1);
+		inventario.dibujarEnPos("res/piedra.png", 9, height/32 - 1);
+		inventario.dibujarEnPos("res/diamante.png", 10, height/32 - 1);
+		
 	}
 }
