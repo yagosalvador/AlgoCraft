@@ -18,9 +18,6 @@ import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import java.util.Vector;
-
-
-
 import static javafx.application.Platform.exit;
 import static javafx.scene.input.KeyEvent.ANY;
 import static javafx.scene.input.KeyEvent.KEY_PRESSED;
@@ -74,35 +71,10 @@ public class Visual extends Application {
 		primaryStage.show();
 
 		// cargar materiales
-		Madera madera = new Madera();
-		Metal metal = new Metal();
-		Piedra piedra = new Piedra();
-		Diamante diamante = new Diamante();
-
-		for (int i = 0; i < juego.mapa().getWidth(); i++) {
-			for (int j = 0; j < juego.mapa().getHeight(); j++) {
-				Celda celda = juego.mapa().celda(i, j);
-				if (celda.contenido() != null) {
-					if (madera.getClass() == celda.contenido().getClass()) {
-						materiales.dibujarEnPos("res/madera.png", i, j);
-					}
-					if (diamante.getClass() == celda.contenido().getClass()) {
-						materiales.dibujarEnPos("res/diamante.png", i, j);
-					}
-					if (piedra.getClass() == celda.contenido().getClass()) {
-						materiales.dibujarEnPos("res/piedra.png", i, j);
-					}
-					if (metal.getClass() == celda.contenido().getClass()) {
-						materiales.dibujarEnPos("res/metal.png", i, j);
-					}
-				}
-			}
-		}
-
+		cargarMateriales(materiales);
 
 		Scene s = new Scene(root, width, height);
 		primaryStage.setScene(s);
-
 
 		//Eventos posibles
 		s.setOnKeyPressed(new EventHandler<KeyEvent>() {
@@ -277,5 +249,31 @@ public class Visual extends Application {
 		inventario.dibujarEnPos("res/piedra.png", 9, height/32 - 1);
 		inventario.dibujarEnPos("res/diamante.png", 10, height/32 - 1);
 		
+	}
+	private void cargarMateriales(Superficie materiales) {
+		Madera madera = new Madera();
+		Metal metal = new Metal();
+		Piedra piedra = new Piedra();
+		Diamante diamante = new Diamante();
+
+		for (int i = 0; i < juego.mapa().getWidth(); i++) {
+			for (int j = 0; j < juego.mapa().getHeight(); j++) {
+				Celda celda = juego.mapa().celda(i, j);
+				if (celda.contenido() != null) {
+					if (madera.getClass() == celda.contenido().getClass()) {
+						materiales.dibujarEnPos("res/madera.png", i, j);
+					}
+					if (diamante.getClass() == celda.contenido().getClass()) {
+						materiales.dibujarEnPos("res/diamante.png", i, j);
+					}
+					if (piedra.getClass() == celda.contenido().getClass()) {
+						materiales.dibujarEnPos("res/piedra.png", i, j);
+					}
+					if (metal.getClass() == celda.contenido().getClass()) {
+						materiales.dibujarEnPos("res/metal.png", i, j);
+					}
+				}
+			}
+		}
 	}
 }
