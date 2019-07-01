@@ -22,12 +22,13 @@ import static javafx.application.Platform.exit;
 import static javafx.scene.input.KeyEvent.ANY;
 import static javafx.scene.input.KeyEvent.KEY_PRESSED;
 import java.io.File;
+import java.util.logging.Handler;
 
 public class Visual extends Application {
 	//private Group root;
 	private Algocraft juego;
 	private PlayerView PlayerView;
-
+	private SoundHandler soundPlayer;
 
 	public static void main(String[] args) {
 		Algocraft juego = new Algocraft();
@@ -57,9 +58,7 @@ public class Visual extends Application {
 
 		suelo.dibujarSuperficie("res/Pasto.png");
 		
-		//SONIDOS
-		SoundHandler controladorSonidos = new SoundHandler();
-		
+
 		//dibujar inventario
 		Vector inventarioPos = new Vector();
 		dibujarInventario(suelo,inventario,inventarioPos,width,height);
@@ -71,10 +70,45 @@ public class Visual extends Application {
 		primaryStage.show();
 
 		// cargar materiales
-		cargarMateriales(materiales);
+		cargarMateriales(materiales, juego);
+/*
+			Madera madera = new Madera();
+			Metal metal = new Metal();
+			Piedra piedra = new Piedra();
+			Diamante diamante = new Diamante();
+
+			for (int i = 0; i < juego.mapa().getWidth(); i++) {
+				for (int j = 0; j < juego.mapa().getHeight(); j++) {
+					Celda celda = juego.mapa().celda(i, j);
+					if (celda.contenido() != null) {
+						if (madera.getClass() == celda.contenido().getClass()) {
+							materiales.dibujarEnPos("res/madera.png", i, j);
+						}
+						if (diamante.getClass() == celda.contenido().getClass()) {
+							materiales.dibujarEnPos("res/diamante.png", i, j);
+						}
+						if (piedra.getClass() == celda.contenido().getClass()) {
+							materiales.dibujarEnPos("res/piedra.png", i, j);
+						}
+						if (metal.getClass() == celda.contenido().getClass()) {
+							materiales.dibujarEnPos("res/metal.png", i, j);
+						}
+					}
+				}
+			}
+		*/
+
+
+
 
 		Scene s = new Scene(root, width, height);
 		primaryStage.setScene(s);
+
+
+
+		root.addEventFilter( SoundEvent.EVENTO_SONIDO,	new SoundHandler());
+
+		root.addEventHandler( SoundEvent.EVENTO_SONIDO, new SoundHandler());
 
 		//Eventos posibles
 		s.setOnKeyPressed(new EventHandler<KeyEvent>() {
@@ -116,16 +150,16 @@ public class Visual extends Application {
 							juego.jugador().vs(material);
 							//animacion golpe
 							if (!material.roto()) {
-								controladorSonidos.sonidoGolpe();
+								//controladorSonidos.sonidoGolpe();
 							} else {
-								controladorSonidos.sonidoRoto();
+								//controladorSonidos.sonidoRoto();
 								materiales.borrarPos(x,y);
 								juego.mapa().celda(x,y).vaciar();
 							}
 						}
 					}
 					else {
-						controladorSonidos.sonidoSwish();
+						//controladorSonidos.sonidoSwish();
 					}
 				}
 				if (event.getCode() == KeyCode.G) {
@@ -250,7 +284,7 @@ public class Visual extends Application {
 		inventario.dibujarEnPos("res/diamante.png", 10, height/32 - 1);
 		
 	}
-	private void cargarMateriales(Superficie materiales) {
+	private void cargarMateriales(Superficie materiales, Algocraft juego) {
 		Madera madera = new Madera();
 		Metal metal = new Metal();
 		Piedra piedra = new Piedra();

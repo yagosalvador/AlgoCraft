@@ -3,7 +3,7 @@ public abstract class Herramienta implements Enfrentable, Almacenable{
     protected int fuerza = 0;
     protected int durabilidad = 0;
     protected ReglaDeDesgaste desgaste;
-
+    protected Escuchable sonidos = new SonidoHerramienta();
     public void setDurabilidad(int durabilidad){
         this.durabilidad = durabilidad;
     }

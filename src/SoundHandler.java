@@ -1,30 +1,20 @@
-// esta es la clase que controla los sonidos
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import java.io.File;
 import javafx.util.Duration;
+import java.util.HashMap;
+import java.util.Map;
+import javafx.event.EventHandler;
 
+public class SoundHandler implements EventHandler<SoundEvent> {
+	@Override
+	public void handle(SoundEvent event){
+		System.out.println("asd");
+		System.out.println(event.getFile());
 
-
-public class SoundHandler{
-	private	Media sound = new Media(new File("res/metal10.wav").toURI().toString());
-	private	MediaPlayer mediaPlayer = new MediaPlayer(sound);
-	private	Media sound2 = new Media(new File("res/swish_2.wav").toURI().toString());
-	private	MediaPlayer mediaPlayer2 = new MediaPlayer(sound2);
-	private	Media sound3 = new Media(new File("res/roto.mp3").toURI().toString());
-	private	MediaPlayer mediaPlayer3 = new MediaPlayer(sound3);
-
-	public void sonidoRoto(){
-		mediaPlayer3.seek(new Duration(0));
-		mediaPlayer3.play();
-	}
-	public void sonidoGolpe(){
+		Media sound = new Media(new File("res/" + event.getFile() +".wav").toURI().toString());
+		MediaPlayer mediaPlayer = new MediaPlayer(sound);
 		mediaPlayer.seek(new Duration(0));
 		mediaPlayer.play();
 	}
-	public void sonidoSwish(){
-		mediaPlayer2.seek(new Duration(0));
-		mediaPlayer2.play();
-	}
-
 }

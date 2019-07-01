@@ -1,6 +1,6 @@
 public abstract class Material implements Enfrentable, Almacenable{
     int durabilidad;
-
+    private Escuchable sonidos = new SonidoMaterial();
     public int durabilidad(){
         return durabilidad;
     }
@@ -44,8 +44,10 @@ public abstract class Material implements Enfrentable, Almacenable{
     }
 
     public boolean roto(){
-        if (durabilidad == 0)
+        if (durabilidad == 0){
+            sonidos.reproducirSonido();
             return true;
+        }
         return false;
     }
 }
