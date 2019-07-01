@@ -3,11 +3,18 @@ public abstract class Herramienta implements Enfrentable, Almacenable{
     protected int fuerza = 0;
     protected int durabilidad = 0;
     protected ReglaDeDesgaste desgaste;
-
+    protected EscuchadorEventosJuego escuchadorDeEventos;
     public void setDurabilidad(int durabilidad){
         this.durabilidad = durabilidad;
     }
-
+    public void setEscuchador(EscuchadorEventosJuego escuchador){
+        this.escuchadorDeEventos = escuchador;
+    }
+    public void golpearHerramienta(){
+        if(escuchadorDeEventos!=null){
+            escuchadorDeEventos.golpearHerramienta();
+        }
+    }
     public int durabilidad(){
         return this.durabilidad;
     }

@@ -1,3 +1,4 @@
 public interface Almacenable{
-	public abstract int durabilidad();
+	int durabilidad();
+    void setEscuchador(EscuchadorEventosJuego escuchador);
 }

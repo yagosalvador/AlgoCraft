@@ -1,11 +1,17 @@
 public class HachaDeMetal extends Hacha{
-	public HachaDeMetal(){
+	public HachaDeMetal(EscuchadorEventosJuego escuchador){
+		escuchadorDeEventos = escuchador;
 		this.durabilidad = 400;
 		this.fuerza = 10;
 		this.multiploDeDesgaste = 0.5;
 		this.desgaste = new DesgastePorMultiplo(this.multiploDeDesgaste);		
 	}
-
+	public HachaDeMetal(){
+		this.durabilidad = 400;
+		this.fuerza = 10;
+		this.multiploDeDesgaste = 0.5;
+		this.desgaste = new DesgastePorMultiplo(this.multiploDeDesgaste);
+	}
 	static public Receta getReceta(){
 		Material madera = new Madera();
 		Material metal = new Metal();

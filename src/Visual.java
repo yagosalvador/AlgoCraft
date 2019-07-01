@@ -24,13 +24,10 @@ import static javafx.scene.input.KeyEvent.KEY_PRESSED;
 import java.io.File;
 
 public class Visual extends Application {
-	//private Group root;
 	private Algocraft juego;
-	private PlayerView PlayerView;
-
 
 	public static void main(String[] args) {
-		Algocraft juego = new Algocraft();
+		//Algocraft juego = new Algocraft();
 		launch(args);
 	}
 
@@ -46,7 +43,8 @@ public class Visual extends Application {
 
 		// arrancar juego
 		Algocraft juego = new Algocraft(width/32,(height/32)-3);
-
+		EscuchadorEventosJuego soundHandler = new SoundHandler();
+		juego.añadirEscuchadorEventosJuego( soundHandler );
 		// crear objetos dibujables
 		Superficie suelo = new Superficie(width, height);
 		Superficie materiales = new Superficie(width, height);
@@ -56,9 +54,6 @@ public class Visual extends Application {
 		Group root = new Group(suelo.getCanvas(), materiales.getCanvas(), jugador.getCanvas(), inventario.getCanvas());
 
 		suelo.dibujarSuperficie("res/Pasto.png");
-		
-		//SONIDOS
-		SoundHandler controladorSonidos = new SoundHandler();
 		
 		//dibujar inventario
 		Vector inventarioPos = new Vector();
@@ -71,7 +66,7 @@ public class Visual extends Application {
 		primaryStage.show();
 
 		// cargar materiales
-		cargarMateriales(materiales);
+		cargarMateriales(materiales, juego);
 
 		Scene s = new Scene(root, width, height);
 		primaryStage.setScene(s);
@@ -116,16 +111,17 @@ public class Visual extends Application {
 							juego.jugador().vs(material);
 							//animacion golpe
 							if (!material.roto()) {
-								controladorSonidos.sonidoGolpe();
+								//controladorSonidos.sonidoGolpe();
 							} else {
-								controladorSonidos.sonidoRoto();
+								//controladorSonidos.sonidoRoto();
 								materiales.borrarPos(x,y);
 								juego.mapa().celda(x,y).vaciar();
 							}
 						}
 					}
 					else {
-						controladorSonidos.sonidoSwish();
+						soundHandler.errarAtaque();
+						//controladorSonidos.sonidoSwish();
 					}
 				}
 				if (event.getCode() == KeyCode.G) {
@@ -250,7 +246,7 @@ public class Visual extends Application {
 		inventario.dibujarEnPos("res/diamante.png", 10, height/32 - 1);
 		
 	}
-	private void cargarMateriales(Superficie materiales) {
+	private void cargarMateriales(Superficie materiales,Algocraft juego) {
 		Madera madera = new Madera();
 		Metal metal = new Metal();
 		Piedra piedra = new Piedra();

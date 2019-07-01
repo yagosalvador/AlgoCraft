@@ -1,13 +1,14 @@
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Jugador{
 	private Inventario inventario;
-	private Herramienta herramientaEquipada; //herramienta en mano
+	private Herramienta herramientaEquipada;
 	private MesaDeTrabajo mesa;
 	private Map<Integer, Material> materialesUbicados = new HashMap<>(9);
 	boolean cargaHerramienta;
-
+	EscuchadorEventosJuego escuchadorDeEventos;
 	public Jugador(){
 		this.mesa = new MesaDeTrabajo();
 		this.inventario = new Inventario();
@@ -62,7 +63,6 @@ public class Jugador{
 
 	public void ubicarMaterial(int posicion, Material material){
 		mesa.ubicarMaterial(posicion, material);
-
 		Material materialDevuelto = materialesUbicados.put(posicion,material);
 		if(materialDevuelto == null){
 			return;
@@ -72,7 +72,19 @@ public class Jugador{
 		}
 	}
 
-
+	public void construirHerramienta(EscuchadorEventosJuego escuchadorDeEventos){
+		Herramienta herramientaCreada = null;
+		try{
+			herramientaCreada = mesa.construirHerramienta(escuchadorDeEventos);
+		}catch(Exception errorNullPointer){
+			if(herramientaCreada == null){
+				devolverMaterialesAlInventario();
+				return;
+			}
+		}
+		almacenarElemento(herramientaCreada);
+	}
+	//Construye con controladorDeEventosNull
 	public void construirHerramienta(){
 		Herramienta herramientaCreada = null;
 		try{
@@ -84,13 +96,12 @@ public class Jugador{
 			}
 		}
 		almacenarElemento(herramientaCreada);
-
 	}
+
 	public void devolverMaterialesAlInventario(){
 		for(Map.Entry<Integer, Material> entry: materialesUbicados.entrySet()){
 			Integer posicion = entry.getKey();
 			inventario.agregarElemento(materialesUbicados.remove(posicion));
-
 		}
 	}
 
@@ -101,4 +112,9 @@ public class Jugador{
     public Inventario getInventario() {
 	    return inventario;
     }
+
+	public void añadirEscuchadorEventosJuego(EscuchadorEventosJuego escuchador) {
+		this.escuchadorDeEventos = escuchador;
+		this.inventario.usarElemento("class HachaDeMadera").setEscuchador(escuchador);
+	}
 }

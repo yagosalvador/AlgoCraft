@@ -2,12 +2,11 @@ public class Algocraft{
 	private Mapa mapa;
 	private Jugador jugador;
 	private Posicion posicionJugador;
+	private EscuchadorEventosJuego escuchadorDeEventos;
 
 	public Algocraft(){
 		mapa = new Mapa();
 		jugador = new Jugador();
-		//mapa.celda(0,0).ocupar(jugador);
-		//propuesta: mapa.agregarObjeto(0,0,jugador); (ver Mapa.java)
 		mapa.agregarJugador(0,0,jugador);
 		posicionJugador = new Posicion(0,0);
 	}
@@ -15,10 +14,9 @@ public class Algocraft{
 	public Algocraft(int width, int height){
 		mapa = new Mapa(width,height);
 		jugador = new Jugador();
-		//mapa.celda(0,0).ocupar(jugador);
-		//propuesta: mapa.agregarObjeto(0,0,jugador); (ver Mapa.java)
 		mapa.agregarJugador(0,0,jugador);
 		posicionJugador = new Posicion(0,0);
+
 	}
 
 	public Jugador jugador(){
@@ -33,7 +31,6 @@ public class Algocraft{
 		if(mapa.celda(x, y).ocupada()){
 			return;
 		}
-		//se desocupa la celda original (el jugador abandona su posicion para ocupar otra
 		mapa.celda(posicionJugador.getX(),posicionJugador.getY()).vaciar();
         mapa.agregarObjeto(x,y,jugador);
 		posicionJugador = new Posicion(x,y);
@@ -47,4 +44,10 @@ public class Algocraft{
 	}
 	public int getPosicionJugadorX(){return posicionJugador.getX();}
 	public int getPosicionJugadorY(){return posicionJugador.getY();}
+
+	public void añadirEscuchadorEventosJuego(EscuchadorEventosJuego escuchador){
+		this.escuchadorDeEventos = escuchador;
+		jugador.añadirEscuchadorEventosJuego(escuchador);
+		//mapa.añadirEscuchadorEventosJuego();
+	}
 }

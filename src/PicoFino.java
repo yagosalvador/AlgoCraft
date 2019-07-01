@@ -1,9 +1,16 @@
 public class PicoFino extends Pico{
-	public PicoFino(){
+	public PicoFino(EscuchadorEventosJuego escuchador){
+		escuchadorDeEventos = escuchador;
 		this.durabilidad = 1000;
 		this.fuerza = 20;
     	this.multiploDeDesgaste = 0.1;
     	this.desgaste = new DesgastePorMultiplo(this.multiploDeDesgaste);
+	}
+	public PicoFino(){
+		this.durabilidad = 1000;
+		this.fuerza = 20;
+		this.multiploDeDesgaste = 0.1;
+		this.desgaste = new DesgastePorMultiplo(this.multiploDeDesgaste);
 	}
 	public void desgastar(){
 		desgaste.desgastar(durabilidad,durabilidad);

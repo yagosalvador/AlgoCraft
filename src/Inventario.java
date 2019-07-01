@@ -5,19 +5,7 @@ import java.util.ArrayList;
 public class Inventario{
 	private Map<String, QueueAlmacenable> inventario = new HashMap<String, QueueAlmacenable>(11);
 
-	public Inventario(){/*
-		inventario.put("class Madera", new QueueAlmacenable());
-		inventario.put("class Piedra", new QueueAlmacenable());
-		inventario.put("class Metal", new QueueAlmacenable());
-		inventario.put("class Diamante", new QueueAlmacenable());
-		inventario.put("class HachaDeMadera", new QueueAlmacenable());
-		inventario.put("class HachaDePiedra", new QueueAlmacenable());
-		inventario.put("class HachaDeMetal", new QueueAlmacenable());
-		inventario.put("class PicoDeMadera", new QueueAlmacenable());
-		inventario.put("class PicoDePiedra", new QueueAlmacenable());
-		inventario.put("class PicoDeMetal", new QueueAlmacenable());
-		inventario.put("class PicoFino", new QueueAlmacenable());
-*/
+	public Inventario(){
 	}
 
 	public int size(){
@@ -25,7 +13,6 @@ public class Inventario{
 	}
 
 	public void agregarElemento(Almacenable almacenable){
-		
 		try{
 			inventario.get(almacenable.getClass().toString()).agregarElemento(almacenable);
 		}
@@ -33,8 +20,6 @@ public class Inventario{
 			inventario.put(almacenable.getClass().toString(), new QueueAlmacenable());
 			inventario.get(almacenable.getClass().toString()).agregarElemento(almacenable);
 		}
-		
-		//inventario.get(almacenable.getClass().toString()).agregarElemento(almacenable);
 	}
 
 	public int cantidadDeElemento(String clase){

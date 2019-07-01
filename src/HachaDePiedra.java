@@ -1,11 +1,17 @@
 public class HachaDePiedra extends Hacha{
+	public HachaDePiedra(EscuchadorEventosJuego escuchador){
+		escuchadorDeEventos = escuchador;
+		this.durabilidad = 200;
+		this.fuerza = 5;
+		this.multiploDeDesgaste = 1;
+		this.desgaste = new DesgastePorMultiplo(this.multiploDeDesgaste);
+	}
 	public HachaDePiedra(){
 		this.durabilidad = 200;
 		this.fuerza = 5;
 		this.multiploDeDesgaste = 1;
 		this.desgaste = new DesgastePorMultiplo(this.multiploDeDesgaste);
 	}
-
 	static public Receta getReceta(){
 		Material madera = new Madera();
 		Material piedra = new Piedra();
