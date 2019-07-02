@@ -63,7 +63,7 @@ public class Visual extends Application {
 		suelo.dibujarSuperficie("res/Pasto.png");
 
 		//dibujar inventario
-		Vector inventarioPos = new Vector();
+		//Vector inventarioPos = new Vector();
 		//controlador.dibujarInventario(suelo,inventario,inventarioPos,width,height);
 
 		// dibujar Jugador
@@ -80,8 +80,8 @@ public class Visual extends Application {
 
 		//Eventos posibles
 		DirectionHandler dirHandler = new DirectionHandler(jugador, controlador);
-		ActionHandler actionHandler = new ActionHandler(juego, jugador, materiales);
-		MouseHandler mouseHandler = new MouseHandler();
+		ActionHandler actionHandler = new ActionHandler(juego, jugador, materiales, inventario);
+		//MouseHandler mouseHandler = new MouseHandler();
 
 		s.addEventHandler(KEY_PRESSED, dirHandler);
 		s.addEventHandler(KEY_PRESSED, actionHandler);

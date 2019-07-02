@@ -2,17 +2,22 @@ import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
 
 public class MouseHandler implements EventHandler<MouseEvent> {
+    private Algocraft juego;
+
+    public MouseHandler(Algocraft game){
+        juego = game;
+    }
     @Override
     public void handle(MouseEvent mouse1) {
-        //podria verificarse un doble click o algo asi
-        /*int x = (int) (mouse1.getSceneX() / 32);
+        /*/podria verificarse un doble click o algo asi
+        int x = (int) (mouse1.getSceneX() / 32);
         int y = (int) (mouse1.getSceneY() / 32);
 
         if (posicionValidaDeInventario(x, y)) {
             if (juego.jugador().getInventario().cantidadDeElemento(inventarioPos.get(x).toString()) > 0) {
                 Almacenable item = juego.jugador().getInventario().sacarElemento(inventarioPos.get(x).toString());
                 //System.out.println("Agarre: " + item.getClass().toString());
-                inventario.dibujarEnPos("res/piedra.png", 0, 0);
+                //inventario.dibujarEnPos("res/piedra.png", 0, 0);
             }
         }
         if (x == 16 && y == 19) {
