@@ -11,16 +11,21 @@ public class Metal extends Material{
     public void vs(PicoDeMadera pico){ pico.vs(this); }
     @Override
     public void vs(PicoFino pico){
+        System.out.println(durabilidad);
+
         double fuerza = pico.fuerza();
         this.durabilidad -= fuerza;
     }
     @Override
     public void vs(PicoDeMetal pico){
+        System.out.println(durabilidad);
+
         double fuerza = pico.fuerza();
         this.durabilidad -= fuerza;
     }
     @Override
     public void vs(PicoDePiedra pico){
+        System.out.println(durabilidad);
         double fuerza = pico.fuerza();
         this.durabilidad -= fuerza;
     }

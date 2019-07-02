@@ -1,4 +1,5 @@
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -19,8 +20,16 @@ public class Jugador{
 	}
 
 	public void equiparHerramienta(Herramienta herramienta){
+		System.out.println(herramienta);
 		herramientaEquipada = herramienta;
 		cargaHerramienta = true;
+	}
+
+	public void equiparHerramienta(String str){
+		Almacenable almacenable = inventario.usarElemento(str);
+		if(almacenable instanceof Herramienta){
+			equiparHerramienta((Herramienta) almacenable);
+		}
 	}
 
 	public int cantidadDeElemento(String clase){
@@ -37,12 +46,12 @@ public class Jugador{
 
 	public void vs(Material material) {
 		if (!cargaHerramienta){
-			System.out.println("No lleva material");
+			System.out.println("No lleva herramienta");
 			return;
 		}
 		herramientaEquipada.vs(material);
 		if (herramientaEquipada.durabilidad() == 0){
-			herramientaEquipada = null;
+			sacarElemento(herramientaEquipada.getClass().getName());
 			cargaHerramienta = false;
 		}
 	}
@@ -50,8 +59,15 @@ public class Jugador{
 	public Herramienta getHerramientaEquipada() {
 		return herramientaEquipada;
 	}
+
 	public void ubicarMaterialEnMesaDeTrabajo(int posicion, String clase){
-		Material material = (Material) inventario.sacarElemento(clase);
+		Material material;
+		try{
+			material = (Material) inventario.sacarElemento(clase);
+		}
+		catch (Exception ClassCastException){
+				return;
+		}
 		if(material == null){
 			System.out.print("no hay mas "+clase);
 			return;
@@ -86,9 +102,13 @@ public class Jugador{
 	}
 
 	public void devolverMaterialesAlInventario(){
-		for(Map.Entry<Integer, Material> entry: materialesUbicados.entrySet()){
-			Integer posicion = entry.getKey();
-			inventario.agregarElemento(materialesUbicados.remove(posicion));
+		Iterator it = materialesUbicados.entrySet().iterator();
+		while (it.hasNext()) {
+			Map.Entry pair = (Map.Entry)it.next();
+			System.out.println(pair.getKey().getClass() + " = " + pair.getValue());
+			Almacenable material = (Almacenable) pair.getValue();
+			inventario.agregarElemento(material);
+			it.remove(); // para evitar ConcurrentModificationException
 		}
 	}
 

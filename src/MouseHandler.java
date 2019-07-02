@@ -1,4 +1,5 @@
 import javafx.event.EventHandler;
+import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 
 public class MouseHandler implements EventHandler<MouseEvent> {
@@ -11,31 +12,47 @@ public class MouseHandler implements EventHandler<MouseEvent> {
         juego = game;
     }
     @Override
-    public void handle(MouseEvent mouse1) {
+    public void handle(MouseEvent event) {
         //podria verificarse un doble click o algo asi
-        int x = (int) (mouse1.getSceneX() / 32);
-        int y = (int) (mouse1.getSceneY() / 32);
+        if( event.getButton() == MouseButton.PRIMARY ) {
+            int x = (int) (event.getSceneX() / 32);
+            int y = (int) (event.getSceneY() / 32);
 
-        if (posicionValidaDeInventario(x, y)) {
-            str = obtenerImagenDePosInventario(x,y);
-        }
-
-        if (posicionCrear(x,y)) {
-            System.out.println("Intenta crear");
-            //intenta crear
-            juego.jugador().construirHerramienta();
-            actualizarDibujoInventario(juego, inventario);
-            redibujarRecetario();
-        }
-        if (posicionValidaDeRecetario(x, y)) {
-            if(str != null) {
-                inventario.dibujarEnPos("res/"+str.toLowerCase()+".png", x, y);
-                int pos = convertirCoordenadasAPosicion(x,y);
-                juego.jugador().ubicarMaterialEnMesaDeTrabajo(pos, str);
+            if (posicionValidaDeInventario(x, y)) {
+                str = obtenerImagenDePosInventario(x, y);
             }
-            str = null;
+
+            if (posicionCrear(x, y)) {
+                System.out.println("Intenta crear");
+                //intenta crear
+                juego.jugador().construirHerramienta();
+                actualizarDibujoInventario(juego, inventario);
+                redibujarRecetario();
+            }
+            if (posicionValidaDeRecetario(x, y)) {
+                if (str != null) {
+                    inventario.dibujarEnPos("res/" + str.toLowerCase() + ".png", x, y);
+                    int pos = convertirCoordenadasAPosicion(x, y);
+                    juego.jugador().ubicarMaterialEnMesaDeTrabajo(pos, str);
+                }
+                str = null;
+            }
+        }
+        if( event.getButton() == MouseButton.SECONDARY ){
+            int x = (int) (event.getSceneX() / 32);
+            int y = (int) (event.getSceneY() / 32);
+
+            if (posicionValidaDeInventario(x, y)) {
+                str = obtenerImagenDePosInventario(x, y);
+            }
+
+            if (str != null){
+                juego.jugador().equiparHerramienta(str);
+            }
         }
     }
+
+
 
     public int convertirCoordenadasAPosicion(int x, int y){
         int height = ((int)(inventario.getCanvas().getHeight()/32)) - 3;

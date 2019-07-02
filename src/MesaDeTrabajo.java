@@ -24,6 +24,8 @@ public class MesaDeTrabajo{
         Herramienta herramienta = null;
         this.constructor = this.recetas.get(espacioDeTrabajo);
         herramienta = this.constructor.construir();
+        System.out.println(herramienta);
+        espacioDeTrabajo = new Receta();
         return herramienta;
     }
 
