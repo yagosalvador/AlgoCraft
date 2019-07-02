@@ -65,7 +65,7 @@ public class ActionHandler implements EventHandler<KeyEvent> {
         for (int i = 0; i < materialesAlmacenados.length; i++) {
             String str = "res/";
             str += materialesAlmacenados[i].toLowerCase() + ".png";
-            System.out.println(str);
+            //System.out.println(str);
             inventario.dibujarEnPos(str, i, (int) (inventario.getCanvas().getHeight() / 32) - 1);
         }
     }

@@ -67,6 +67,7 @@ public class Visual extends Application {
 		//dibujar inventario
 		//Vector inventarioPos = new Vector();
 		dibujarInventario(inventario, juego);
+		dibujarMesaDeTrabajo(inventario);
 
 		// dibujar Jugador
 		int x = juego.getPosicionJugadorX();
@@ -83,11 +84,11 @@ public class Visual extends Application {
 		//Eventos posibles
 		DirectionHandler dirHandler = new DirectionHandler(jugador, controlador);
 		ActionHandler actionHandler = new ActionHandler(juego, jugador, materiales, inventario);
-		//MouseHandler mouseHandler = new MouseHandler();
+		MouseHandler mouseHandler = new MouseHandler(juego, inventario);
 
 		s.addEventHandler(KEY_PRESSED, dirHandler);
 		s.addEventHandler(KEY_PRESSED, actionHandler);
-		//s.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseHandler);
+		s.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseHandler);
 	}
 	private void cargarMateriales(Superficie materiales, Mapa mapa) {
 
@@ -112,10 +113,23 @@ public class Visual extends Application {
 			for (int i = 0; i < materialesAlmacenados.length; i++) {
 				String str = "res/";
 				str += materialesAlmacenados[i].toLowerCase() + ".png";
-				System.out.println(str);
 				inventario.dibujarEnPos(str, i, (int) (inventario.getCanvas().getHeight() / 32) - 1);
 		//	}
 		}
+	}
+
+	private void dibujarMesaDeTrabajo(Superficie inventario){
+		int i,j,n1,n2;
+		for (i = ((int)(inventario.getCanvas().getWidth()/32))-1, n1 = 0; n1 < 3; i--, n1++) { //mesa de trabajo
+			for (j = ((int)(inventario.getCanvas().getHeight()/32))-1, n2 = 0; n2 < 3; j--, n2++) {
+				inventario.dibujarEnPos("res/recuadro.png", i, j);
+			}
+		}
+		j = ((int)(inventario.getCanvas().getHeight()/32))-1;
+		inventario.dibujarEnPos("res/recuadro.png", i, j);//boton crear
+		inventario.getCanvas().getGraphicsContext2D().setTextBaseline(VPos.CENTER);
+		inventario.getCanvas().getGraphicsContext2D().setTextAlign(TextAlignment.CENTER);
+		inventario.getCanvas().getGraphicsContext2D().fillText("Crear", i*32 +16, j*32+16, 28);
 	}
 
 }

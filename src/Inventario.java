@@ -35,7 +35,14 @@ public class Inventario{
 		}
 	}
 	public Almacenable sacarElemento(String clase){
-			return inventario.get(clase).sacarElemento();
+		Almacenable item;
+		try {
+			item = inventario.get(clase).sacarElemento();
+		}
+		catch (Exception errorNoHayMasMaterialDisponible){
+			return null;
+		}
+		return item;
 	}
 
 	public Almacenable usarElemento(String clase){

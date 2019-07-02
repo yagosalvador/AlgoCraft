@@ -37,6 +37,11 @@ public class Mapa{
 		Metal metal = new Metal();
 		Diamante diamante = new Diamante();
 		this.agregarObjeto(5,4,madera);
+		this.agregarObjeto(5,5,new Madera());
+		this.agregarObjeto(5,6,new Madera());
+		this.agregarObjeto(5,7,new Madera());
+		this.agregarObjeto(5,8,new Madera());
+
 		this.agregarObjeto(6,4,piedra);
 		this.agregarObjeto(7,4,metal);
 		this.agregarObjeto(8,4,diamante);
