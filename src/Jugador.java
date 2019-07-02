@@ -8,7 +8,6 @@ public class Jugador{
 	private MesaDeTrabajo mesa;
 	private Map<Integer, Material> materialesUbicados = new HashMap<>(9);
 	boolean cargaHerramienta;
-	EscuchadorEventosJuego escuchadorDeEventos;
 	public Jugador(){
 		this.mesa = new MesaDeTrabajo();
 		this.inventario = new Inventario();
@@ -72,19 +71,6 @@ public class Jugador{
 		}
 	}
 
-	public void construirHerramienta(EscuchadorEventosJuego escuchadorDeEventos){
-		Herramienta herramientaCreada = null;
-		try{
-			herramientaCreada = mesa.construirHerramienta(escuchadorDeEventos);
-		}catch(Exception errorNullPointer){
-			if(herramientaCreada == null){
-				devolverMaterialesAlInventario();
-				return;
-			}
-		}
-		almacenarElemento(herramientaCreada);
-	}
-	//Construye con controladorDeEventosNull
 	public void construirHerramienta(){
 		Herramienta herramientaCreada = null;
 		try{
@@ -112,9 +98,4 @@ public class Jugador{
     public Inventario getInventario() {
 	    return inventario;
     }
-
-	public void añadirEscuchadorEventosJuego(EscuchadorEventosJuego escuchador) {
-		this.escuchadorDeEventos = escuchador;
-		this.inventario.usarElemento("class HachaDeMadera").setEscuchador(escuchador);
-	}
 }

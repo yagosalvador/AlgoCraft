@@ -2,7 +2,6 @@ public class Algocraft{
 	private Mapa mapa;
 	private Jugador jugador;
 	private Posicion posicionJugador;
-	private EscuchadorEventosJuego escuchadorDeEventos;
 
 	public Algocraft(){
 		mapa = new Mapa();
@@ -44,10 +43,4 @@ public class Algocraft{
 	}
 	public int getPosicionJugadorX(){return posicionJugador.getX();}
 	public int getPosicionJugadorY(){return posicionJugador.getY();}
-
-	public void añadirEscuchadorEventosJuego(EscuchadorEventosJuego escuchador){
-		this.escuchadorDeEventos = escuchador;
-		jugador.añadirEscuchadorEventosJuego(escuchador);
-		//mapa.añadirEscuchadorEventosJuego();
-	}
 }

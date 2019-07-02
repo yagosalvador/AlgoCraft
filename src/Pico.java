@@ -2,7 +2,6 @@ public abstract class Pico extends Herramienta{
 	@Override
 	public void vs(Material rival){
 		rival.vs(this);
-		golpearHerramienta();
 	}
    	@Override
 	public void vs(Madera rival){ this.desgastar(); }

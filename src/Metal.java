@@ -1,12 +1,8 @@
 public class Metal extends Material{
-
     public Metal(){
         this.durabilidad = 50;
     }
-    public Metal(EscuchadorEventosJuego escuchador){
-        escuchadorDeEventos = escuchador;
-        this.durabilidad = 50;
-    }
+
     @Override
     public void vs(Hacha hacha){ hacha.vs(this); }
     @Override

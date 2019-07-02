@@ -2,7 +2,6 @@ public abstract class Hacha extends Herramienta{
 	@Override
 	public void vs(Material rival){
 		rival.vs(this);
-		golpearHerramienta();
 	}
 
    	@Override

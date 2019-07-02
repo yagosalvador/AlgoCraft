@@ -4,7 +4,6 @@ public class Mapa{
 	int width;
 	int height;
 	private ArrayList<ArrayList<Celda>> celdas = new ArrayList<ArrayList<Celda>>();
-	EscuchadorEventosJuego escuchadorDeEventos;
 	public Mapa(){
 		width = 20;
 		height = 20;

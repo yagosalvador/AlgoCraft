@@ -3,10 +3,7 @@ public class Diamante extends Material{
     public Diamante(){
         this.durabilidad = 100;
     }
-    public Diamante(EscuchadorEventosJuego escuchador){
-        escuchadorDeEventos = escuchador;
-        this.durabilidad = 100;
-    }
+
     @Override
     public void vs(Hacha hacha){ hacha.vs(this); }
     @Override
