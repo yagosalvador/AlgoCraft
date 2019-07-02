@@ -8,6 +8,7 @@ public class Jugador{
 	private MesaDeTrabajo mesa;
 	private Map<Integer, Material> materialesUbicados = new HashMap<>(9);
 	boolean cargaHerramienta;
+
 	public Jugador(){
 		this.mesa = new MesaDeTrabajo();
 		this.inventario = new Inventario();

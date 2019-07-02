@@ -31,7 +31,7 @@ public class ActionHandler implements EventHandler<KeyEvent> {
                 if (material != null && juego.jugador().cargaHerramienta()) {
                     juego.jugador().vs(material);
                     //animacion golpe
-                    if (!material.roto()) {
+                    if (!material.roto() || !juego.jugador().cargaHerramienta) {
                         //controladorSonidos.sonidoGolpe();
                     } else {
                         //controladorSonidos.sonidoRoto();
@@ -55,7 +55,6 @@ public class ActionHandler implements EventHandler<KeyEvent> {
                     juego.mapa().celda(x, y).vaciar();
                     dibujoInventario.add(material.getClass().getName());
                     String str = ("res/" + material.getClass().getName() + ".png").toLowerCase();
-                    //System.out.println(str);
                     actualizarDibujoInventario(juego, inventario);
                 }
             }
@@ -66,6 +65,7 @@ public class ActionHandler implements EventHandler<KeyEvent> {
         for (int i = 0; i < materialesAlmacenados.length; i++) {
             String str = "res/";
             str += materialesAlmacenados[i].toLowerCase() + ".png";
+            System.out.println(str);
             inventario.dibujarEnPos(str, i, (int) (inventario.getCanvas().getHeight() / 32) - 1);
         }
     }

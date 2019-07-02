@@ -11,7 +11,12 @@ public abstract class Material implements Enfrentable, Almacenable{
         return mismoTipo;
     }
     @Override
-    public void vs(Enfrentable rival){ rival.vs(this); }
+    public void vs(Enfrentable rival){
+        if(durabilidad <= 0){
+            return;
+        }
+        rival.vs(this);
+    }
     @Override
     public void vs(Herramienta rival){ rival.vs(this); }
     @Override
@@ -42,7 +47,7 @@ public abstract class Material implements Enfrentable, Almacenable{
     }
 
     public boolean roto(){
-        if (durabilidad == 0) {
+        if (durabilidad <= 0) {
             return true;
         }
         return false;

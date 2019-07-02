@@ -3,6 +3,7 @@ public abstract class Herramienta implements Enfrentable, Almacenable{
     protected int fuerza = 0;
     protected int durabilidad = 0;
     protected ReglaDeDesgaste desgaste;
+
     public void setDurabilidad(int durabilidad){
         this.durabilidad = durabilidad;
     }
@@ -22,7 +23,12 @@ public abstract class Herramienta implements Enfrentable, Almacenable{
         this.durabilidad = desgaste.desgastar(durabilidad,fuerza);
     }
     @Override
-    public void vs(Enfrentable rival){ rival.vs(this); }
+    public void vs(Enfrentable rival){
+        if(durabilidad <= 0){
+            return;
+        }
+        rival.vs(this);
+    }
     @Override
     public void vs(Material rival){ rival.vs(this); }
     @Override
@@ -39,4 +45,11 @@ public abstract class Herramienta implements Enfrentable, Almacenable{
     public void vs(PicoDeMetal unPico){ }
     @Override
     public void vs(PicoDePiedra unPico){ }
+
+    public boolean roto(){
+        if (durabilidad <= 0) {
+            return true;
+        }
+        return false;
+    }
 }
