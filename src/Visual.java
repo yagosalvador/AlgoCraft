@@ -23,6 +23,8 @@ import static javafx.application.Platform.exit;
 import static javafx.scene.input.KeyEvent.ANY;
 import static javafx.scene.input.KeyEvent.KEY_PRESSED;
 import java.io.File;
+import java.util.Set;
+
 
 public class Visual extends Application {
 	//private Group root;
@@ -64,7 +66,7 @@ public class Visual extends Application {
 
 		//dibujar inventario
 		//Vector inventarioPos = new Vector();
-		//controlador.dibujarInventario(suelo,inventario,inventarioPos,width,height);
+		dibujarInventario(inventario, juego);
 
 		// dibujar Jugador
 		int x = juego.getPosicionJugadorX();
@@ -88,11 +90,10 @@ public class Visual extends Application {
 		//s.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseHandler);
 	}
 	private void cargarMateriales(Superficie materiales, Mapa mapa) {
-		String str = "res/";
 
 		for (int i = 0; i < mapa.getWidth(); i++) {
 			for (int j = 0; j < mapa.getHeight(); j++) {
-				str = "res/";
+				String str = "res/";
 				Celda celda = mapa.celda(i, j);
 				if (celda.contenido() != null) {
 					str = str + celda.contenido().getClass().getName() + ".png";
@@ -100,6 +101,20 @@ public class Visual extends Application {
 					materiales.dibujarEnPos(str, i, j);
 				}
 			}
+		}
+	}
+	private void dibujarInventario(Superficie inventario, Algocraft juego){
+		for(int i = 0; i < 11; i++) {
+			inventario.dibujarEnPos("res/recuadro.png", i, (int)(inventario.getCanvas().getHeight()/32)-1);
+		}
+		//if(juego.jugador().getInventario().size() != 0) {
+			String[] materialesAlmacenados = juego.jugador().getInventario().getElementosAlmacenados();
+			for (int i = 0; i < materialesAlmacenados.length; i++) {
+				String str = "res/";
+				str += materialesAlmacenados[i].toLowerCase() + ".png";
+				System.out.println(str);
+				inventario.dibujarEnPos(str, i, (int) (inventario.getCanvas().getHeight() / 32) - 1);
+		//	}
 		}
 	}
 

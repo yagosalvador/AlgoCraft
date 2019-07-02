@@ -14,17 +14,17 @@ public class InventarioTest{
 		
 		//inventario.agregarAlmacenable(madera);
 		inventario.agregarElemento(madera);
-		int unaCantidad = inventario.cantidadDeElemento("class Madera");
+		int unaCantidad = inventario.cantidadDeElemento("Madera");
 		assertEquals(1, unaCantidad);
 
 		//inventario.agregarAlmacenable(madera);
 		inventario.agregarElemento(madera);
-		unaCantidad = inventario.cantidadDeElemento("class Madera");
+		unaCantidad = inventario.cantidadDeElemento("Madera");
 		assertEquals(2, unaCantidad);
 
 		//inventario.agregarAlmacenable(madera);
 		inventario.agregarElemento(madera);
-		unaCantidad = inventario.cantidadDeElemento("class Madera");
+		unaCantidad = inventario.cantidadDeElemento("Madera");
 		assertEquals(3, unaCantidad);
 	}
 	@Test
@@ -33,7 +33,7 @@ public class InventarioTest{
 		Material piedra = new Piedra();
 		//inventario.agregarAlmacenable(piedra);
 		inventario.agregarElemento(piedra);
-		int unaCantidad = inventario.cantidadDeElemento("class Piedra");
+		int unaCantidad = inventario.cantidadDeElemento("Piedra");
 		assertEquals(1, unaCantidad);
 	}
 	@Test
@@ -42,7 +42,7 @@ public class InventarioTest{
 		Material metal = new Metal();
 		//inventario.agregarAlmacenable(metal);
 		inventario.agregarElemento(metal);
-		int unaCantidad = inventario.cantidadDeElemento("class Metal");
+		int unaCantidad = inventario.cantidadDeElemento("Metal");
 		assertEquals(1, unaCantidad);
 	}
 	@Test
@@ -51,7 +51,7 @@ public class InventarioTest{
 		Material diamante = new Diamante();
 		//inventario.agregarAlmacenable(diamante);
 		inventario.agregarElemento(diamante);
-		int unaCantidad = inventario.cantidadDeElemento("class Diamante");
+		int unaCantidad = inventario.cantidadDeElemento("Diamante");
 		assertEquals(1, unaCantidad);
 	}
 	@Test
@@ -60,7 +60,7 @@ public class InventarioTest{
 		Herramienta hacha = new HachaDeMadera();
 		//inventario.agregarAlmacenable(hacha);
 		inventario.agregarElemento(hacha);
-		int unaCantidad = inventario.cantidadDeElemento("class HachaDeMadera");
+		int unaCantidad = inventario.cantidadDeElemento("HachaDeMadera");
 		assertEquals(1, unaCantidad);
 	}
 	
@@ -70,7 +70,7 @@ public class InventarioTest{
 		Herramienta hacha = new HachaDePiedra();
 		//inventario.agregarAlmacenable(hacha);
 		inventario.agregarElemento(hacha);
-		int unaCantidad = inventario.cantidadDeElemento("class HachaDePiedra");
+		int unaCantidad = inventario.cantidadDeElemento("HachaDePiedra");
 		assertEquals(1, unaCantidad);
 	}
 	@Test
@@ -79,7 +79,7 @@ public class InventarioTest{
 		Herramienta hacha = new HachaDeMetal();
 		//inventario.agregarAlmacenable(hacha);
 		inventario.agregarElemento(hacha);
-		int unaCantidad = inventario.cantidadDeElemento("class HachaDeMetal");
+		int unaCantidad = inventario.cantidadDeElemento("HachaDeMetal");
 		assertEquals(1, unaCantidad);
 	}
 	@Test
@@ -88,7 +88,7 @@ public class InventarioTest{
 		Herramienta pico = new PicoDeMadera();
 		//inventario.agregarAlmacenable(pico);
 		inventario.agregarElemento(pico);
-		int unaCantidad = inventario.cantidadDeElemento("class PicoDeMadera");
+		int unaCantidad = inventario.cantidadDeElemento("PicoDeMadera");
 		assertEquals(1, unaCantidad);
 	}
 	@Test
@@ -97,7 +97,7 @@ public class InventarioTest{
 		Herramienta pico = new PicoDePiedra();
 		//inventario.agregarAlmacenable(pico);
 		inventario.agregarElemento(pico);
-		int unaCantidad = inventario.cantidadDeElemento("class PicoDePiedra");
+		int unaCantidad = inventario.cantidadDeElemento("PicoDePiedra");
 		assertEquals(1, unaCantidad);
 	}
 	@Test
@@ -106,7 +106,7 @@ public class InventarioTest{
 		Herramienta pico = new PicoDeMetal();
 		//inventario.agregarAlmacenable(pico);
 		inventario.agregarElemento(pico);
-		int unaCantidad = inventario.cantidadDeElemento("class PicoDeMetal");
+		int unaCantidad = inventario.cantidadDeElemento("PicoDeMetal");
 		assertEquals(1, unaCantidad);
 	}
 	@Test
@@ -115,7 +115,7 @@ public class InventarioTest{
 		Herramienta pico = new PicoFino();
 		//inventario.agregarAlmacenable(pico);
 		inventario.agregarElemento(pico);
-		int unaCantidad = inventario.cantidadDeElemento("class PicoFino");
+		int unaCantidad = inventario.cantidadDeElemento("PicoFino");
 		assertEquals(1, unaCantidad);
 	}
 	@Test
@@ -125,14 +125,14 @@ public class InventarioTest{
 		Material madera = new Madera();
 		//inventario.agregarAlmacenable(hacha);
 		inventario.agregarElemento(unHacha);
-		inventario.durabilidadDeElemento("class HachaDeMadera");
-		Herramienta hacha = (Herramienta) inventario.usarElemento("class HachaDeMadera");
+		inventario.durabilidadDeElemento("HachaDeMadera");
+		Herramienta hacha = (Herramienta) inventario.usarElemento("HachaDeMadera");
 		int unaDurabilidad = hacha.durabilidad();
 		assertEquals(100, unaDurabilidad);
 
 		hacha.vs(madera);
 
-		hacha = (Herramienta) inventario.usarElemento("class HachaDeMadera");
+		hacha = (Herramienta) inventario.usarElemento("HachaDeMadera");
 		unaDurabilidad = hacha.durabilidad();
 		assertEquals(98, unaDurabilidad);
 

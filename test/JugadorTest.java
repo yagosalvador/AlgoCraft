@@ -6,11 +6,11 @@ public class JugadorTest{
 	public void inicializaciónDelJugadorTest(){
 		Jugador jugador = new Jugador();
 
-		int cantidadDeHachasDeMaderaEnInventario = jugador.cantidadDeElemento("class HachaDeMadera");
+		int cantidadDeHachasDeMaderaEnInventario = jugador.cantidadDeElemento("HachaDeMadera");
 		assertEquals(cantidadDeHachasDeMaderaEnInventario,1);
 		HachaDeMadera hacha = new HachaDeMadera();
 		HachaDeMadera unHacha = new HachaDeMadera();
-		unHacha = (HachaDeMadera) jugador.sacarElemento("class HachaDeMadera");
+		unHacha = (HachaDeMadera) jugador.sacarElemento("HachaDeMadera");
 		boolean equal = hacha.equals( unHacha );
 		assertEquals( true , equal );
 	}
@@ -20,13 +20,13 @@ public class JugadorTest{
 		Almacenable madera = new Madera();
 		jugador.almacenarElemento(madera);
 
-		assertEquals(1, jugador.cantidadDeElemento("class Madera"));
+		assertEquals(1, jugador.cantidadDeElemento("Madera"));
 
-		jugador.ubicarMaterialEnMesaDeTrabajo(0, "class Madera");
-		assertEquals(0, jugador.cantidadDeElemento("class Madera"));
+		jugador.ubicarMaterialEnMesaDeTrabajo(0, "Madera");
+		assertEquals(0, jugador.cantidadDeElemento("Madera"));
 		
 		jugador.construirHerramienta();
-		assertEquals(1, jugador.cantidadDeElemento("class Madera"));
+		assertEquals(1, jugador.cantidadDeElemento("Madera"));
 
 	}
 	@Test
@@ -43,20 +43,20 @@ public class JugadorTest{
 		jugador.almacenarElemento(madera3);
 		jugador.almacenarElemento(madera4);
 		jugador.almacenarElemento(madera5);
-		assertEquals(5, jugador.cantidadDeElemento("class Madera"));
+		assertEquals(5, jugador.cantidadDeElemento("Madera"));
 
-		assertEquals(1, jugador.cantidadDeElemento("class HachaDeMadera"));
+		assertEquals(1, jugador.cantidadDeElemento("HachaDeMadera"));
 
 
-		jugador.ubicarMaterialEnMesaDeTrabajo(0, "class Madera");
-		jugador.ubicarMaterialEnMesaDeTrabajo(1, "class Madera");
-		jugador.ubicarMaterialEnMesaDeTrabajo(3, "class Madera");
-		jugador.ubicarMaterialEnMesaDeTrabajo(4, "class Madera");
-		jugador.ubicarMaterialEnMesaDeTrabajo(7, "class Madera");
+		jugador.ubicarMaterialEnMesaDeTrabajo(0, "Madera");
+		jugador.ubicarMaterialEnMesaDeTrabajo(1, "Madera");
+		jugador.ubicarMaterialEnMesaDeTrabajo(3, "Madera");
+		jugador.ubicarMaterialEnMesaDeTrabajo(4, "Madera");
+		jugador.ubicarMaterialEnMesaDeTrabajo(7, "Madera");
 		jugador.construirHerramienta();
-		assertEquals(2, jugador.cantidadDeElemento("class HachaDeMadera"));
+		assertEquals(2, jugador.cantidadDeElemento("HachaDeMadera"));
 		
-		assertEquals(0, jugador.cantidadDeElemento("class Madera"));
+		assertEquals(0, jugador.cantidadDeElemento("Madera"));
 	}
 	@Test
 	public void reemplazarEnMesaDeTrabajoUnMaterialLoDevuelveTest(){
@@ -67,15 +67,15 @@ public class JugadorTest{
 
 		jugador.almacenarElemento(madera);
 		jugador.almacenarElemento(piedra);
-		assertEquals(1, jugador.cantidadDeElemento("class Madera"));
-		assertEquals(1, jugador.cantidadDeElemento("class Piedra"));
+		assertEquals(1, jugador.cantidadDeElemento("Madera"));
+		assertEquals(1, jugador.cantidadDeElemento("Piedra"));
 
-		jugador.ubicarMaterialEnMesaDeTrabajo(0, "class Madera");
-		assertEquals(0, jugador.cantidadDeElemento("class Madera"));
-		assertEquals(1, jugador.cantidadDeElemento("class Piedra"));
+		jugador.ubicarMaterialEnMesaDeTrabajo(0, "Madera");
+		assertEquals(0, jugador.cantidadDeElemento("Madera"));
+		assertEquals(1, jugador.cantidadDeElemento("Piedra"));
 
-		jugador.ubicarMaterialEnMesaDeTrabajo(0, "class Piedra");
-		assertEquals(1, jugador.cantidadDeElemento("class Madera"));
-		assertEquals(0, jugador.cantidadDeElemento("class Piedra"));
+		jugador.ubicarMaterialEnMesaDeTrabajo(0, "Piedra");
+		assertEquals(1, jugador.cantidadDeElemento("Madera"));
+		assertEquals(0, jugador.cantidadDeElemento("Piedra"));
 	}
 }

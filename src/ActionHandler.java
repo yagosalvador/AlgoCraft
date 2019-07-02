@@ -56,14 +56,17 @@ public class ActionHandler implements EventHandler<KeyEvent> {
                     dibujoInventario.add(material.getClass().getName());
                     String str = ("res/" + material.getClass().getName() + ".png").toLowerCase();
                     //System.out.println(str);
-                    supMateriales.dibujarEnPos(str, 0,0);
-                    //actualizarDibujoInventario();
+                    actualizarDibujoInventario(juego, inventario);
                 }
             }
         }
     }
-    //public void actualizarDibujoInventario(){
-    //    int tamaño = juego.jugador().getInventario().size();
-    //    inventario.dibujarEnPos();
-    //}
+    public void actualizarDibujoInventario(Algocraft juego, Superficie inventario){
+        String[] materialesAlmacenados = juego.jugador().getInventario().getElementosAlmacenados();
+        for (int i = 0; i < materialesAlmacenados.length; i++) {
+            String str = "res/";
+            str += materialesAlmacenados[i].toLowerCase() + ".png";
+            inventario.dibujarEnPos(str, i, (int) (inventario.getCanvas().getHeight() / 32) - 1);
+        }
+    }
 }
