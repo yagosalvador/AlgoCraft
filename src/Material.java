@@ -1,6 +1,6 @@
 public abstract class Material implements Enfrentable, Almacenable{
     int durabilidad;
-
+    EscuchadorEventosJuego escuchadorDeEventos;
     public int durabilidad(){
         return durabilidad;
     }
@@ -11,7 +11,9 @@ public abstract class Material implements Enfrentable, Almacenable{
             mismoTipo = false;
         return mismoTipo;
     }
-
+    public void setEscuchador(EscuchadorEventosJuego escuchador){
+        this.escuchadorDeEventos = escuchador;
+    }
     @Override
     public void vs(Enfrentable rival){ rival.vs(this); }
     @Override
@@ -44,8 +46,11 @@ public abstract class Material implements Enfrentable, Almacenable{
     }
 
     public boolean roto(){
-        if (durabilidad == 0)
+        if (durabilidad == 0) {
+            if(escuchadorDeEventos!=null)
+                escuchadorDeEventos.roto();
             return true;
+        }
         return false;
     }
 }

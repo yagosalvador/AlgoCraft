@@ -19,10 +19,17 @@ public class MesaDeTrabajo{
         return this.espacioDeTrabajo;
     }
 
+    public Herramienta construirHerramienta(EscuchadorEventosJuego escuchadorDeEventos){
+        Herramienta herramienta = null;
+        this.constructor = this.recetas.get(espacioDeTrabajo);
+        herramienta = this.constructor.construir(escuchadorDeEventos);
+        return herramienta;
+    }
+
     public Herramienta construirHerramienta(){
         Herramienta herramienta = null;
         this.constructor = this.recetas.get(espacioDeTrabajo);
-        herramienta = this.constructor.construir();
+        herramienta = this.constructor.construir(null);
         return herramienta;
     }
 

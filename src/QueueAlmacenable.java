@@ -14,10 +14,6 @@ public class QueueAlmacenable{
 
 	public Almacenable sacarElemento(){
 		return q.remove();
-		//return q.poll();
-		//poll se puede usar igual, ambos devuelven y sacan head
-		//remove() devuelve excepcion si vacio
-		//poll() devuelve null
 	}
 
 	public int size(){

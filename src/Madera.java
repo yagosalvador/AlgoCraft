@@ -2,7 +2,10 @@ public class Madera extends Material{
     public Madera(){
         this.durabilidad = 10;
     }
-
+    public Madera(EscuchadorEventosJuego escuchador){
+        escuchadorDeEventos = escuchador;
+        this.durabilidad = 10;
+    }
     @Override
     public void vs(Hacha unHacha){
         double fuerza = unHacha.fuerza();

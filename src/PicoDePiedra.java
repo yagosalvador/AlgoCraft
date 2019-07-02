@@ -1,9 +1,16 @@
 public class PicoDePiedra extends Pico{
+	public PicoDePiedra(EscuchadorEventosJuego escuchador){
+		escuchadorDeEventos = escuchador;
+		this.multiploDeDesgaste = 0.6667;
+		this.desgaste = new DesgastePorMultiplo(this.multiploDeDesgaste);
+		this.durabilidad = 200;
+		this.fuerza = 4;
+	}
 	public PicoDePiedra(){
-    	this.multiploDeDesgaste = 0.6667;
-    	this.desgaste = new DesgastePorMultiplo(this.multiploDeDesgaste);
-    	this.durabilidad = 200;
-    	this.fuerza = 4;
+		this.multiploDeDesgaste = 0.6667;
+		this.desgaste = new DesgastePorMultiplo(this.multiploDeDesgaste);
+		this.durabilidad = 200;
+		this.fuerza = 4;
 	}
 
 	static public Receta getReceta(){

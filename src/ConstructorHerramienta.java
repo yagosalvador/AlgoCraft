@@ -1,3 +1,3 @@
 public interface ConstructorHerramienta{
-    Herramienta construir();
+    Herramienta construir(EscuchadorEventosJuego escuchadorDeEventos);
 }

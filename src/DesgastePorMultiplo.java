@@ -1,7 +1,5 @@
 public class DesgastePorMultiplo implements ReglaDeDesgaste{
-
     private double multiplo;
-    
     public DesgastePorMultiplo(double multiplo){ this.multiplo = multiplo; }
 
     @Override

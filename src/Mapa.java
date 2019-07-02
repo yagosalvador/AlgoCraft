@@ -1,15 +1,13 @@
 import java.util.ArrayList;
 
-
 public class Mapa{
 	int width;
 	int height;
 	private ArrayList<ArrayList<Celda>> celdas = new ArrayList<ArrayList<Celda>>();
-
+	EscuchadorEventosJuego escuchadorDeEventos;
 	public Mapa(){
 		width = 20;
 		height = 20;
-		//inicializa las celdas
 		for(int i=0; i < width;i++){
 			ArrayList<Celda> filas = new ArrayList<Celda>();
 			celdas.add(filas);
@@ -17,12 +15,7 @@ public class Mapa{
 				filas.add(new Celda());
 			}
 		}
-
-		//y luego las llena con lo que haga falta
 		cargarMateriales();
-
-		//System.out.println(celdas.size());
-		// celdas.get(i).get(j) es la celda (i,j)
 	}
 
 	public Mapa(int w, int h){
@@ -36,11 +29,7 @@ public class Mapa{
 				filas.add(new Celda());
 			}
 		}
-		//y luego las llena con lo que haga falta
 		cargarMateriales();
-
-		//System.out.println(celdas.size());
-		// celdas.get(i).get(j) es la celda (i,j)
 	}
 
 	public void cargarMateriales() {
@@ -48,9 +37,6 @@ public class Mapa{
 		Piedra piedra = new Piedra();
 		Metal metal = new Metal();
 		Diamante diamante = new Diamante();
-		// cargar la capa de materiales
-		//se podria hacer a partir de un archivo
-		//por ahora va arbitrario para los tests
 		this.agregarObjeto(5,4,madera);
 		this.agregarObjeto(6,4,piedra);
 		this.agregarObjeto(7,4,metal);
