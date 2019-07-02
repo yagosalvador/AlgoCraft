@@ -27,7 +27,6 @@ import java.io.File;
 public class Visual extends Application {
 	//private Group root;
 	private Algocraft juego;
-	private PlayerView PlayerView;
 
 
 	public static void main(String[] args) {
@@ -82,33 +81,26 @@ public class Visual extends Application {
 		//Eventos posibles
 		DirectionHandler dirHandler = new DirectionHandler(jugador, controlador);
 		ActionHandler actionHandler = new ActionHandler(juego, jugador, materiales);
+		MouseHandler mouseHandler = new MouseHandler();
+
 		s.addEventHandler(KEY_PRESSED, dirHandler);
 		s.addEventHandler(KEY_PRESSED, actionHandler);
+		//s.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseHandler);
 	}
 	private void cargarMateriales(Superficie materiales, Mapa mapa) {
-		Madera madera = new Madera();
-		Metal metal = new Metal();
-		Piedra piedra = new Piedra();
-		Diamante diamante = new Diamante();
+		String str = "res/";
 
 		for (int i = 0; i < mapa.getWidth(); i++) {
 			for (int j = 0; j < mapa.getHeight(); j++) {
+				str = "res/";
 				Celda celda = mapa.celda(i, j);
 				if (celda.contenido() != null) {
-					if (madera.getClass() == celda.contenido().getClass()) {
-						materiales.dibujarEnPos("res/madera.png", i, j);
-					}
-					if (diamante.getClass() == celda.contenido().getClass()) {
-						materiales.dibujarEnPos("res/diamante.png", i, j);
-					}
-					if (piedra.getClass() == celda.contenido().getClass()) {
-						materiales.dibujarEnPos("res/piedra.png", i, j);
-					}
-					if (metal.getClass() == celda.contenido().getClass()) {
-						materiales.dibujarEnPos("res/metal.png", i, j);
-					}
+					str = str + celda.contenido().getClass().getName() + ".png";
+					str = str.toLowerCase();
+					materiales.dibujarEnPos(str, i, j);
 				}
 			}
 		}
 	}
+
 }

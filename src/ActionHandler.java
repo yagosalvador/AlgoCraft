@@ -29,16 +29,16 @@ public class ActionHandler implements EventHandler<KeyEvent> {
                     juego.jugador().vs(material);
                     //animacion golpe
                     if (!material.roto()) {
-                        controladorSonidos.sonidoGolpe();
+                        //controladorSonidos.sonidoGolpe();
                     } else {
-                        controladorSonidos.sonidoRoto();
+                        //controladorSonidos.sonidoRoto();
                         supMateriales.borrarPos(x,y);
                         juego.mapa().celda(x,y).vaciar();
                     }
                 }
             }
             else {
-                controladorSonidos.sonidoSwish();
+                //controladorSonidos.sonidoSwish();
             }
         }
         if (event.getCode() == KeyCode.G) {
