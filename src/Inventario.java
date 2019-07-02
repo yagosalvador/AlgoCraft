@@ -17,7 +17,6 @@ public class Inventario{
 	}
 
 	public void agregarElemento(Almacenable almacenable){
-		System.out.println("El almacenable recibido es: "+almacenable);
 		try{
 			inventario.get(almacenable.getClass().getName()).agregarElemento(almacenable);
 		}

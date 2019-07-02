@@ -20,7 +20,6 @@ public class Jugador{
 	}
 
 	public void equiparHerramienta(Herramienta herramienta){
-		System.out.println(herramienta);
 		herramientaEquipada = herramienta;
 		cargaHerramienta = true;
 	}
@@ -105,7 +104,6 @@ public class Jugador{
 		Iterator it = materialesUbicados.entrySet().iterator();
 		while (it.hasNext()) {
 			Map.Entry pair = (Map.Entry)it.next();
-			System.out.println(pair.getKey().getClass() + " = " + pair.getValue());
 			Almacenable material = (Almacenable) pair.getValue();
 			inventario.agregarElemento(material);
 			it.remove(); // para evitar ConcurrentModificationException

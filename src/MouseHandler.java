@@ -23,7 +23,6 @@ public class MouseHandler implements EventHandler<MouseEvent> {
             }
 
             if (posicionCrear(x, y)) {
-                System.out.println("Intenta crear");
                 //intenta crear
                 juego.jugador().construirHerramienta();
                 actualizarDibujoInventario(juego, inventario);
