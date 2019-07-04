@@ -35,11 +35,13 @@ public class ActionHandler implements EventHandler<KeyEvent> {
                     if (!material.roto() || !juego.jugador().cargaHerramienta) {
                         juego.jugador().vs(material);
                         escuchadorEventos.golpearHerramienta();
+                        if(!juego.jugador().cargaHerramienta){
+                            actualizarDibujoInventario();
+                        }
                     } else if(material.roto()){
                         escuchadorEventos.roto();
                         supMateriales.borrarPos(x, y);
-                        String str = material.getClass().getName().toLowerCase()+"Material.png";
-                        System.out.println(str); //imprime maderaMaterial.png
+                        String str = "res/"+material.getClass().getName().toLowerCase()+"Material.png";
                         supMateriales.dibujarEnPos(str, x, y);
                     }
                 }
@@ -60,20 +62,30 @@ public class ActionHandler implements EventHandler<KeyEvent> {
                     juego.mapa().celda(x, y).vaciar();
                     dibujoInventario.add(material.getClass().getName());
                     String str = ("res/" + material.getClass().getName() + ".png").toLowerCase();
-                    actualizarDibujoInventario(juego, supMateriales);
+                    actualizarDibujoInventario(/*juego, supMateriales*/);
                 }
             }
         }
     }
-    public void actualizarDibujoInventario(Algocraft juego, Superficie supMateriales){
-
+    public void actualizarDibujoInventario(/*Algocraft juego, Superficie inventario*/){
+        for(int j = 0; j < 11; j++) {
+            inventario.borrarPos(j, (int)(inventario.getCanvas().getHeight()/32)-1);
+        }
+        for(int i = 0; i < 11; i++) {
+            inventario.dibujarEnPos("res/recuadro.png", i, (int)(inventario.getCanvas().getHeight()/32)-1);
+        }
         String[] materialesAlmacenados = juego.jugador().getInventario().getElementosAlmacenados();
         for (int i = 0; i < materialesAlmacenados.length; i++) {
-            String str = "res/";
-            str += materialesAlmacenados[i].toLowerCase() + ".png";
             int cantidad = juego.jugador().getInventario().cantidadDeElemento(materialesAlmacenados[i]);
-            supMateriales.dibujarAlmacenableEnPos(str, i, (int) (supMateriales.getCanvas().getHeight() / 32) - 1, cantidad);
-
+            if(cantidad == 0 ){
+                inventario.borrarPos(i,(int) (inventario.getCanvas().getHeight() / 32) - 1);
+                inventario.dibujarEnPos("res/recuadro.png", i, (int)(inventario.getCanvas().getHeight()/32)-1);
+            }
+            else {
+                String str = "res/";
+                str += materialesAlmacenados[i].toLowerCase() + ".png";
+                inventario.dibujarEnPos(str, i, (int) (supMateriales.getCanvas().getHeight() / 32) - 1);
+            }
         }
     }
 }
