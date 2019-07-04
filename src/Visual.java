@@ -106,14 +106,22 @@ public class Visual extends Application {
 	}
 	private void dibujarInventario(Superficie inventario, Algocraft juego){
 		for(int i = 0; i < 11; i++) {
-			inventario.dibujarEnPos("res/recuadro.png", i, (int)(inventario.getCanvas().getHeight()/32)-1);
+			int j = (int) (inventario.getCanvas().getHeight() / 32) - 1;
+			inventario.dibujarEnPos("res/cantidades.png",i,j-1);
+			inventario.dibujarEnPos("res/recuadro.png", i, j);
 		}
 		//if(juego.jugador().getInventario().size() != 0) {
 			String[] materialesAlmacenados = juego.jugador().getInventario().getElementosAlmacenados();
 			for (int i = 0; i < materialesAlmacenados.length; i++) {
 				String str = "res/";
 				str += materialesAlmacenados[i].toLowerCase() + ".png";
-				inventario.dibujarEnPos(str, i, (int) (inventario.getCanvas().getHeight() / 32) - 1);
+				int j = (int) (inventario.getCanvas().getHeight() / 32) - 1;
+				inventario.dibujarEnPos(str, i, j);
+				int num = juego.jugador().cantidadDeElemento(materialesAlmacenados[i]);
+				inventario.dibujarEnPos("res/cantidades.png",i,j-1);
+				inventario.getCanvas().getGraphicsContext2D().setTextBaseline(VPos.CENTER);
+				inventario.getCanvas().getGraphicsContext2D().setTextAlign(TextAlignment.CENTER);
+				inventario.getCanvas().getGraphicsContext2D().fillText(String.valueOf(num), i*32 + 16, j*32 - 10, 28);
 		//	}
 		}
 	}

@@ -1,5 +1,7 @@
 import javafx.event.EventHandler;
+import javafx.geometry.VPos;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.text.TextAlignment;
 
 public class MouseHandler implements EventHandler<MouseEvent> {
     private Algocraft juego;
@@ -82,14 +84,23 @@ public class MouseHandler implements EventHandler<MouseEvent> {
     }
     public void actualizarDibujoInventario(Algocraft juego, Superficie inventario){
         for(int i = 0; i < 11; i++) {
-            inventario.dibujarEnPos("res/recuadro.png", i, (int)(inventario.getCanvas().getHeight()/32)-1);
+            int j = (int) (inventario.getCanvas().getHeight() / 32) - 1;
+            inventario.dibujarEnPos("res/cantidades.png",i,j-1);
+            inventario.dibujarEnPos("res/recuadro.png", i, j);
         }
+
         String[] materialesAlmacenados = juego.jugador().getInventario().getElementosAlmacenados();
         for (int i = 0; i < materialesAlmacenados.length; i++) {
             String str = "res/";
             str += materialesAlmacenados[i].toLowerCase() + ".png";
-            System.out.println(str);
-            inventario.dibujarEnPos(str, i, (int) (inventario.getCanvas().getHeight() / 32) - 1);
+            //System.out.println(str);
+            int num = juego.jugador().cantidadDeElemento(materialesAlmacenados[i]);
+            int j = (int) (inventario.getCanvas().getHeight() / 32) - 1;
+            inventario.dibujarEnPos("res/cantidades.png",i,j-1);
+            inventario.dibujarEnPos(str, i, j);
+            inventario.getCanvas().getGraphicsContext2D().setTextBaseline(VPos.CENTER);
+            inventario.getCanvas().getGraphicsContext2D().setTextAlign(TextAlignment.CENTER);
+            inventario.getCanvas().getGraphicsContext2D().fillText(String.valueOf(num), i*32+16, j*32-10, 28);
         }
     }
 
