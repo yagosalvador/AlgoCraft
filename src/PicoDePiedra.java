@@ -6,7 +6,11 @@ public class PicoDePiedra extends Pico{
 		this.fuerza = 4;
 	}
 	@Override
-	public void vs(Metal rival){ rival.vs(this); }
+	public void vs(Metal rival){
+		rival.vs(this);
+		this.desgastar();
+	}
+
 	static public Receta getReceta(){
 		Material madera = new Madera();
 		Material piedra = new Piedra();

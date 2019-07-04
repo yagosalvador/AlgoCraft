@@ -5,7 +5,7 @@ public class InicializacionDelJuegoTest{
 	@Test
 	public void InicializacionJuegoTest(){
 		// crear algocraft y corroborar lo anterior
-		Algocraft juego = new Algocraft();
+		Algocraft juego = new Algocraft(20,20);
 		
 		// corroborar que se crea el jugador en el mapa en la pos 0,0
 		Jugador jugTest = new Jugador();

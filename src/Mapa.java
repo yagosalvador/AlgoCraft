@@ -14,7 +14,6 @@ public class Mapa{
 				filas.add(new Celda());
 			}
 		}
-		cargarMateriales();
 	}
 
 	public Mapa(int w, int h){

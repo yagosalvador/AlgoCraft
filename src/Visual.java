@@ -1,4 +1,3 @@
-import com.sun.javafx.collections.MappingChange;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.geometry.Rectangle2D;
