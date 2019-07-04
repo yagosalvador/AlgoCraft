@@ -1,5 +1,3 @@
-//Probar cambiando el root a Group, 
-
 import com.sun.javafx.collections.MappingChange;
 import javafx.application.Application;
 import javafx.event.EventHandler;
@@ -64,10 +62,17 @@ public class Visual extends Application {
 		root.autoSizeChildrenProperty();
 		suelo.dibujarSuperficie("res/Pasto.png");
 
+		//Eventos posibles
+		InventarioHandler invHandler = new InventarioHandler(juego, inventario);
+		RecetarioHandler recetarioHandler = new RecetarioHandler(juego, inventario);
+		EscuchadorEventosJuego soundHandler = new SoundHandler();
+		DirectionHandler dirHandler = new DirectionHandler(jugador, controlador);
+		ActionHandler actionHandler = new ActionHandler(juego, soundHandler, jugador, materiales, invHandler);
+		MouseHandler mouseHandler = new MouseHandler(juego, invHandler, recetarioHandler);
 		//dibujar inventario
 		//Vector inventarioPos = new Vector();
-		dibujarInventario(inventario, juego);
-		dibujarMesaDeTrabajo(inventario);
+		invHandler.dibujarInventario();
+		recetarioHandler.dibujarMesaDeTrabajo();
 
 		// dibujar Jugador
 		int x = juego.getPosicionJugadorX();
@@ -80,12 +85,6 @@ public class Visual extends Application {
 
 		// cargar materiales
 		cargarMateriales(materiales, juego.mapa());
-
-		//Eventos posibles
-		EscuchadorEventosJuego soundHandler = new SoundHandler();
-		DirectionHandler dirHandler = new DirectionHandler(jugador, controlador);
-		ActionHandler actionHandler = new ActionHandler(juego, soundHandler, jugador, materiales, inventario);
-		MouseHandler mouseHandler = new MouseHandler(juego, inventario);
 
 		s.addEventHandler(KEY_PRESSED, dirHandler);
 		s.addEventHandler(KEY_PRESSED, actionHandler);
@@ -105,40 +104,4 @@ public class Visual extends Application {
 			}
 		}
 	}
-	private void dibujarInventario(Superficie inventario, Algocraft juego){
-		for(int i = 0; i < 11; i++) {
-			int j = (int) (inventario.getCanvas().getHeight() / 32) - 1;
-			inventario.dibujarEnPos("res/cantidades.png",i,j-1);
-			inventario.dibujarEnPos("res/recuadro.png", i, j);
-		}
-		//if(juego.jugador().getInventario().size() != 0) {
-			String[] materialesAlmacenados = juego.jugador().getInventario().getElementosAlmacenados();
-			for (int i = 0; i < materialesAlmacenados.length; i++) {
-				String str = "res/";
-				str += materialesAlmacenados[i].toLowerCase() + ".png";
-				int j = (int) (inventario.getCanvas().getHeight() / 32) - 1;
-				inventario.dibujarEnPos(str, i, j);
-				int num = juego.jugador().cantidadDeElemento(materialesAlmacenados[i]);
-				inventario.dibujarEnPos("res/cantidades.png",i,j-1);
-				inventario.getCanvas().getGraphicsContext2D().setTextBaseline(VPos.CENTER);
-				inventario.getCanvas().getGraphicsContext2D().setTextAlign(TextAlignment.CENTER);
-				inventario.getCanvas().getGraphicsContext2D().fillText(String.valueOf(num), i*32 + 16, j*32 - 10, 28);
-		//	}
-		}
-	}
-
-	private void dibujarMesaDeTrabajo(Superficie inventario){
-		int i,j,n1,n2;
-		for (i = ((int)(inventario.getCanvas().getWidth()/32))-1, n1 = 0; n1 < 3; i--, n1++) { //mesa de trabajo
-			for (j = ((int)(inventario.getCanvas().getHeight()/32))-1, n2 = 0; n2 < 3; j--, n2++) {
-				inventario.dibujarEnPos("res/recuadro.png", i, j);
-			}
-		}
-		j = ((int)(inventario.getCanvas().getHeight()/32))-1;
-		inventario.dibujarEnPos("res/recuadro.png", i, j);//boton crear
-		inventario.getCanvas().getGraphicsContext2D().setTextBaseline(VPos.CENTER);
-		inventario.getCanvas().getGraphicsContext2D().setTextAlign(TextAlignment.CENTER);
-		inventario.getCanvas().getGraphicsContext2D().fillText("Crear", i*32 +16, j*32+16, 28);
-	}
-
 }
