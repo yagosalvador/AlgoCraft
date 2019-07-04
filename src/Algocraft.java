@@ -40,7 +40,11 @@ public class Algocraft{
 		if (x >= this.mapa().getWidth() || x < 0 || y >= this.mapa().getHeight() || y < 0)
 			return;
 		actualizarPosicionJugador(x, y);
+		jugador.setDireccionMirada(direccion);
 	}
 	public int getPosicionJugadorX(){return posicionJugador.getX();}
 	public int getPosicionJugadorY(){return posicionJugador.getY();}
+	public Direccion getDireccionMirada(){
+		return jugador.getDireccionMirada();
+	}
 }

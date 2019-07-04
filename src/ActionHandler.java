@@ -3,15 +3,13 @@ import javafx.geometry.VPos;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.text.TextAlignment;
-
 import java.util.Vector;
-
 import static javafx.application.Platform.exit;
 
 public class ActionHandler implements EventHandler<KeyEvent> {
     private Algocraft juego;
     private Superficie supJugador, supMateriales, inventario;
-    private EscuchadorEventosJuego escuchadorEventos = new SoundHandler();
+    private EscuchadorEventosJuego escuchadorEventos;
     private Vector dibujoInventario = new Vector();
 
     public ActionHandler(Algocraft algocraft, EscuchadorEventosJuego escuchador,
@@ -28,19 +26,26 @@ public class ActionHandler implements EventHandler<KeyEvent> {
             exit();
         }
         if (event.getCode() == KeyCode.SPACE) {
-            Direccion mirandoDireccion = new DireccionAbajo();
-            int x = juego.getPosicionJugadorX() + mirandoDireccion.getX();
-            int y = juego.getPosicionJugadorY() + mirandoDireccion.getY();
+            //Direccion mirandoDireccion = new DireccionAbajo();
+            //int x = juego.getPosicionJugadorX() + mirandoDireccion.getX();
+            //int y = juego.getPosicionJugadorY() + mirandoDireccion.getY();
+            int x = juego.getPosicionJugadorX() + juego.getDireccionMirada().getX();
+            int y = juego.getPosicionJugadorY() + juego.getDireccionMirada().getY();
             if (juego.mapa().celda(x, y).ocupada() && juego.jugador().cargaHerramienta()) {
                 Material material = (Material) juego.mapa().celda(x, y).contenido();
                 if (material != null && juego.jugador().cargaHerramienta()) {
-                    juego.jugador().vs(material);
                     //animacion golpe
                     if (!material.roto() || !juego.jugador().cargaHerramienta) {
+                        juego.jugador().vs(material);
                         escuchadorEventos.golpearHerramienta();
+                        if(!juego.jugador().cargaHerramienta){
+                        actualizarDibujoInventario();
+                        }
                     } else {
                         escuchadorEventos.roto();
                         supMateriales.borrarPos(x, y);
+                        String str = "res/"+material.getClass().getName().toLowerCase()+"Material.png";
+                        supMateriales.dibujarEnPos(str, x, y);
                     }
                 }
             } else {
@@ -48,9 +53,11 @@ public class ActionHandler implements EventHandler<KeyEvent> {
             }
         }
         if (event.getCode() == KeyCode.G) {
-            Direccion mirandoDireccion = new DireccionAbajo();
-            int x = juego.getPosicionJugadorX() + mirandoDireccion.getX();
-            int y = juego.getPosicionJugadorY() + mirandoDireccion.getY();
+            //Direccion mirandoDireccion = new DireccionAbajo();
+            //int x = juego.getPosicionJugadorX() + mirandoDireccion.getX();
+            //int y = juego.getPosicionJugadorY() + mirandoDireccion.getY();
+            int x = juego.getPosicionJugadorX() + juego.getDireccionMirada().getX();
+            int y = juego.getPosicionJugadorY() + juego.getDireccionMirada().getY();
             if (juego.mapa().celda(x, y).ocupada()) {
                 Material material = (Material) juego.mapa().celda(x, y).contenido();
                 if (material.roto()) {
@@ -60,14 +67,27 @@ public class ActionHandler implements EventHandler<KeyEvent> {
                     juego.mapa().celda(x, y).vaciar();
                     dibujoInventario.add(material.getClass().getName());
                     String str = ("res/" + material.getClass().getName() + ".png").toLowerCase();
-                    actualizarDibujoInventario(juego, inventario);
+                    actualizarDibujoInventario();
                 }
             }
         }
     }
-    public void actualizarDibujoInventario(Algocraft juego, Superficie inventario){
+    public void actualizarDibujoInventario(/*Algocraft juego, Superficie inventario*/){
+        for(int j = 0; j < 11; j++) {
+            inventario.borrarPos(j, (int)(inventario.getCanvas().getHeight()/32)-1);
+        }
+        for(int i = 0; i < 11; i++) {
+            inventario.dibujarEnPos("res/recuadro.png", i, (int)(inventario.getCanvas().getHeight()/32)-1);
+        }
+
         String[] materialesAlmacenados = juego.jugador().getInventario().getElementosAlmacenados();
         for (int i = 0; i < materialesAlmacenados.length; i++) {
+            int cantidad = juego.jugador().getInventario().cantidadDeElemento(materialesAlmacenados[i]);
+            if(cantidad == 0 ){
+                inventario.borrarPos(i,(int) (inventario.getCanvas().getHeight() / 32) - 1);
+                inventario.dibujarEnPos("res/recuadro.png", i, (int)(inventario.getCanvas().getHeight()/32)-1);
+            }
+
             String str = "res/";
             str += materialesAlmacenados[i].toLowerCase() + ".png";
             //System.out.println(str);
@@ -80,4 +100,20 @@ public class ActionHandler implements EventHandler<KeyEvent> {
             inventario.getCanvas().getGraphicsContext2D().fillText(String.valueOf(num), i*32 + 16, j*32 - 10, 28);
         }
     }
+/*
+    public void actualizarDibujoInventario(Algocraft juego, Superficie inventario){
+
+        for (int i = 0; i < materialesAlmacenados.length; i++) {
+            int cantidad = juego.jugador().getInventario().cantidadDeElemento(materialesAlmacenados[i]);
+            if(cantidad == 0 ){
+                inventario.borrarPos(i,(int) (inventario.getCanvas().getHeight() / 32) - 1);
+                inventario.dibujarEnPos("res/recuadro.png", i, (int)(inventario.getCanvas().getHeight()/32)-1);
+            }
+            else {
+                String str = "res/";
+                str += materialesAlmacenados[i].toLowerCase() + ".png";
+                inventario.dibujarEnPos(str, i, (int) (supMateriales.getCanvas().getHeight() / 32) - 1);
+            }
+        }
+    }*/
 }

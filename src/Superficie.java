@@ -1,6 +1,8 @@
+import javafx.geometry.VPos;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
+import javafx.scene.text.TextAlignment;
 
 public class Superficie extends Canvas {
     Canvas lienzo;
@@ -24,7 +26,7 @@ public class Superficie extends Canvas {
 
     public void dibujarEnPos(String str, int pos_x, int pos_y){
         Tile recuadro = new Tile();
-
+        recuadro.borrar(lienzo,pos_x,pos_y);
         recuadro.dibujar(lienzo,str,pos_x,pos_y);
 
     }

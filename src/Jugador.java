@@ -9,7 +9,7 @@ public class Jugador{
 	private MesaDeTrabajo mesa;
 	private Map<Integer, Material> materialesUbicados = new HashMap<>(9);
 	boolean cargaHerramienta;
-
+	private Direccion direccionMirada;
 	public Jugador(){
 		this.mesa = new MesaDeTrabajo();
 		this.inventario = new Inventario();
@@ -17,11 +17,20 @@ public class Jugador{
 		this.inventario.agregarElemento(hachaInicial);
 		herramientaEquipada = hachaInicial;
 		cargaHerramienta = true;
+		direccionMirada = new DireccionAbajo();
 	}
 
 	public void equiparHerramienta(Herramienta herramienta){
 		herramientaEquipada = herramienta;
 		cargaHerramienta = true;
+	}
+
+	public void setDireccionMirada(Direccion nuevaDireccion){
+		direccionMirada = nuevaDireccion;
+	}
+
+	public Direccion getDireccionMirada(){
+		return direccionMirada;
 	}
 
 	public void equiparHerramienta(String str){
@@ -97,6 +106,7 @@ public class Jugador{
 				return;
 			}
 		}
+		vaciarMaterialesUbicados();
 		almacenarElemento(herramientaCreada);
 	}
 
@@ -106,6 +116,15 @@ public class Jugador{
 			Map.Entry pair = (Map.Entry)it.next();
 			Almacenable material = (Almacenable) pair.getValue();
 			inventario.agregarElemento(material);
+			it.remove(); // para evitar ConcurrentModificationException
+		}
+	}
+
+	public void vaciarMaterialesUbicados(){
+		Iterator it = materialesUbicados.entrySet().iterator();
+		while (it.hasNext()) {
+			Map.Entry pair = (Map.Entry)it.next();
+			Almacenable material = (Almacenable) pair.getValue();
 			it.remove(); // para evitar ConcurrentModificationException
 		}
 	}

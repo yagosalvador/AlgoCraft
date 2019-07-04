@@ -1,5 +1,6 @@
 import javafx.event.EventHandler;
 import javafx.geometry.VPos;
+import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.TextAlignment;
 
@@ -13,31 +14,46 @@ public class MouseHandler implements EventHandler<MouseEvent> {
         juego = game;
     }
     @Override
-    public void handle(MouseEvent mouse1) {
+    public void handle(MouseEvent event) {
         //podria verificarse un doble click o algo asi
-        int x = (int) (mouse1.getSceneX() / 32);
-        int y = (int) (mouse1.getSceneY() / 32);
+        if( event.getButton() == MouseButton.PRIMARY ) {
+            int x = (int) (event.getSceneX() / 32);
+            int y = (int) (event.getSceneY() / 32);
 
-        if (posicionValidaDeInventario(x, y)) {
-            str = obtenerImagenDePosInventario(x,y);
-        }
-
-        if (posicionCrear(x,y)) {
-            System.out.println("Intenta crear");
-            //intenta crear
-            juego.jugador().construirHerramienta();
-            actualizarDibujoInventario(juego, inventario);
-            redibujarRecetario();
-        }
-        if (posicionValidaDeRecetario(x, y)) {
-            if(str != null) {
-                inventario.dibujarEnPos("res/"+str.toLowerCase()+".png", x, y);
-                int pos = convertirCoordenadasAPosicion(x,y);
-                juego.jugador().ubicarMaterialEnMesaDeTrabajo(pos, str);
+            if (posicionValidaDeInventario(x, y)) {
+                str = obtenerImagenDePosInventario(x, y);
             }
-            str = null;
+
+            if (posicionCrear(x, y)) {
+                //intenta crear
+                juego.jugador().construirHerramienta();
+                redibujarRecetario();
+                actualizarDibujoInventario(/*juego, inventario*/);
+            }
+            if (posicionValidaDeRecetario(x, y)) {
+                if (str != null) {
+                    inventario.dibujarEnPos("res/" + str.toLowerCase() + ".png", x, y);
+                    int pos = convertirCoordenadasAPosicion(x, y);
+                    juego.jugador().ubicarMaterialEnMesaDeTrabajo(pos, str);
+                }
+                str = null;
+            }
+        }
+        if( event.getButton() == MouseButton.SECONDARY ){
+            int x = (int) (event.getSceneX() / 32);
+            int y = (int) (event.getSceneY() / 32);
+
+            if (posicionValidaDeInventario(x, y)) {
+                str = obtenerImagenDePosInventario(x, y);
+            }
+
+            if (str != null){
+                juego.jugador().equiparHerramienta(str);
+            }
         }
     }
+
+
 
     public int convertirCoordenadasAPosicion(int x, int y){
         int height = ((int)(inventario.getCanvas().getHeight()/32)) - 3;
@@ -82,13 +98,15 @@ public class MouseHandler implements EventHandler<MouseEvent> {
         }
         return null;
     }
-    public void actualizarDibujoInventario(Algocraft juego, Superficie inventario){
+    public void actualizarDibujoInventario(/*Algocraft juego, Superficie inventario*/){
+        /*for(int i = 0; i < 11; i++) {
+            inventario.borrarPos(i, (int)(inventario.getCanvas().getHeight()/32)-1);
+        }
         for(int i = 0; i < 11; i++) {
             int j = (int) (inventario.getCanvas().getHeight() / 32) - 1;
             inventario.dibujarEnPos("res/cantidades.png",i,j-1);
             inventario.dibujarEnPos("res/recuadro.png", i, j);
         }
-
         String[] materialesAlmacenados = juego.jugador().getInventario().getElementosAlmacenados();
         for (int i = 0; i < materialesAlmacenados.length; i++) {
             String str = "res/";
@@ -101,6 +119,32 @@ public class MouseHandler implements EventHandler<MouseEvent> {
             inventario.getCanvas().getGraphicsContext2D().setTextBaseline(VPos.CENTER);
             inventario.getCanvas().getGraphicsContext2D().setTextAlign(TextAlignment.CENTER);
             inventario.getCanvas().getGraphicsContext2D().fillText(String.valueOf(num), i*32+16, j*32-10, 28);
+        }*/
+        for(int j = 0; j < 11; j++) {
+            inventario.borrarPos(j, (int)(inventario.getCanvas().getHeight()/32)-1);
+        }
+        for(int i = 0; i < 11; i++) {
+            inventario.dibujarEnPos("res/recuadro.png", i, (int)(inventario.getCanvas().getHeight()/32)-1);
+        }
+
+        String[] materialesAlmacenados = juego.jugador().getInventario().getElementosAlmacenados();
+        for (int i = 0; i < materialesAlmacenados.length; i++) {
+            int cantidad = juego.jugador().getInventario().cantidadDeElemento(materialesAlmacenados[i]);
+            if(cantidad == 0 ){
+                inventario.borrarPos(i,(int) (inventario.getCanvas().getHeight() / 32) - 1);
+                inventario.dibujarEnPos("res/recuadro.png", i, (int)(inventario.getCanvas().getHeight()/32)-1);
+            }
+
+            String str = "res/";
+            str += materialesAlmacenados[i].toLowerCase() + ".png";
+            //System.out.println(str);
+            int j = (int) (inventario.getCanvas().getHeight() / 32) - 1;
+            inventario.dibujarEnPos(str, i, j);
+            int num = juego.jugador().cantidadDeElemento(materialesAlmacenados[i]);
+            inventario.dibujarEnPos("res/cantidades.png",i,j-1);
+            inventario.getCanvas().getGraphicsContext2D().setTextBaseline(VPos.CENTER);
+            inventario.getCanvas().getGraphicsContext2D().setTextAlign(TextAlignment.CENTER);
+            inventario.getCanvas().getGraphicsContext2D().fillText(String.valueOf(num), i*32 + 16, j*32 - 10, 28);
         }
     }
 
