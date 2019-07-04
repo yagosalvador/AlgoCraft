@@ -60,7 +60,8 @@ public class Visual extends Application {
 		Superficie jugador = new Superficie(width, height);
 		Superficie inventario = new Superficie(width, height);
 
-		Group root = new Group(suelo.getCanvas(), materiales.getCanvas(), jugador.getCanvas(), inventario.getCanvas());
+		Group root = new Group(suelo.getCanvas(), inventario.getCanvas(), jugador.getCanvas(), materiales.getCanvas());
+		//Group root = new Group(suelo.getCanvas(), materiales.getCanvas(), jugador.getCanvas(), inventario.getCanvas());
 		root.autoSizeChildrenProperty();
 		suelo.dibujarSuperficie("res/Pasto.png");
 

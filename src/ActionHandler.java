@@ -8,7 +8,7 @@ import static javafx.application.Platform.exit;
 public class ActionHandler implements EventHandler<KeyEvent> {
     private Algocraft juego;
     private Superficie supJugador, supMateriales, inventario;
-    private EscuchadorEventosJuego escuchadorEventos = new SoundHandler();
+    private EscuchadorEventosJuego escuchadorEventos;
     private Vector dibujoInventario = new Vector();
 
     public ActionHandler(Algocraft algocraft, EscuchadorEventosJuego escuchador,
@@ -31,13 +31,16 @@ public class ActionHandler implements EventHandler<KeyEvent> {
             if (juego.mapa().celda(x, y).ocupada() && juego.jugador().cargaHerramienta()) {
                 Material material = (Material) juego.mapa().celda(x, y).contenido();
                 if (material != null && juego.jugador().cargaHerramienta()) {
-                    juego.jugador().vs(material);
                     //animacion golpe
                     if (!material.roto() || !juego.jugador().cargaHerramienta) {
+                        juego.jugador().vs(material);
                         escuchadorEventos.golpearHerramienta();
-                    } else {
+                    } else if(material.roto()){
                         escuchadorEventos.roto();
                         supMateriales.borrarPos(x, y);
+                        String str = material.getClass().getName().toLowerCase()+"Material.png";
+                        System.out.println(str); //imprime maderaMaterial.png
+                        supMateriales.dibujarEnPos(str, x, y);
                     }
                 }
             } else {
@@ -57,18 +60,20 @@ public class ActionHandler implements EventHandler<KeyEvent> {
                     juego.mapa().celda(x, y).vaciar();
                     dibujoInventario.add(material.getClass().getName());
                     String str = ("res/" + material.getClass().getName() + ".png").toLowerCase();
-                    actualizarDibujoInventario(juego, inventario);
+                    actualizarDibujoInventario(juego, supMateriales);
                 }
             }
         }
     }
-    public void actualizarDibujoInventario(Algocraft juego, Superficie inventario){
+    public void actualizarDibujoInventario(Algocraft juego, Superficie supMateriales){
+
         String[] materialesAlmacenados = juego.jugador().getInventario().getElementosAlmacenados();
         for (int i = 0; i < materialesAlmacenados.length; i++) {
             String str = "res/";
             str += materialesAlmacenados[i].toLowerCase() + ".png";
-            //System.out.println(str);
-            inventario.dibujarEnPos(str, i, (int) (inventario.getCanvas().getHeight() / 32) - 1);
+            int cantidad = juego.jugador().getInventario().cantidadDeElemento(materialesAlmacenados[i]);
+            supMateriales.dibujarAlmacenableEnPos(str, i, (int) (supMateriales.getCanvas().getHeight() / 32) - 1, cantidad);
+
         }
     }
 }
