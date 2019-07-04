@@ -18,11 +18,11 @@ public class Inventario{
 
 	public void agregarElemento(Almacenable almacenable){
 		try{
-			inventario.get(almacenable.getClass().getName().toString()).agregarElemento(almacenable);
+			inventario.get(almacenable.getClass().getName()).agregarElemento(almacenable);
 		}
 		catch (Exception errorNullPointer){
-			inventario.put(almacenable.getClass().getName().toString(), new QueueAlmacenable());
-			inventario.get(almacenable.getClass().getName().toString()).agregarElemento(almacenable);
+			inventario.put(almacenable.getClass().getName(), new QueueAlmacenable());
+			inventario.get(almacenable.getClass().getName()).agregarElemento(almacenable);
 		}
 	}
 

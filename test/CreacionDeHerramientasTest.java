@@ -66,11 +66,11 @@ public class CreacionDeHerramientasTest{
         MesaDeTrabajo mesa = new MesaDeTrabajo();
         Material madera = new Madera();
         Material piedra = new Piedra();
-        mesa.ubicarMaterial(0, piedra);
-        mesa.ubicarMaterial(1, piedra);
-        mesa.ubicarMaterial(2, piedra);
-        mesa.ubicarMaterial(4, madera);
-        mesa.ubicarMaterial(7, madera);
+        mesa.ubicarMaterial(0, new Piedra());
+        mesa.ubicarMaterial(1, new Piedra());
+        mesa.ubicarMaterial(2, new Piedra());
+        mesa.ubicarMaterial(4, new Madera());
+        mesa.ubicarMaterial(7, new Madera());
         Herramienta picoConstruido = mesa.construirHerramienta();
         Herramienta unPico = new PicoDePiedra();
 

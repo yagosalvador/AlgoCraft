@@ -13,7 +13,6 @@ public class MesaDeTrabajo{
 
     public void ubicarMaterial(int posicion, Material material){
         this.espacioDeTrabajo.ubicarMaterial(posicion, material);
-        System.out.println("Material del tipo: " + material.getClass().getName() + " en: "+posicion);
     }
 
     public Receta espacioDeTrabajo(){
@@ -24,6 +23,7 @@ public class MesaDeTrabajo{
         Herramienta herramienta = null;
         this.constructor = this.recetas.get(espacioDeTrabajo);
         herramienta = this.constructor.construir();
+        espacioDeTrabajo = new Receta();
         return herramienta;
     }
 

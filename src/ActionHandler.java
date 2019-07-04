@@ -11,14 +11,16 @@ import static javafx.application.Platform.exit;
 public class ActionHandler implements EventHandler<KeyEvent> {
     private Algocraft juego;
     private Superficie supJugador, supMateriales, inventario;
-    private SoundHandler controladorSonidos = new SoundHandler();
+    private EscuchadorEventosJuego escuchadorEventos = new SoundHandler();
     private Vector dibujoInventario = new Vector();
 
-    public ActionHandler(Algocraft algocraft, Superficie jugador, Superficie materiales, Superficie inv) {
+    public ActionHandler(Algocraft algocraft, EscuchadorEventosJuego escuchador,
+                         Superficie jugador, Superficie materiales, Superficie inv) {
         juego = algocraft;
         supJugador = jugador;
         supMateriales = materiales;
         inventario = inv;
+        escuchadorEventos = escuchador;
     }
 
     public void handle(KeyEvent event) {
@@ -35,14 +37,14 @@ public class ActionHandler implements EventHandler<KeyEvent> {
                     juego.jugador().vs(material);
                     //animacion golpe
                     if (!material.roto() || !juego.jugador().cargaHerramienta) {
-                        //controladorSonidos.sonidoGolpe();
+                        escuchadorEventos.golpearHerramienta();
                     } else {
-                        //controladorSonidos.sonidoRoto();
+                        escuchadorEventos.roto();
                         supMateriales.borrarPos(x, y);
                     }
                 }
             } else {
-                //controladorSonidos.sonidoSwish();
+                escuchadorEventos.errarAtaque();
             }
         }
         if (event.getCode() == KeyCode.G) {

@@ -82,8 +82,9 @@ public class Visual extends Application {
 		cargarMateriales(materiales, juego.mapa());
 
 		//Eventos posibles
+		EscuchadorEventosJuego soundHandler = new SoundHandler();
 		DirectionHandler dirHandler = new DirectionHandler(jugador, controlador);
-		ActionHandler actionHandler = new ActionHandler(juego, jugador, materiales, inventario);
+		ActionHandler actionHandler = new ActionHandler(juego, soundHandler, jugador, materiales, inventario);
 		MouseHandler mouseHandler = new MouseHandler(juego, inventario);
 
 		s.addEventHandler(KEY_PRESSED, dirHandler);
