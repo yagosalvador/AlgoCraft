@@ -42,10 +42,10 @@ public class DirectionHandler implements EventHandler<KeyEvent> {
         str += ".png";
         if(direccion.getClass().getName() != "DireccionNula") {
             Posicion pos = controlador.obtenerPosJugador();
-            supJugador.borrarPos(pos.getX(), pos.getY());
+            supJugador.borrarPos(pos);
             controlador.moverJugador(direccion);
             pos = controlador.obtenerPosJugador();
-            supJugador.dibujarEnPos(str, pos.getX(), pos.getY());
+            supJugador.dibujarEnPos(str, pos);
         }
     }
 }

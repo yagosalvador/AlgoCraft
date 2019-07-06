@@ -24,10 +24,6 @@ import java.util.Set;
 
 
 public class Visual extends Application {
-	//private Group root;
-	private Algocraft juego;
-
-
 	public static void main(String[] args) {
 		launch(args);
 	}
@@ -41,9 +37,6 @@ public class Visual extends Application {
 		primaryStage.setTitle("AlgoCraft");
 		primaryStage.setHeight(height);
 		primaryStage.setWidth(width);
-
-		//Posicion pos = controlador.obtenerPosJugador();
-		//System.out.println(pos.getX()+" "+pos.getY());
 
 		// arrancar juego
 		Algocraft juego = new Algocraft(width / 32, (height / 32) - 3);
@@ -66,17 +59,16 @@ public class Visual extends Application {
 		RecetarioHandler recetarioHandler = new RecetarioHandler(juego, inventario);
 		EscuchadorEventosJuego soundHandler = new SoundHandler();
 		DirectionHandler dirHandler = new DirectionHandler(jugador, controlador);
-		ActionHandler actionHandler = new ActionHandler(juego, soundHandler, jugador, materiales, invHandler);
+		ActionHandler actionHandler = new ActionHandler(juego, soundHandler, materiales, invHandler);
 		MouseHandler mouseHandler = new MouseHandler(juego, invHandler, recetarioHandler);
 		//dibujar inventario
-		//Vector inventarioPos = new Vector();
 		invHandler.dibujarInventario();
 		recetarioHandler.dibujarMesaDeTrabajo();
 
 		// dibujar Jugador
 		int x = juego.getPosicionJugadorX();
 		int y = juego.getPosicionJugadorX();
-		jugador.dibujarEnPos("res/jugadorAbajo.png", x, y);
+		jugador.dibujarEnPos("res/jugadorAbajo.png", new Posicion(x, y));
 		primaryStage.show();
 
 		Scene s = new Scene(root, width, height);
@@ -90,15 +82,16 @@ public class Visual extends Application {
 		s.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseHandler);
 	}
 	private void cargarMateriales(Superficie materiales, Mapa mapa) {
-
+		Posicion posicion = new Posicion(0,0);
 		for (int i = 0; i < mapa.getWidth(); i++) {
 			for (int j = 0; j < mapa.getHeight(); j++) {
+				posicion.actualizar(i,j);
 				String str = "res/";
-				Celda celda = mapa.celda(i, j);
+				Celda celda = mapa.celda(posicion);
 				if (celda.contenido() != null) {
 					str = str + celda.contenido().getClass().getName() + ".png";
 					str = str.toLowerCase();
-					materiales.dibujarEnPos(str, i, j);
+					materiales.dibujarEnPos(str, new Posicion(i, j));
 				}
 			}
 		}

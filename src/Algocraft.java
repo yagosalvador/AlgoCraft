@@ -2,20 +2,14 @@ public class Algocraft{
 	private Mapa mapa;
 	private Jugador jugador;
 	private Posicion posicionJugador;
-
-	public Algocraft(){
-		mapa = new Mapa();
-		jugador = new Jugador();
-		mapa.agregarJugador(0,0,jugador);
-		posicionJugador = new Posicion(0,0);
-	}
+	private Posicion posicionMirada;
 
 	public Algocraft(int width, int height){
 		mapa = new Mapa(width,height);
 		jugador = new Jugador();
-		mapa.agregarJugador(0,0,jugador);
-		posicionJugador = new Posicion(0,0);
-
+		posicionJugador = new Posicion( 1, 1);
+		posicionMirada = new Posicion(1,2);
+		mapa.agregarObjeto(posicionJugador,jugador);
 	}
 
 	public Jugador jugador(){
@@ -26,25 +20,21 @@ public class Algocraft{
 		return this.mapa;
 	}
 
-	public void actualizarPosicionJugador(int x, int y) {
-		if(mapa.celda(x, y).ocupada()){
-			return;
-		}
-		mapa.celda(posicionJugador.getX(),posicionJugador.getY()).vaciar();
-        mapa.agregarObjeto(x,y,jugador);
-		posicionJugador = new Posicion(x,y);
-	}
 	public void avanzarJugador(Direccion direccion){
-		int x = posicionJugador.getX() + direccion.getX();
-		int y = posicionJugador.getY() + direccion.getY();
-		if (x >= this.mapa().getWidth() || x < 0 || y >= this.mapa().getHeight() || y < 0)
-			return;
-		actualizarPosicionJugador(x, y);
-		jugador.setDireccionMirada(direccion);
+		Posicion nuevaPosicion = new Posicion(posicionJugador);
+		nuevaPosicion.actualizar(direccion);
+		if(mapa.posicionDisponibleParaJugador(nuevaPosicion)) {
+			mapa().celda(posicionJugador).vaciar();
+			posicionJugador.actualizar(direccion);
+			mapa().agregarObjeto(posicionJugador, jugador);
+		}
+		posicionMirada = new Posicion(posicionJugador);
+		posicionMirada.actualizar(direccion);
 	}
+
 	public int getPosicionJugadorX(){return posicionJugador.getX();}
 	public int getPosicionJugadorY(){return posicionJugador.getY();}
-	public Direccion getDireccionMirada(){
-		return jugador.getDireccionMirada();
+	public Posicion getPosicionMirada(){
+		return posicionMirada;
 	}
 }

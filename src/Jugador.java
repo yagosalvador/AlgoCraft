@@ -9,7 +9,7 @@ public class Jugador{
 	private MesaDeTrabajo mesa;
 	private Map<Integer, Material> materialesUbicados = new HashMap<>(9);
 	boolean cargaHerramienta;
-	private Direccion direccionMirada;
+	private Posicion posicionMirada;
 	public Jugador(){
 		this.mesa = new MesaDeTrabajo();
 		this.inventario = new Inventario();
@@ -17,7 +17,6 @@ public class Jugador{
 		this.inventario.agregarElemento(hachaInicial);
 		herramientaEquipada = hachaInicial;
 		cargaHerramienta = true;
-		direccionMirada = new DireccionAbajo();
 	}
 
 	public void equiparHerramienta(Herramienta herramienta){
@@ -25,12 +24,12 @@ public class Jugador{
 		cargaHerramienta = true;
 	}
 
-	public void setDireccionMirada(Direccion nuevaDireccion){
-		direccionMirada = nuevaDireccion;
+	public void setPosicionMirada(Posicion nuevaPosicion){
+		posicionMirada = nuevaPosicion;
 	}
 
-	public Direccion getDireccionMirada(){
-		return direccionMirada;
+	public Posicion getPosicionMirada(){
+		return posicionMirada;
 	}
 
 	public void equiparHerramienta(String str){

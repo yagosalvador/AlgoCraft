@@ -3,36 +3,37 @@ import org.junit.Test;
 
 public class InicializacionDelJuegoTest{
 	@Test
-	public void InicializacionJuegoTest(){
-		// crear algocraft y corroborar lo anterior
-		Algocraft juego = new Algocraft(20,20);
-		
+	public void JuegoInicializaConJugadorEnPosicionInicialTest() {
+		Algocraft juego = new Algocraft(20, 20);
+
 		// corroborar que se crea el jugador en el mapa en la pos 0,0
 		Jugador jugTest = new Jugador();
-		assertEquals(jugTest.getClass(),juego.jugador().getClass());
-		assertEquals(juego.mapa().celda(0,0).contenido(),juego.jugador());
-		
+		assertEquals(jugTest.getClass(), juego.jugador().getClass());
+		assertEquals(juego.mapa().celda(new Posicion(1, 1)).contenido(), juego.jugador());
+	}
+	@Test
+	public void JuegoInicializaConMaterialesEnPosicionInicialTest() {
+		Algocraft juego = new Algocraft(20, 20);
 		// corroborar que se crean los materiales en el mapa
 		
-		Diamante diamantetest = new Diamante();
-		Piedra piedratest = new Piedra();
-		Madera maderatest = new Madera();
-		Metal metaltest = new Metal();
+		Material diamante = new Diamante();
+		Material piedra = new Piedra();
+		Material madera = new Madera();
+		Material metal = new Metal();
 		//chequea el contenido de celdas sin material
-		assertEquals(juego.mapa().celda(1,1).contenido(),null);
-		assertEquals(juego.mapa().celda(2,2).contenido(),null);
+		assertEquals(null, juego.mapa().celda(new Posicion(2,2)).contenido());
 		//chequea el contenido de celdas con material
-		assertEquals(juego.mapa().celda(5,4).contenido().getClass(),maderatest.getClass());
-		assertEquals(juego.mapa().celda(6,4).contenido().getClass(),piedratest.getClass());
-		assertEquals(juego.mapa().celda(7,4).contenido().getClass(),metaltest.getClass());
-		assertEquals(juego.mapa().celda(8,4).contenido().getClass(),diamantetest.getClass());
+		assertEquals(madera.getClass(), juego.mapa().celda(new Posicion(4,4)).contenido().getClass());
+		assertEquals(piedra.getClass(), juego.mapa().celda(new Posicion(6,4)).contenido().getClass());
+		assertEquals(metal.getClass(), juego.mapa().celda(new Posicion(8,4)).contenido().getClass());
+		assertEquals(diamante.getClass(), juego.mapa().celda(new Posicion(10,4)).contenido().getClass());
         //verifica el estado de celdas con y sin material
-		assertEquals(juego.mapa().celda(5,4).ocupada(),true);
-		assertEquals(juego.mapa().celda(6,4).ocupada(),true);
-		assertEquals(juego.mapa().celda(7,4).ocupada(),true);
-		assertEquals(juego.mapa().celda(8,4).ocupada(),true);
-		assertEquals(juego.mapa().celda(8,5).ocupada(),false);
-		assertEquals(juego.mapa().celda(3,6).ocupada(),false);
+		assertEquals(true, juego.mapa().celda(new Posicion(5,4)).ocupada());
+		assertEquals(true, juego.mapa().celda(new Posicion(6,4)).ocupada());
+		assertEquals(true, juego.mapa().celda(new Posicion(7,4)).ocupada());
+		assertEquals(true, juego.mapa().celda(new Posicion(8,4)).ocupada());
+		assertEquals(true, juego.mapa().celda(new Posicion(8,5)).ocupada());
+		assertEquals(false, juego.mapa().celda(new Posicion(3,6)).ocupada());
 
 
 	}

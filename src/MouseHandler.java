@@ -35,7 +35,7 @@ public class MouseHandler implements EventHandler<MouseEvent> {
             }
             if (recetario.posicionValidaDeRecetario(x, y)) {
                 if (str != null) {
-                    inventario.dibujarEnPos("res/" + str.toLowerCase() + ".png", x, y);
+                    inventario.dibujarEnPos("res/" + str.toLowerCase() + ".png", new Posicion(x, y));
                     int pos = inventario.convertirCoordenadasAPosicion(x, y);
                     juego.jugador().ubicarMaterialEnMesaDeTrabajo(pos, str);
                 }

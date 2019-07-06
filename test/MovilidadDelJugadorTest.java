@@ -1,78 +1,64 @@
 import static org.junit.Assert.*;
+
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.junit.Test;
 
 public class MovilidadDelJugadorTest{
 	@Test
-	public void actualizarPosicionJugadorTest() {
-		// inicializo juego con jugador en la posicion (0,0)
-		Algocraft juego = new Algocraft();
-		// actualizo la posicion del jugador
-		juego.actualizarPosicionJugador(5,6);
-		assertEquals(juego.mapa().celda(5,6).contenido(),juego.jugador());
-		assertEquals(juego.getPosicionJugadorX(),5);
-		assertEquals(juego.getPosicionJugadorY(),6);
-		juego.actualizarPosicionJugador(3,9);
-		assertEquals(juego.mapa().celda(3,9).contenido(),juego.jugador());
-		assertEquals(juego.getPosicionJugadorX(),3);
-		assertEquals(juego.getPosicionJugadorY(),9);
-		assertEquals(juego.mapa().celda(5,6).contenido(),null);
-
+	public void unaPosicionVaciaEstaDisplonibleTest(){
+		Algocraft juego = new Algocraft(20,20);
+		Posicion unaPosicion = new Posicion(0,5);
+		Boolean disponible = juego.mapa().posicionDisponibleParaJugador(unaPosicion);
+		assertEquals(true, disponible);
+		juego.mapa().agregarObjeto(unaPosicion, new Madera());
+		disponible = juego.mapa().posicionDisponibleParaJugador(unaPosicion);
+		assertEquals(false, disponible);
 	}
-
-	@Test
-	public void jugadorSeMueveAUnaPosicionVaciaTest() {
-		Algocraft juego = new Algocraft();
-		juego.actualizarPosicionJugador(9,10);
-		assertEquals(juego.mapa().celda(9,10).contenido(),juego.jugador());
-	}
-	
 	@Test
 	public void jugadorSeMueveAUnaPosicionOcupadaTest() {
-		Algocraft juego = new Algocraft();
+		Algocraft juego = new Algocraft(20, 20);
 		Diamante diamante = new Diamante();
-		juego.actualizarPosicionJugador(9,10);
-		juego.mapa().agregarMaterial(10,10,diamante);
-		juego.actualizarPosicionJugador(10,10);
-		assertEquals(juego.mapa().celda(9,10).contenido(),juego.jugador());
-		assertEquals(juego.mapa().celda(10,10).contenido(),diamante);
+		juego.mapa().agregarObjeto(new Posicion(2,1),diamante);
+		Direccion nuevaDireccion = new DireccionDerecha();
+		juego.avanzarJugador(nuevaDireccion);
+		assertEquals(juego.mapa().celda(new Posicion(1,1)).contenido(),juego.jugador());
+		assertEquals(juego.mapa().celda(new Posicion(2,1)).contenido(),diamante);
 	}
 	@Test
 	public void jugadorAvanzaArribaTest() {
-		Algocraft juego = new Algocraft();
-		juego.actualizarPosicionJugador(5,7);
-		Direccion nuevaposicion = new DireccionArriba();
-		juego.avanzarJugador(nuevaposicion);
-		assertEquals(juego.mapa().celda(5,6).contenido(),juego.jugador());
-		assertEquals(juego.mapa().celda(5,7).contenido(),null);
+		Algocraft juego = new Algocraft(20, 20);
+		Direccion nuevaPosicion = new DireccionArriba();
+		juego.avanzarJugador(nuevaPosicion);
+		assertEquals(juego.jugador(), juego.mapa().celda(new Posicion(1,0)).contenido());
+
+		assertEquals(null, juego.mapa().celda(new Posicion(1,1)).contenido());
 	}
 
 	@Test
 	public void jugadorAvanzaAbajoTest() {
-		Algocraft juego = new Algocraft();
-		juego.actualizarPosicionJugador(5,7);
-		Direccion nuevaposicion = new DireccionAbajo();
-		juego.avanzarJugador(nuevaposicion);
-		assertEquals(juego.mapa().celda(5,8).contenido(),juego.jugador());
-		assertEquals(juego.mapa().celda(5,7).contenido(),null);
+		Algocraft juego = new Algocraft(20, 20);
+		Direccion nuevaPosicion = new DireccionAbajo();
+		juego.avanzarJugador(nuevaPosicion);
+		assertEquals(juego.jugador(), juego.mapa().celda(new Posicion(1,2)).contenido());
+
+		assertEquals(null, juego.mapa().celda(new Posicion(1,1)).contenido());
 	}
 
 	@Test
 	public void jugadorAvanzaIzquierdaTest() {
-		Algocraft juego = new Algocraft();
-		juego.actualizarPosicionJugador(5,7);
-		Direccion nuevaposicion = new DireccionIzquierda();
-		juego.avanzarJugador(nuevaposicion);
-		assertEquals(juego.mapa().celda(4,7).contenido(),juego.jugador());
-		assertEquals(juego.mapa().celda(5,7).contenido(),null);
+		Algocraft juego = new Algocraft(20, 20);
+		Direccion nuevaPosicion = new DireccionIzquierda();
+		juego.avanzarJugador(nuevaPosicion);
+		assertEquals(juego.jugador(), juego.mapa().celda(new Posicion(0,1)).contenido());
+		assertEquals(null, juego.mapa().celda(new Posicion(1,1)).contenido());
 	}
 
 	@Test
 	public void jugadorAvanzaDerechaTest() {
-		Algocraft juego = new Algocraft();
-		juego.actualizarPosicionJugador(5,7);
-		Direccion nuevaposicion = new DireccionDerecha();
-		juego.avanzarJugador(nuevaposicion);
-		assertEquals(juego.mapa().celda(6,7).contenido(),juego.jugador());
-		assertEquals(juego.mapa().celda(5,7).contenido(),null);
+		Algocraft juego = new Algocraft(20, 20);
+		Direccion nuevaPosicion = new DireccionDerecha();
+		juego.avanzarJugador(nuevaPosicion);
+		assertEquals(juego.jugador(), juego.mapa().celda(new Posicion(2,1)).contenido());
+		assertEquals(null, juego.mapa().celda(new Posicion(1,1)).contenido());
 	}
 }

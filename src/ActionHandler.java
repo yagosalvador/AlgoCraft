@@ -1,22 +1,17 @@
 import javafx.event.EventHandler;
-import javafx.geometry.VPos;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.text.TextAlignment;
-import java.util.Vector;
 import static javafx.application.Platform.exit;
 
 public class ActionHandler implements EventHandler<KeyEvent> {
     private Algocraft juego;
-    private Superficie supJugador, supMateriales;
+    private Superficie supMateriales;
     private EscuchadorEventosJuego escuchadorEventos;
     private InventarioHandler inventario;
-    private Vector dibujoInventario = new Vector();
 
     public ActionHandler(Algocraft algocraft, EscuchadorEventosJuego escuchador,
-                         Superficie jugador, Superficie materiales, InventarioHandler inventarioHandler) {
+                         Superficie materiales, InventarioHandler inventarioHandler) {
         juego = algocraft;
-        supJugador = jugador;
         supMateriales = materiales;
         inventario = inventarioHandler;
         escuchadorEventos = escuchador;
@@ -27,26 +22,22 @@ public class ActionHandler implements EventHandler<KeyEvent> {
             exit();
         }
         if (event.getCode() == KeyCode.SPACE) {
-            //Direccion mirandoDireccion = new DireccionAbajo();
-            //int x = juego.getPosicionJugadorX() + mirandoDireccion.getX();
-            //int y = juego.getPosicionJugadorY() + mirandoDireccion.getY();
-            int x = juego.getPosicionJugadorX() + juego.getDireccionMirada().getX();
-            int y = juego.getPosicionJugadorY() + juego.getDireccionMirada().getY();
-            if (juego.mapa().celda(x, y).ocupada() && juego.jugador().cargaHerramienta()) {
-                Material material = (Material) juego.mapa().celda(x, y).contenido();
-                if (material != null && juego.jugador().cargaHerramienta()) {
+            Posicion posAux = juego.getPosicionMirada();
+            if (juego.mapa().celda(posAux).ocupada()) {
+                Material material = (Material) juego.mapa().celda(posAux).contenido();
+                if (material != null) {
                     //animacion golpe
-                    if (!material.roto() || !juego.jugador().cargaHerramienta) {
+                    if (!material.roto()) {
                         juego.jugador().vs(material);
                         escuchadorEventos.golpearHerramienta();
                         if(!juego.jugador().cargaHerramienta){
-                        inventario.actualizarDibujo();
+                            inventario.actualizarDibujo();
                         }
                     } else {
                         escuchadorEventos.roto();
-                        supMateriales.borrarPos(x, y);
+                        supMateriales.borrarPos(posAux);
                         String str = "res/"+material.getClass().getName().toLowerCase()+"Material.png";
-                        supMateriales.dibujarEnPos(str, x, y);
+                        supMateriales.dibujarEnPos(str, posAux);
                     }
                 }
             } else {
@@ -54,24 +45,18 @@ public class ActionHandler implements EventHandler<KeyEvent> {
             }
         }
         if (event.getCode() == KeyCode.G) {
-            //Direccion mirandoDireccion = new DireccionAbajo();
-            //int x = juego.getPosicionJugadorX() + mirandoDireccion.getX();
-            //int y = juego.getPosicionJugadorY() + mirandoDireccion.getY();
-            int x = juego.getPosicionJugadorX() + juego.getDireccionMirada().getX();
-            int y = juego.getPosicionJugadorY() + juego.getDireccionMirada().getY();
-            if (juego.mapa().celda(x, y).ocupada()) {
-                Material material = (Material) juego.mapa().celda(x, y).contenido();
+            Posicion posAux = juego.getPosicionMirada();
+            if (juego.mapa().celda(posAux).ocupada()) {
+                Material material = (Material) juego.mapa().celda(posAux).contenido();
                 if (material.roto()) {
                     //guardar material
-                    supMateriales.borrarPos(x, y);
-                    juego.jugador().almacenarElemento((Material) juego.mapa().celda(x, y).contenido());
-                    juego.mapa().celda(x, y).vaciar();
-                    dibujoInventario.add(material.getClass().getName());
+                    supMateriales.borrarPos(posAux);
+                    juego.jugador().almacenarElemento((Material)juego.mapa().celda(posAux).contenido());
+                    juego.mapa().celda(posAux).vaciar();
                     String str = ("res/" + material.getClass().getName() + ".png").toLowerCase();
                     inventario.actualizarDibujo();
                 }
             }
         }
     }
-
 }

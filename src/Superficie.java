@@ -24,14 +24,18 @@ public class Superficie extends Canvas {
         }
     }
 
-    public void dibujarEnPos(String str, int pos_x, int pos_y){
+    public void dibujarEnPos(String str, Posicion posicion){
         Tile recuadro = new Tile();
+        int pos_x = posicion.getX();
+        int pos_y = posicion.getY();
         recuadro.borrar(lienzo,pos_x,pos_y);
         recuadro.dibujar(lienzo,str,pos_x,pos_y);
 
     }
 
-    public void borrarPos(int pos_x, int pos_y){
+    public void borrarPos(Posicion posicion){
+        int pos_x = posicion.getX();
+        int pos_y = posicion.getY();
         GraphicsContext gc = lienzo.getGraphicsContext2D();
         gc.clearRect(pos_x*32,pos_y*32,32,32);
     }
