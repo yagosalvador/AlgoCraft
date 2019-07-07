@@ -1,17 +1,18 @@
-import javafx.geometry.Pos;
 import javafx.geometry.VPos;
 import javafx.scene.text.TextAlignment;
 import javafx.scene.canvas.Canvas;
 
-public class InventarioHandler {
+public class VistaInventario {
     private Algocraft juego;
     private Superficie inventario;
 
-    public InventarioHandler(Algocraft unJuego, Superficie supInventario){
+    public VistaInventario(Algocraft unJuego, Superficie inventario){
         juego = unJuego;
-        inventario = supInventario;
+        this.inventario = inventario;
     }
-
+    public Superficie sup() {
+        return inventario;
+    }
 
     public void dibujarEnPos(String str, Posicion posicion){
         inventario.dibujarEnPos(str, posicion);
@@ -20,6 +21,7 @@ public class InventarioHandler {
     public Canvas getCanvas(){
         return inventario.getCanvas();
     }
+
     public void actualizarDibujo() {
         for (int j = 0; j < 11; j++) {
             inventario.borrarPos(new Posicion(j, (int) (inventario.getCanvas().getHeight() / 32) - 1));
@@ -55,7 +57,6 @@ public class InventarioHandler {
             inventario.dibujarEnPos("res/cantidades.png",new Posicion(i,j-1));
             inventario.dibujarEnPos("res/recuadro.png", new Posicion(i, j));
         }
-        //if(juego.jugador().getInventario().size() != 0) {
         String[] materialesAlmacenados = juego.jugador().getInventario().getElementosAlmacenados();
         for (int i = 0; i < materialesAlmacenados.length; i++) {
             String str = "res/";
@@ -67,7 +68,6 @@ public class InventarioHandler {
             inventario.getCanvas().getGraphicsContext2D().setTextBaseline(VPos.CENTER);
             inventario.getCanvas().getGraphicsContext2D().setTextAlign(TextAlignment.CENTER);
             inventario.getCanvas().getGraphicsContext2D().fillText(String.valueOf(num), i*32 + 16, j*32 - 10, 28);
-            //	}
         }
     }
 
@@ -108,5 +108,41 @@ public class InventarioHandler {
             return false;
         }
         return true;
+    }
+
+    public void dibujarMesaDeTrabajo(){
+        int i,j,n1,n2;
+        for (i = ((int)(inventario.getCanvas().getWidth()/32))-1, n1 = 0; n1 < 3; i--, n1++) { //mesa de trabajo
+            for (j = ((int)(inventario.getCanvas().getHeight()/32))-1, n2 = 0; n2 < 3; j--, n2++) {
+                inventario.dibujarEnPos("res/recuadro.png", new Posicion(i, j));
+            }
+        }
+        j = ((int)(inventario.getCanvas().getHeight()/32))-1;
+        inventario.dibujarEnPos("res/recuadro.png", new Posicion(i, j));//boton crear
+        inventario.getCanvas().getGraphicsContext2D().setTextBaseline(VPos.CENTER);
+        inventario.getCanvas().getGraphicsContext2D().setTextAlign(TextAlignment.CENTER);
+        inventario.getCanvas().getGraphicsContext2D().fillText("Crear", i*32 +16, j*32+16, 28);
+    }
+
+    public boolean posicionValidaDeRecetario(int x, int y){
+        int height = ((int)(inventario.getCanvas().getHeight()/32)) - 1;
+        int width = ((int)(inventario.getCanvas().getWidth()/32)) - 1;
+
+        if (y > height || x > width) {
+            return false;
+        }
+        if (y < (height - 2) || x < (width - 2)) {
+            return false;
+        }
+        return true;
+    }
+
+    public void redibujarRecetario(){
+        int i,j,n1,n2;
+        for (i = ((int)(inventario.getCanvas().getWidth()/32))-1, n1 = 0; n1 < 3; i--, n1++) { //mesa de trabajo
+            for (j = ((int)(inventario.getCanvas().getHeight()/32))-1, n2 = 0; n2 < 3; j--, n2++) {
+                inventario.dibujarEnPos("res/recuadro.png", new Posicion(i, j));
+            }
+        }
     }
 }

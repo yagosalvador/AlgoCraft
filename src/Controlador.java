@@ -19,32 +19,18 @@ public class Controlador {
         juego.avanzarJugador(dir);
     }
 
-    /*void String obtenerMaterialDePantalla(){
-        stage.getScene().addEventHandler(MouseEvent, );
-        public boolean posicionValidaDeInventario(int x, int y) {
-            if (y != 19) {
-                return false;
-            }
-            //juego.jugador().capacidadInventario() deberia ser 11
-            if (x < 0 || x >= 11) {
-                return false;
-            }
-            return true;
-        }
+    public void cargarMateriales(VistaMateriales materiales) {
+        Posicion posicion = new Posicion(0,0);
+        Mapa mapa = juego.mapa();
 
-
-        public boolean posicionValidaDeRecetario(int x, int y) {
-            int width = juego.mapa().getWidth();
-            int height = juego.mapa().getHeight();
-            if (y >= height || x >= width) {
-                return false;
+        for (int i = 0; i < mapa.getWidth(); i++) {
+            for (int j = 0; j < mapa.getHeight(); j++) {
+                posicion.actualizar(i,j);
+                Celda celda = mapa.celda(posicion);
+                if (celda.contenido() != null && celda.contenido() instanceof Material) {
+                    materiales.dibujarMaterial(posicion, (Material) celda.contenido());
+                }
             }
-            if (y < (height - 3) || x < (width - 3)) {
-                return false;
-            }
-            return true;
         }
-    });
     }
-*/
 }

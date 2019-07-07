@@ -1,51 +1,43 @@
-import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 
-import static javafx.application.Platform.exit;
-
 public class DirectionHandler implements EventHandler<KeyEvent> {
-    private Superficie supJugador;
-    //private Algocraft juego;
+    private VistaJugador supJugador;
     private Controlador controlador;
-    //SONIDOS
-    SoundHandler controladorSonidos = new SoundHandler();
 
-    public DirectionHandler(Superficie sup, Controlador contr) {
+    public DirectionHandler(VistaJugador sup, Controlador controlador) {
         supJugador = sup;
-        //juego = algocraft;
-        controlador = contr;
+        this.controlador = controlador;
     }
 
     @java.lang.Override
     public void handle(KeyEvent event) {
-        Direccion direccion = new DireccionNula();
+        Direccion direccion;
         if (event.getCode() == KeyCode.UP) {
             direccion = new DireccionArriba();
         }
-        if (event.getCode() == KeyCode.DOWN) {
+        else if (event.getCode() == KeyCode.DOWN) {
             direccion = new DireccionAbajo();
         }
-        if (event.getCode() == KeyCode.RIGHT) {
+        else if (event.getCode() == KeyCode.RIGHT) {
             direccion = new DireccionDerecha();
         }
-        if (event.getCode() == KeyCode.LEFT) {
+        else if (event.getCode() == KeyCode.LEFT) {
             direccion = new DireccionIzquierda();
+        }
+        else{
+            return;
         }
         dibujarMovimientoJugador(direccion);
     }
 
     public void dibujarMovimientoJugador(Direccion direccion){
-        String str = "res/jugador";
-        str += direccion.getClass().getName();
-        str += ".png";
-        if(direccion.getClass().getName() != "DireccionNula") {
-            Posicion pos = controlador.obtenerPosJugador();
-            supJugador.borrarPos(pos);
-            controlador.moverJugador(direccion);
-            pos = controlador.obtenerPosJugador();
-            supJugador.dibujarEnPos(str, pos);
-        }
+        String str = direccion.getClass().getName();
+        Posicion pos = controlador.obtenerPosJugador();
+        supJugador.borrarPos(pos);
+        controlador.moverJugador(direccion);
+        pos = controlador.obtenerPosJugador();
+        supJugador.dibujarEnPos(str, pos);
     }
 }

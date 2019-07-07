@@ -5,15 +5,15 @@ import static javafx.application.Platform.exit;
 
 public class ActionHandler implements EventHandler<KeyEvent> {
     private Algocraft juego;
-    private Superficie supMateriales;
+    private VistaMateriales materiales;
     private EscuchadorEventosJuego escuchadorEventos;
-    private InventarioHandler inventario;
+    private VistaInventario inventario;
 
     public ActionHandler(Algocraft algocraft, EscuchadorEventosJuego escuchador,
-                         Superficie materiales, InventarioHandler inventarioHandler) {
+                         VistaMateriales materiales, VistaInventario inventario) {
         juego = algocraft;
-        supMateriales = materiales;
-        inventario = inventarioHandler;
+        this.materiales = materiales;
+        this.inventario = inventario;
         escuchadorEventos = escuchador;
     }
 
@@ -35,9 +35,9 @@ public class ActionHandler implements EventHandler<KeyEvent> {
                         }
                     } else {
                         escuchadorEventos.roto();
-                        supMateriales.borrarPos(posAux);
+                        materiales.borrarPos(posAux);
                         String str = "res/"+material.getClass().getName().toLowerCase()+"Material.png";
-                        supMateriales.dibujarEnPos(str, posAux);
+                        materiales.dibujarEnPos(str, posAux);
                     }
                 }
             } else {
@@ -50,7 +50,7 @@ public class ActionHandler implements EventHandler<KeyEvent> {
                 Material material = (Material) juego.mapa().celda(posAux).contenido();
                 if (material.roto()) {
                     //guardar material
-                    supMateriales.borrarPos(posAux);
+                    materiales.borrarPos(posAux);
                     juego.jugador().almacenarElemento((Material)juego.mapa().celda(posAux).contenido());
                     juego.mapa().celda(posAux).vaciar();
                     String str = ("res/" + material.getClass().getName() + ".png").toLowerCase();

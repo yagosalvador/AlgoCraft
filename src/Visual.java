@@ -1,29 +1,17 @@
 import javafx.application.Application;
-import javafx.event.EventHandler;
 import javafx.geometry.Rectangle2D;
-import javafx.geometry.VPos;
 import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.control.Control;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.HBox;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
-import javafx.scene.text.TextAlignment;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
-import javafx.util.Duration;
-import java.util.Vector;
-import static javafx.application.Platform.exit;
-import static javafx.scene.input.KeyEvent.ANY;
 import static javafx.scene.input.KeyEvent.KEY_PRESSED;
-import java.io.File;
-import java.util.Set;
 
 
 public class Visual extends Application {
+	public static int width;
+	public static int height;
+
 	public static void main(String[] args) {
 		launch(args);
 	}
@@ -32,8 +20,8 @@ public class Visual extends Application {
 	public void start(Stage primaryStage) {
 		// Instanciar ventana del juego
 		Rectangle2D primaryScreenBounds = Screen.getPrimary().getVisualBounds();
-		int width = ((int) (primaryScreenBounds.getWidth() / 32)) * 32;
-		int height = ((int) (primaryScreenBounds.getHeight() / 32) - 1) * 32;
+		width = ((int) (primaryScreenBounds.getWidth() / 32)) * 32;
+		height = ((int) (primaryScreenBounds.getHeight() / 32) - 1) * 32;
 		primaryStage.setTitle("AlgoCraft");
 		primaryStage.setHeight(height);
 		primaryStage.setWidth(width);
@@ -43,57 +31,36 @@ public class Visual extends Application {
 
 		//controlador
 		Controlador controlador = new Controlador(juego);
-
+		Superficie supInventario = new Superficie(width,height);
 		// crear objetos dibujables
-		Superficie suelo = new Superficie(width, height);
-		Superficie materiales = new Superficie(width, height);
-		Superficie jugador = new Superficie(width, height);
-		Superficie inventario = new Superficie(width, height);
+		VistaSuelo suelo = new VistaSuelo();
+		VistaJugador jugador = new VistaJugador(juego.getPosicionJugadorX(), juego.getPosicionJugadorY());
+		VistaInventario inventario = new VistaInventario(juego,supInventario);
+		VistaMateriales materiales = new VistaMateriales();
 
 		Group root = new Group(suelo.getCanvas(), materiales.getCanvas(), jugador.getCanvas(), inventario.getCanvas());
 		root.autoSizeChildrenProperty();
-		suelo.dibujarSuperficie("res/Pasto.png");
+		suelo.dibujarSuperficie();
 
 		//Eventos posibles
-		InventarioHandler invHandler = new InventarioHandler(juego, inventario);
-		RecetarioHandler recetarioHandler = new RecetarioHandler(juego, inventario);
 		EscuchadorEventosJuego soundHandler = new SoundHandler();
 		DirectionHandler dirHandler = new DirectionHandler(jugador, controlador);
-		ActionHandler actionHandler = new ActionHandler(juego, soundHandler, materiales, invHandler);
-		MouseHandler mouseHandler = new MouseHandler(juego, invHandler, recetarioHandler);
+		ActionHandler actionHandler = new ActionHandler(juego, soundHandler, materiales, inventario);
+		MouseHandler mouseHandler = new MouseHandler(juego, inventario );
 		//dibujar inventario
-		invHandler.dibujarInventario();
-		recetarioHandler.dibujarMesaDeTrabajo();
+		inventario.dibujarMesaDeTrabajo();
+		inventario.dibujarInventario();
 
-		// dibujar Jugador
-		int x = juego.getPosicionJugadorX();
-		int y = juego.getPosicionJugadorX();
-		jugador.dibujarEnPos("res/jugadorAbajo.png", new Posicion(x, y));
 		primaryStage.show();
 
 		Scene s = new Scene(root, width, height);
 		primaryStage.setScene(s);
 
 		// cargar materiales
-		cargarMateriales(materiales, juego.mapa());
+		controlador.cargarMateriales(materiales);
 
 		s.addEventHandler(KEY_PRESSED, dirHandler);
 		s.addEventHandler(KEY_PRESSED, actionHandler);
 		s.addEventHandler(MouseEvent.MOUSE_CLICKED, mouseHandler);
-	}
-	private void cargarMateriales(Superficie materiales, Mapa mapa) {
-		Posicion posicion = new Posicion(0,0);
-		for (int i = 0; i < mapa.getWidth(); i++) {
-			for (int j = 0; j < mapa.getHeight(); j++) {
-				posicion.actualizar(i,j);
-				String str = "res/";
-				Celda celda = mapa.celda(posicion);
-				if (celda.contenido() != null) {
-					str = str + celda.contenido().getClass().getName() + ".png";
-					str = str.toLowerCase();
-					materiales.dibujarEnPos(str, new Posicion(i, j));
-				}
-			}
-		}
 	}
 }
