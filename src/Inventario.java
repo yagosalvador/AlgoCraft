@@ -17,32 +17,27 @@ public class Inventario{
 	}
 
 	public void agregarElemento(Almacenable almacenable){
-		try{
-			inventario.get(almacenable.getClass().getName()).agregarElemento(almacenable);
-		}
-		catch (Exception errorNullPointer){
-			inventario.put(almacenable.getClass().getName(), new QueueAlmacenable());
-			inventario.get(almacenable.getClass().getName()).agregarElemento(almacenable);
-		}
+        QueueAlmacenable q = inventario.get(almacenable.getClass().getName());
+        if(q == null) {
+            inventario.put(almacenable.getClass().getName(), new QueueAlmacenable());
+        }
+        inventario.get(almacenable.getClass().getName()).agregarElemento(almacenable);
 	}
 
 	public int cantidadDeElemento(String clase){
-		try{
-			return inventario.get(clase).size();
-		}
-		catch (Exception errorNullPointer){
-			return 0;
-		}
+        QueueAlmacenable q = inventario.get(clase);
+        if(q ==null){
+            return 0;
+        }
+        return inventario.get(clase).size();
 	}
 	public Almacenable sacarElemento(String clase){
-		Almacenable item;
-		try {
-			item = inventario.get(clase).sacarElemento();
-		}
-		catch (Exception errorNoHayMasMaterialDisponible){
-			return null;
-		}
-		return item;
+		QueueAlmacenable q = inventario.get(clase);
+        if(q == null) {
+            return null;
+        }
+        Almacenable item = q.sacarElemento();;
+        return item;
 	}
 
 	public Almacenable usarElemento(String clase){
