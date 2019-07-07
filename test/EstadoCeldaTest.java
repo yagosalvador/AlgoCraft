@@ -1,4 +1,8 @@
 import static org.junit.Assert.*;
+
+import Modelo.EstadoCelda;
+import Modelo.EstadoCeldaOcupada;
+import Modelo.EstadoCeldaVacia;
 import org.junit.Test;
 
 public class EstadoCeldaTest{

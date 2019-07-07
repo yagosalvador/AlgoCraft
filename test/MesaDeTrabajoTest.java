@@ -1,4 +1,9 @@
 import static org.junit.Assert.*;
+
+import Modelo.Madera;
+import Modelo.MesaDeTrabajo;
+import Modelo.NoObject;
+import Modelo.Receta;
 import org.junit.Test;
 
 public class MesaDeTrabajoTest {

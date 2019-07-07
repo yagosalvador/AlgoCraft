@@ -1,4 +1,6 @@
 import static org.junit.Assert.*;
+
+import Modelo.DesgastePorMultiplo;
 import org.junit.Test;
 
 public class DesgastePorMultiploTest{

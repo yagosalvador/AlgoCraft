@@ -1,4 +1,6 @@
 import static org.junit.Assert.*;
+
+import Modelo.PicoDeMetal;
 import org.junit.Test;
 
 public class PicoDeMetalTest{

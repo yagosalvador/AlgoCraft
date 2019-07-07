@@ -1,4 +1,7 @@
 import static org.junit.Assert.*;
+
+import Modelo.Diamante;
+import Modelo.Material;
 import org.junit.Test;
 
 public class DiamanteTest{

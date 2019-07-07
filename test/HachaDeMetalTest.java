@@ -1,4 +1,6 @@
 import static org.junit.Assert.*;
+
+import Modelo.HachaDeMetal;
 import org.junit.Test;
 
 public class HachaDeMetalTest{

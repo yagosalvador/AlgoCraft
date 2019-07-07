@@ -1,4 +1,9 @@
 import static org.junit.Assert.*;
+
+import Modelo.HachaDeMadera;
+import Modelo.Madera;
+import Modelo.Material;
+import Modelo.Receta;
 import org.junit.Test;
 
 public class HachaDeMaderaTest{

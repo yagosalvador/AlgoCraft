@@ -1,6 +1,6 @@
 import static org.junit.Assert.*;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
+import Modelo.*;
 import org.junit.Test;
 
 public class MovilidadDelJugadorTest{

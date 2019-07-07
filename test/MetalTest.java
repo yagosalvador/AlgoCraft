@@ -1,4 +1,7 @@
 import static org.junit.Assert.*;
+
+import Modelo.Material;
+import Modelo.Metal;
 import org.junit.Test;
 
 public class MetalTest{
