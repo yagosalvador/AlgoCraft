@@ -95,18 +95,15 @@ public class Jugador{
 		}
 	}
 
-	public void construirHerramienta(){
+	public void construirHerramienta() {
 		Herramienta herramientaCreada = null;
-		try{
-			herramientaCreada = mesa.construirHerramienta();
-		}catch(Exception errorNullPointer){
-			if(herramientaCreada == null){
-				devolverMaterialesAlInventario();
-				return;
-			}
+		herramientaCreada = mesa.construirHerramienta();
+		if (herramientaCreada == null) {
+			devolverMaterialesAlInventario();
+		} else {
+			vaciarMaterialesUbicados();
+			almacenarElemento(herramientaCreada);
 		}
-		vaciarMaterialesUbicados();
-		almacenarElemento(herramientaCreada);
 	}
 
 	public void devolverMaterialesAlInventario(){
